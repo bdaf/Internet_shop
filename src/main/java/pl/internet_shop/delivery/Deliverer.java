@@ -1,55 +1,92 @@
 package pl.internet_shop.delivery;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
+@Table(
+        name = "deliverer",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "phone_number_unique", columnNames = "phoneNumber")
+        }
+)
 public class Deliverer {
 
     @Id
-    private long DelivererId;
-    private String Name;
-    private String Surname;
-    private int PhoneNumber;
+    @SequenceGenerator(
+            name = "deliverer_sequence",
+            sequenceName = "deliverer_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = SEQUENCE,
+            generator = "deliverer_sequence"
+    )
+    @Column(
+            name = "delivererId",
+            updatable = false
+    )
+    private long delivererId;
 
-    public Deliverer(long aDelivererId, String aName, String aSurname, int aPhoneNumber) {
-        DelivererId = aDelivererId;
-        Name = aName;
-        Surname = aSurname;
-        PhoneNumber = aPhoneNumber;
+    @Column(
+            name = "name",
+            length = 50,
+            nullable = false
+    )
+    private String name;
+
+    @Column(
+            name = "surname",
+            length = 70,
+            nullable = false
+    )
+    private String surname;
+
+    @Column(
+            name = "phoneNumber",
+            length = 12,
+            nullable = false
+    )
+    private int phoneNumber;
+
+    public Deliverer(String aName, String aSurname, int aPhoneNumber) {
+        name = aName;
+        surname = aSurname;
+        phoneNumber = aPhoneNumber;
     }
 
     public Deliverer() {}
 
     public long getDelivererId() {
-        return DelivererId;
+        return delivererId;
     }
 
     public void setDelivererId(long aDelivererId) {
-        DelivererId = aDelivererId;
+        delivererId = aDelivererId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String aName) {
-        Name = aName;
+        name = aName;
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String aSurname) {
-        Surname = aSurname;
+        surname = aSurname;
     }
 
     public int getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(int aPhoneNumber) {
-        PhoneNumber = aPhoneNumber;
+        phoneNumber = aPhoneNumber;
     }
 }
