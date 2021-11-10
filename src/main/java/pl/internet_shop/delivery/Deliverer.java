@@ -19,6 +19,12 @@ import static javax.persistence.GenerationType.SEQUENCE;
 })
 public class Deliverer {
 
+    public Deliverer(String aName, String aSurname, int aPhoneNumber) {
+        name = aName;
+        surname = aSurname;
+        phoneNumber = aPhoneNumber;
+    }
+
     @Id
     @SequenceGenerator(name = "deliverer_sequence", sequenceName = "deliverer_sequence", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "deliverer_sequence")
@@ -36,10 +42,4 @@ public class Deliverer {
 
     @OneToMany(mappedBy = "deliverer")
     private List<Delivery> deliveries;
-
-    public Deliverer(String aName, String aSurname, int aPhoneNumber) {
-        name = aName;
-        surname = aSurname;
-        phoneNumber = aPhoneNumber;
-    }
 }
