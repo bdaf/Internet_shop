@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
@@ -31,6 +33,9 @@ public class Deliverer {
 
     @Column(name = "phoneNumber", length = 12, nullable = false)
     private int phoneNumber;
+
+    @OneToMany(mappedBy = "deliverer")
+    private List<Delivery> deliveries;
 
     public Deliverer(String aName, String aSurname, int aPhoneNumber) {
         name = aName;
