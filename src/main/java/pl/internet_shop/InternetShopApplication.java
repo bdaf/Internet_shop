@@ -16,6 +16,8 @@ public class InternetShopApplication {
 
 	@Bean
 	CommandLineRunner commandLineRunner (DelivererRepository aDelivererRepository) {
-		return args -> aDelivererRepository.save(new Deliverer("Rafał", "Zarowski", 997));
+		return args -> {
+			aDelivererRepository.save(new Deliverer("Rafał", "Zarowski", 997));
+		};
 	}
 }
