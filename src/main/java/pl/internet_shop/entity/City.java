@@ -1,8 +1,9 @@
-package pl.internet_shop.customer;
+package pl.internet_shop.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.internet_shop.entity.Address;
 
 import javax.persistence.*;
 import java.util.List;

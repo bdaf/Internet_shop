@@ -1,4 +1,4 @@
-package pl.internet_shop.customer;
+package pl.internet_shop.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
