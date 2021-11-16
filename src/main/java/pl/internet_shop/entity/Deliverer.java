@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "deliverer", uniqueConstraints = {
+@Table(name = "IS_deliverer", uniqueConstraints = {
         @UniqueConstraint(name = "phone_number_unique", columnNames = "phone_number")
 })
 public class Deliverer {

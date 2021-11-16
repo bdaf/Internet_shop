@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "delivery", uniqueConstraints = {
+@Table(name = "IS_delivery", uniqueConstraints = {
         @UniqueConstraint(name = "delivery_name_unique", columnNames = "name")
 })
 public class Delivery {

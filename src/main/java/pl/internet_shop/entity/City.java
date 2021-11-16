@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "city")
+@Table(name = "IS_city")
 public class City {
 
     @Id
