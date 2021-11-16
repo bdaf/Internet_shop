@@ -1,8 +1,6 @@
 package pl.internet_shop.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,25 +8,20 @@ import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "deliverer", uniqueConstraints = {
-        @UniqueConstraint(name = "phone_number_unique", columnNames = "phoneNumber")
+        @UniqueConstraint(name = "phone_number_unique", columnNames = "phone_number")
 })
 public class Deliverer {
-
-    public Deliverer(String aName, String aSurname, int aPhoneNumber) {
-        name = aName;
-        surname = aSurname;
-        phoneNumber = aPhoneNumber;
-    }
 
     @Id
     @SequenceGenerator(name = "deliverer_sequence", sequenceName = "deliverer_sequence", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "deliverer_sequence")
-    @Column(name = "delivererId", updatable = false, nullable = false)
+    @Column(name = "deliverer_id", updatable = false, nullable = false)
     private long delivererId;
 
     @Column(name = "name", length = 50, nullable = false)
@@ -37,7 +30,7 @@ public class Deliverer {
     @Column(name = "surname", length = 70, nullable = false)
     private String surname;
 
-    @Column(name = "phoneNumber", length = 12, nullable = false)
+    @Column(name = "phone_number", length = 12, nullable = false)
     private int phoneNumber;
 
     @OneToMany(mappedBy = "deliverer")

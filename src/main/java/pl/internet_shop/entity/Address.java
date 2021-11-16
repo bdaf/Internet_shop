@@ -1,38 +1,31 @@
 package pl.internet_shop.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "address")
 public class Address {
 
-    public Address(String aStreet, String aNumber, City aCity) {
-        street = aStreet;
-        number = aNumber;
-        city = aCity;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_sequence")
     @SequenceGenerator(name = "address_sequence", sequenceName = "address_sequence", allocationSize = 1)
-    @Column(name = "addressId", nullable = false)
+    @Column(name = "address_id", nullable = false)
     private Long addressId;
 
     @Column(name = "street", nullable = false, length = 50)
     private String street;
 
-    @Column(name = "number", nullable = false, length = 5)
-    private String number;
+    @Column(name = "house_number", nullable = false, length = 5)
+    private String houseNumber;
 
     @ManyToOne
-    @JoinColumn(name = "cityId")
+    @JoinColumn(name = "city_id")
     private City city;
 
 }
