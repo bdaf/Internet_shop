@@ -24,8 +24,11 @@ public class Address {
     @Column(name = "house_number", nullable = false, length = 5)
     private String houseNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "city_id",
+            referencedColumnName = "city_id"
+    )
     private City city;
 
 }

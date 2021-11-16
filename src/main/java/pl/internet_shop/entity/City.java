@@ -27,9 +27,4 @@ public class City {
 
     @Column(name = "country", nullable = false, length = 50)
     private String country;
-
-    @OneToMany(mappedBy = "city")
-    private List<Address> addresses;
-
 }
-

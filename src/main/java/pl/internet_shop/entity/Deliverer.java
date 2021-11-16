@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-import java.util.List;
-
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
@@ -13,7 +11,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "IS_deliverer", uniqueConstraints = {
+@Table(name = "is_deliverer", uniqueConstraints = {
         @UniqueConstraint(name = "phone_number_unique", columnNames = "phone_number")
 })
 public class Deliverer {
@@ -32,7 +30,4 @@ public class Deliverer {
 
     @Column(name = "phone_number", length = 12, nullable = false)
     private int phoneNumber;
-
-    @OneToMany(mappedBy = "deliverer")
-    private List<Delivery> deliveries;
 }

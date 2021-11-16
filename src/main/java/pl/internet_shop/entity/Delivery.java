@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "IS_delivery", uniqueConstraints = {
+@Table(name = "is_delivery", uniqueConstraints = {
         @UniqueConstraint(name = "delivery_name_unique", columnNames = "name")
 })
 public class Delivery {
@@ -25,7 +25,7 @@ public class Delivery {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "deliverer_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "deliverer_id", referencedColumnName = "deliverer_id")
     private Deliverer deliverer;
 }
