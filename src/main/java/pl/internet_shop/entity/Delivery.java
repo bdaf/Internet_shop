@@ -25,7 +25,7 @@ public class Delivery {
     @Column(name = "name", length = 63, nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "deliverer_id", referencedColumnName = "deliverer_id")
     private Deliverer deliverer;
 }
