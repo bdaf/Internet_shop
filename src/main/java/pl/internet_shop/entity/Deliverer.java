@@ -19,13 +19,13 @@ public class Deliverer {
     @Id
     @SequenceGenerator(name = "deliverer_sequence", sequenceName = "deliverer_sequence", allocationSize = 1)
     @GeneratedValue(strategy = SEQUENCE, generator = "deliverer_sequence")
-    @Column(name = "deliverer_id", updatable = false, nullable = false)
+    @Column(name = "deliverer_id", nullable = false)
     private long delivererId;
 
-    @Column(name = "name", length = 50, nullable = false)
+    @Column(name = "name", length = 63, nullable = false)
     private String name;
 
-    @Column(name = "surname", length = 70, nullable = false)
+    @Column(name = "surname", length = 63, nullable = false)
     private String surname;
 
     @Column(name = "phone_number", length = 15, nullable = false)

@@ -21,7 +21,7 @@ public class Gallery {
     @Column(name = "gallery_id", nullable = false)
     private Long galleryId;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "gallery_id", referencedColumnName = "gallery_id")
     private List<Photo> photos;
 }

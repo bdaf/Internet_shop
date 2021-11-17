@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Data
@@ -26,9 +25,8 @@ public class Category {
     @Column(name = "name", length = 63)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "IS_category_discount_map",
+    @ManyToMany()
+    @JoinTable(name = "IS_category_discount_map",
             joinColumns = @JoinColumn(
                     name = "category_id",
                     referencedColumnName = "category_id"
@@ -37,8 +35,8 @@ public class Category {
                     name = "discount_id",
                     referencedColumnName = "discount_id"
             )
-
     )
+
     private List<Discount> discounts;
 
     public void addDiscount(Discount aDiscount){

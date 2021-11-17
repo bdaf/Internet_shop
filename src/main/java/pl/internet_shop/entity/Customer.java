@@ -20,13 +20,13 @@ public class Customer {
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
-    @Column(name = "name", length = 50, nullable = false)
+    @Column(name = "name", length = 63, nullable = false)
     private String name;
 
-    @Column(name = "surname", length = 70, nullable = false)
+    @Column(name = "surname", length = 63, nullable = false)
     private String surname;
 
-    @Column(name = "email", length = 70, nullable = false)
+    @Column(name = "email", length = 63, nullable = false)
     private String email;
 
     @Column(name = "phone_number", length = 15, nullable = false)

@@ -18,12 +18,12 @@ public class City {
     @Column(name = "city_id", nullable = false)
     private Long cityId;
 
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "name", nullable = false, length = 63)
     private String name;
 
-    @Column(name = "postcode", nullable = false, length = 10)
+    @Column(name = "postcode", nullable = false, length = 15)
     private String postcode;
 
-    @Column(name = "country", nullable = false, length = 50)
+    @Column(name = "country", nullable = false, length = 63)
     private String country;
 }

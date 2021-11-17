@@ -1,6 +1,9 @@
 package pl.internet_shop.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -18,17 +21,14 @@ public class Address {
     @Column(name = "address_id", nullable = false)
     private Long addressId;
 
-    @Column(name = "street", nullable = false, length = 50)
+    @Column(name = "street", nullable = false, length = 63)
     private String street;
 
-    @Column(name = "house_number", nullable = false, length = 5)
+    @Column(name = "house_number", nullable = false, length = 7)
     private String houseNumber;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "city_id",
-            referencedColumnName = "city_id"
-    )
+    @ManyToOne
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
     private City city;
 
 }

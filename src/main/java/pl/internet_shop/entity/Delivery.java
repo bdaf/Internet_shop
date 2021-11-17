@@ -19,13 +19,13 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "delivery_sequence")
     @SequenceGenerator(name = "delivery_sequence", sequenceName = "delivery_sequence", allocationSize = 1)
-    @Column(name = "delivery_id", nullable = false, updatable = false)
+    @Column(name = "delivery_id", nullable = false)
     private Long delivery_id;
 
-    @Column(name = "name", length = 50, nullable = false)
+    @Column(name = "name", length = 63, nullable = false)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "deliverer_id", referencedColumnName = "deliverer_id")
     private Deliverer deliverer;
 }
