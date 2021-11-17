@@ -22,7 +22,7 @@ public class Discount {
     private Long discountId;
 
     @Column(name = "percent", nullable = false)
-    private float percent;
+    private Float percent;
 
     @Column(name = "from_date", nullable = false)
     private Date fromDate;
