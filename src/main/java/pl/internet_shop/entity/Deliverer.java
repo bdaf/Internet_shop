@@ -28,6 +28,6 @@ public class Deliverer {
     @Column(name = "surname", length = 70, nullable = false)
     private String surname;
 
-    @Column(name = "phone_number", length = 12, nullable = false)
-    private int phoneNumber;
+    @Column(name = "phone_number", length = 15, nullable = false)
+    private String phoneNumber;
 }
