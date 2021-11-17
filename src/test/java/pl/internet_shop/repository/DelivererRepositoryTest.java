@@ -18,9 +18,9 @@ class DelivererRepositoryTest {
     @Test
     void addAndThenPrintAndThenDeleteDeliverer() {
         Deliverer deliverer = Deliverer.builder()
-                .name("Karol")
-                .surname("Leszkowski")
-                .phoneNumber("+48999998997").build();
+                .name("DelivererNTEST")
+                .surname("DelivererSNTEST")
+                .phoneNumber("DNumTEST").build();
         Long amount = delivererRepository.count();
 
         delivererRepository.save(deliverer);
