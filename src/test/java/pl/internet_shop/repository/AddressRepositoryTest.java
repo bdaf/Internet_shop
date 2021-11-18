@@ -32,7 +32,6 @@ class AddressRepositoryTest {
                 .houseNumber("5TEST")
                 .street("addressTestStreet")
                 .build();
-
         addressRepository.save(address);
         assertEquals(amountOfAddressRecords+1,addressRepository.count());
         assertEquals(amountOfCityRecords+1,cityRepository.count());
@@ -43,6 +42,7 @@ class AddressRepositoryTest {
         System.out.println("cities = " + cities);
 
         addressRepository.deleteByHouseNumber("5TEST");
+        cityRepository.delete(city);
         assertEquals(amountOfAddressRecords,addressRepository.count());
         assertEquals(amountOfCityRecords,cityRepository.count());
     }

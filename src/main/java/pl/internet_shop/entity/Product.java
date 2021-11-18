@@ -29,7 +29,7 @@ public class Product {
     @Column(name = "amount", nullable = false)
     private int amount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "producer_id", referencedColumnName = "producer_id")
     private Producer producer;
 

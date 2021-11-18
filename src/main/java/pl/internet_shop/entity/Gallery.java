@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -24,4 +25,9 @@ public class Gallery {
     @OneToMany
     @JoinColumn(name = "gallery_id", referencedColumnName = "gallery_id")
     private List<Photo> photos;
+
+    public void addPhoto(Photo aPhoto){
+        if(photos==null) photos = new ArrayList<>();
+        photos.add(aPhoto);
+    }
 }

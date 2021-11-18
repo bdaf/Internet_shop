@@ -20,6 +20,6 @@ public class Photo {
     @Column(name = "photo_id", nullable = false)
     private Long photoId;
 
-    @Column(name = "postcode", nullable = false, length = 1023)
+    @Column(name = "url", nullable = false, length = 1023)
     private String url;
 }

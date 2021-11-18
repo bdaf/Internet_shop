@@ -42,6 +42,7 @@ class DeliveryRepositoryTest {
         System.out.println("deliveries = " + deliveries);
 
         deliveryRepository.delete(delivery);
+        delivererRepository.delete(deliverer);
         assertEquals(amountOfDeliverers, delivererRepository.count());
         assertEquals(amountOfDeliveries, deliveryRepository.count());
     }

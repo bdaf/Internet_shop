@@ -32,7 +32,7 @@ public class Customer {
     @Column(name = "phone_number", length = 15, nullable = false)
     private String phoneNumber;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Company company;
 }
