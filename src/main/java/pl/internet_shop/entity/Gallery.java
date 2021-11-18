@@ -1,9 +1,6 @@
 package pl.internet_shop.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,12 +19,16 @@ public class Gallery {
     @Column(name = "gallery_id", nullable = false)
     private Long galleryId;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "gallery_id", referencedColumnName = "gallery_id")
     private List<Photo> photos;
 
     public void addPhoto(Photo aPhoto){
         if(photos==null) photos = new ArrayList<>();
         photos.add(aPhoto);
+    }
+
+    public List<Photo> getPhotos(){
+        return photos;
     }
 }
