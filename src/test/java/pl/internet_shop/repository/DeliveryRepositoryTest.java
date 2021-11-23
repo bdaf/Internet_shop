@@ -23,6 +23,7 @@ class DeliveryRepositoryTest {
         Deliverer deliverer = DelivererRepository.getInstanceForTests();
 
         Delivery delivery = DeliveryRepository.getInstanceForTests();
+        delivery.setDeliverer(deliverer);
 
         Long amountOfDeliverers = delivererRepository.count();
         Long amountOfDeliveries = deliveryRepository.count();

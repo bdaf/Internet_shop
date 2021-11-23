@@ -11,6 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class AddressRepositoryTest {
+    public static final String TEST_HOUSE_NUMBER = "5TEST_";
     @Autowired
     private AddressRepository addressRepository;
 
@@ -24,6 +25,8 @@ class AddressRepositoryTest {
 
         City city = CityRepository.getInstanceForTests();
         Address address = AddressRepository.getInstanceForTests();
+        address.setCity(city);
+        address.setHouseNumber(TEST_HOUSE_NUMBER);
 
         addressRepository.save(address);
         assertEquals(amountOfAddressRecords+1,addressRepository.count());
@@ -34,7 +37,7 @@ class AddressRepositoryTest {
         System.out.println("addresses = " + addresses);
         System.out.println("cities = " + cities);
 
-        addressRepository.deleteByHouseNumber("5TEST");
+        addressRepository.deleteByHouseNumber(TEST_HOUSE_NUMBER);
         cityRepository.delete(city);
         assertEquals(amountOfAddressRecords,addressRepository.count());
         assertEquals(amountOfCityRecords,cityRepository.count());
