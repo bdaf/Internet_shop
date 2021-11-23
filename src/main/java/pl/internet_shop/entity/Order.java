@@ -21,6 +21,14 @@ public class Order {
     @Column(name = "order_id", nullable = false)
     private Long orderId;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "delivery_id", referencedColumnName = "delivery_id")
+    private Delivery delivery;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+    private Customer customer;
+
     @OneToMany
     @JoinColumn(name = "order_id", referencedColumnName = "order_id")
     private List<Product> products;

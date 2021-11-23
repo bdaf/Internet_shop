@@ -18,11 +18,7 @@ class CityRepositoryTest {
 
     @Test
     public void saveAndDeleteCity(){
-        City city = City.builder()
-                .postcode("16-424")
-                .country("Poland")
-                .name("Filipów")
-                .build();
+        City city = CityRepository.getInstanceForTests();
 
         Long amountOfRecords = cityRepository.count();
         cityRepository.save(city);

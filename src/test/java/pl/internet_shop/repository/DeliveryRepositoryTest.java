@@ -20,14 +20,9 @@ class DeliveryRepositoryTest {
 
     @Test
     void addAndThenPrintAndThenDeleteDelivery() {
-        Deliverer deliverer = Deliverer.builder()
-                .name("NDeliveryTest")
-                .surname("SnDeliveryTest")
-                .phoneNumber("PNDeliveryTest").build();
+        Deliverer deliverer = DelivererRepository.getInstanceForTests();
 
-        Delivery delivery = Delivery.builder()
-                .name("NDDeliveryTest")
-                .deliverer(deliverer).build();
+        Delivery delivery = DeliveryRepository.getInstanceForTests();
 
         Long amountOfDeliverers = delivererRepository.count();
         Long amountOfDeliveries = deliveryRepository.count();

@@ -25,18 +25,10 @@ class CategoryRepositoryTest {
         Long amountOfCategories = categoryRepository.count();
         Long amountOfDiscounts = discountRepository.count();
 
-        Discount discount1 = Discount.builder()
-                .fromDate(Date.valueOf("2020-01-19")).toDate(Date.valueOf("2020-11-19"))
-                .percent(0.1F).build();
-
-        Discount discount2 = Discount.builder()
-                .fromDate(Date.valueOf("2020-02-19")).toDate(Date.valueOf("2020-12-19"))
-                .percent(0.2F).build();
-
         Category category = Category.builder().name("TestCategory").build();
 
-        category.addDiscount(discount1);
-        category.addDiscount(discount2);
+        category.addDiscount(DiscountRepository.getInstanceForTests());
+        category.addDiscount(DiscountRepository.getInstanceForTests());
 
         categoryRepository.save(category);
 

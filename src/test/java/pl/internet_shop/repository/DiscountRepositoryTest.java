@@ -20,10 +20,7 @@ class DiscountRepositoryTest {
     void saveDiscountThenPrintAllThenDeleteIt(){
         Long amountOfDiscounts = discountRepository.count();
 
-        Discount discount = Discount.builder()
-                .fromDate(Date.valueOf("2021-11-19"))
-                .toDate(Date.valueOf("2021-11-20"))
-                .percent(0.3F).build();
+        Discount discount = DiscountRepository.getInstanceForTests();
 
         discountRepository.save(discount);
         assertEquals(amountOfDiscounts+1, discountRepository.count());

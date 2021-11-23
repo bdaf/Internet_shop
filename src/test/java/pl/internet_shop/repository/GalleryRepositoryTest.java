@@ -25,12 +25,9 @@ class GalleryRepositoryTest {
         Long amountOfGalleries = galleryRepository.count();
         Long amountOfPhotos = photoRepository.count();
 
-        Photo photo1 = Photo.builder().url("https://www.laczynasmuzyka.pl/wp-content/uploads/2018/10/owca3.jpg").build();
-        Photo photo2 = Photo.builder().url("https://i.ytimg.com/vi/3X6mr8VglWc/maxresdefault.jpg").build();
-
-        Gallery gallery = new Gallery();
-        gallery.addPhoto(photo1);
-        gallery.addPhoto(photo2);
+        Gallery gallery = GalleryRepository.getInstanceForTests();
+        gallery.addPhoto(PhotoRepository.getInstanceForTests());
+        gallery.addPhoto(PhotoRepository.getInstanceForTests());
 
         galleryRepository.save(gallery);
 

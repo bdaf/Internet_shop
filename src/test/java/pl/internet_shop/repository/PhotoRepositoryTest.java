@@ -17,8 +17,7 @@ class PhotoRepositoryTest {
 
     @Test
     void savePhotoThenPrintAllThenDeleteIt(){
-        Photo photo = Photo.builder()
-                .url("https://www.tapeciarnia.pl/tapety/normalne/234565_rodzina_krzyz_wiara.jpg").build();
+        Photo photo = PhotoRepository.getInstanceForTests();
         Long amountOfPhotos = photoRepository.count();
 
         photoRepository.save(photo);

@@ -10,4 +10,12 @@ public interface AddressRepository extends JpaRepository<Address,Long> {
     @Modifying
     @Transactional
     void deleteByHouseNumber(String aHouseNumber);
+
+    static Address getInstanceForTests(){
+        return Address.builder()
+                .city(CityRepository.getInstanceForTests())
+                .houseNumber("5TEST")
+                .street("addressTestStreet")
+                .build();
+    }
 }

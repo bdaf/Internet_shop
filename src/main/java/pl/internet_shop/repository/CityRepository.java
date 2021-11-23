@@ -9,6 +9,14 @@ import java.util.List;
 
 public interface CityRepository  extends JpaRepository<City,Long> {
 
+    static City getInstanceForTests() {
+        return City.builder()
+                .name("addressTest")
+                .country("addressCountryTest")
+                .postcode("adPCTest")
+                .build();
+    }
+
     List<City> findByPostcode(String postcode);
 
     @Modifying

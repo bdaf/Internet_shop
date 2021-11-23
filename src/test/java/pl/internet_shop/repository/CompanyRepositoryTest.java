@@ -19,9 +19,7 @@ class CompanyRepositoryTest {
     void saveCompanyThenPrintAllThenDeleteIt(){
         Long amountOfCompanies = companyRepository.count();
 
-        Company company = Company.builder()
-                .name("TestName")
-                .nip("testNip123").build();
+        Company company = CompanyRepository.getInstanceForTests();
 
         companyRepository.save(company);
         assertEquals(amountOfCompanies+1, companyRepository.count());

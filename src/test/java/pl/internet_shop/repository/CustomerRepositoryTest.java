@@ -30,31 +30,14 @@ class CustomerRepositoryTest {
     @Test
     void saveCustomerWithCompanyThenPrintAllThenDeleteIt(){
         Long amountOfCustomers = customerRepository.count();
-        Long amountOfCompanies = companyRepository.count();
         Long amountOfAddressRecords = addressRepository.count();
+        Long amountOfCompanies = companyRepository.count();
         Long amountOfCityRecords = cityRepository.count();
-        City city = City.builder()
-                .name("addressTest")
-                .country("addressCountryTest")
-                .postcode("adPCTest")
-                .build();
-        Address address = Address.builder()
-                .city(city)
-                .houseNumber("5TEST")
-                .street("addressTestStreet")
-                .build();
-        Company company = Company.builder()
-                .name("TestCompany")
-                .nip("testNipNumber")
-                .build();
-        Customer customer = Customer.builder()
-                .name("testCustomerName")
-                .surname("testCustomerSurname")
-                .company(company)
-                .email("testEmail@gmail.com")
-                .phoneNumber("testNumber")
-                .address(address)
-                .build();
+
+        City city = CityRepository.getInstanceForTests();
+        Address address = AddressRepository.getInstanceForTests();
+        Company company = CompanyRepository.getInstanceForTests();
+        Customer customer = CustomerRepository.getInstanceForTests();
 
         customerRepository.save(customer);
         assertEquals(amountOfCustomers+1, customerRepository.count());

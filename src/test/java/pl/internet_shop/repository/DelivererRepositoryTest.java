@@ -17,10 +17,7 @@ class DelivererRepositoryTest {
 
     @Test
     void addAndThenPrintAndThenDeleteDeliverer() {
-        Deliverer deliverer = Deliverer.builder()
-                .name("DelivererNTEST")
-                .surname("DelivererSNTEST")
-                .phoneNumber("DNumTEST").build();
+        Deliverer deliverer = DelivererRepository.getInstanceForTests();
         Long amount = delivererRepository.count();
 
         delivererRepository.save(deliverer);

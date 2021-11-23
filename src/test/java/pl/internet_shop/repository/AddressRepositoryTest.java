@@ -22,16 +22,9 @@ class AddressRepositoryTest {
         Long amountOfAddressRecords = addressRepository.count();
         Long amountOfCityRecords = cityRepository.count();
 
-        City city = City.builder()
-                .name("addressTest")
-                .country("addressCountryTest")
-                .postcode("adPCTest")
-                .build();
-        Address address = Address.builder()
-                .city(city)
-                .houseNumber("5TEST")
-                .street("addressTestStreet")
-                .build();
+        City city = CityRepository.getInstanceForTests();
+        Address address = AddressRepository.getInstanceForTests();
+
         addressRepository.save(address);
         assertEquals(amountOfAddressRecords+1,addressRepository.count());
         assertEquals(amountOfCityRecords+1,cityRepository.count());

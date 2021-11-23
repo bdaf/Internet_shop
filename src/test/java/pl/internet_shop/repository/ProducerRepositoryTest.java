@@ -19,9 +19,7 @@ class ProducerRepositoryTest {
     void saveProducerThenPrintAllThenDeleteIt(){
         Long amountOfProducers = producerRepository.count();
 
-        Producer producer = Producer.builder()
-                .name("TestName").surname("TestSurname")
-                .nip("testNip123").build();
+        Producer producer = ProducerRepository.getInstanceForTests();
 
         producerRepository.save(producer);
         assertEquals(amountOfProducers+1, producerRepository.count());
