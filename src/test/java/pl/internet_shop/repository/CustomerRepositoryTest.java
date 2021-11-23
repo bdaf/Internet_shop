@@ -36,8 +36,11 @@ class CustomerRepositoryTest {
 
         City city = CityRepository.getInstanceForTests();
         Address address = AddressRepository.getInstanceForTests();
+        address.setCity(city);
         Company company = CompanyRepository.getInstanceForTests();
         Customer customer = CustomerRepository.getInstanceForTests();
+        customer.setCompany(company);
+        customer.setAddress(address);
 
         customerRepository.save(customer);
         assertEquals(amountOfCustomers+1, customerRepository.count());
@@ -62,5 +65,8 @@ class CustomerRepositoryTest {
         assertEquals(amountOfCompanies, companyRepository.count());
         assertEquals(amountOfAddressRecords,addressRepository.count());
         assertEquals(amountOfCityRecords+1,cityRepository.count());
+
+        cityRepository.delete(city);
+        assertEquals(amountOfCityRecords,cityRepository.count());
     }
 }

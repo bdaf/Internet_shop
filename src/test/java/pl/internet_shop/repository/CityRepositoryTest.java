@@ -8,7 +8,6 @@ import pl.internet_shop.entity.City;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class CityRepositoryTest {
@@ -18,13 +17,14 @@ class CityRepositoryTest {
 
     @Test
     public void saveAndDeleteCity(){
+        long amountOfCities = cityRepository.count();
         City city = CityRepository.getInstanceForTests();
 
-        Long amountOfRecords = cityRepository.count();
         cityRepository.save(city);
-        assertEquals(amountOfRecords+1,cityRepository.count());
+        assertEquals(amountOfCities+1,cityRepository.count());
+
         cityRepository.delete(city);
-        assertEquals(amountOfRecords,cityRepository.count());
+        assertEquals(amountOfCities,cityRepository.count());
     }
 
     @Test
@@ -36,6 +36,7 @@ class CityRepositoryTest {
 
     @Test
     public void findAndDeleteCityByPostcode(){
+        long amountOfCityRecords = cityRepository.count();
         String tmpPostcode = "testCode";
         cityRepository.deleteAllByPostcode(tmpPostcode);
         City city = City.builder()
@@ -49,6 +50,6 @@ class CityRepositoryTest {
         assertEquals(city,cityRepository.findByPostcode(tmpPostcode).get(0));
 
         cityRepository.deleteByPostcode(tmpPostcode);
-        assertTrue(cityRepository.findByPostcode(tmpPostcode).isEmpty());
+        assertEquals(amountOfCityRecords, cityRepository.count());
     }
 }

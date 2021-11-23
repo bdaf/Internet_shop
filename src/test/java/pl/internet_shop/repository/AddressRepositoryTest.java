@@ -38,8 +38,10 @@ class AddressRepositoryTest {
         System.out.println("cities = " + cities);
 
         addressRepository.deleteByHouseNumber(TEST_HOUSE_NUMBER);
-        cityRepository.delete(city);
         assertEquals(amountOfAddressRecords,addressRepository.count());
+
+        assertEquals(amountOfCityRecords+1,cityRepository.count());
+        cityRepository.delete(city);
         assertEquals(amountOfCityRecords,cityRepository.count());
     }
 }

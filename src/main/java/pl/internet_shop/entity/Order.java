@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -37,6 +38,9 @@ public class Order {
     private List<Product> products;
 
     public void addProduct(Product aProduct){
+        if(products == null){
+            products = new ArrayList<>();
+        }
         products.add(aProduct);
     }
 }
