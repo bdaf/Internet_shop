@@ -32,6 +32,10 @@ public class Customer {
     @Column(name = "phone_number", length = 15, nullable = false)
     private String phoneNumber;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
+    private Address address;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Company company;
