@@ -25,7 +25,7 @@ public class Category {
     @Column(name = "name", length = 63)
     private String name;
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "IS_category_discount_map",
             joinColumns = @JoinColumn(
                     name = "category_id",
