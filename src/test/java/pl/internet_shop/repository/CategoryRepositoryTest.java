@@ -25,7 +25,7 @@ class CategoryRepositoryTest {
         Long amountOfCategories = categoryRepository.count();
         Long amountOfDiscounts = discountRepository.count();
 
-        Category category = Category.builder().name("TestCategory").build();
+        Category category = CategoryRepository.getInstanceForTests();
 
         category.addDiscount(DiscountRepository.getInstanceForTests());
         category.addDiscount(DiscountRepository.getInstanceForTests());

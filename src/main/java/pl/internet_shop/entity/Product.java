@@ -29,11 +29,11 @@ public class Product {
     @Column(name = "amount", nullable = false)
     private int amount;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "producer_id", referencedColumnName = "producer_id")
     private Producer producer;
 
-    @OneToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     private Category category;
 }
