@@ -7,7 +7,7 @@ function App() {
   const [date, setDate] = useState(null)
 
   const fitchDate = async () => {
-    await axios.get("http://localhost:8081").then((response) => {
+    await axios.get("http://localhost:8888").then((response) => {
       setDate(response.data)
     })
   }
