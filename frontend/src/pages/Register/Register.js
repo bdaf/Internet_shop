@@ -201,7 +201,7 @@ const Register = () => {
                 <div className={styles.left}>
                 </div>
                 <form onSubmit={submitHandler}>
-                    <h4>We are <span>NUVA</span></h4>
+                    <h4>Sklep <span>NUIT</span></h4>
                     <p>Załóż nowe konto</p>
                     {registerContext}
                 </form>
