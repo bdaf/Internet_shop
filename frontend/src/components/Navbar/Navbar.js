@@ -1,5 +1,5 @@
 import { Navbar, Container, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cart from './cart4.svg'
 import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
@@ -9,7 +9,7 @@ const Navbars = (props) => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Navbar.Brand href="#">NUIT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -17,8 +17,8 @@ const Navbars = (props) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Home</Nav.Link>
-                        <Nav.Link href="#action2">Link</Nav.Link>
+                        <Link to="/"><Nav.Link>Strona główna</Nav.Link></Link>
+                        <Nav.Link>O nas</Nav.Link>
                         <NavDropdown title="Link" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -31,7 +31,7 @@ const Navbars = (props) => {
                             Link
                         </Nav.Link>
                     </Nav>
-                    {props.search ? (
+                    {props.search ? (<>
                         <Form className="d-flex">
                             <FormControl
                                 type="search"
@@ -41,6 +41,7 @@ const Navbars = (props) => {
                             />
                             <Button variant="outline-success">Search</Button>
                         </Form>
+                        <div className="ms-3 vr" /> </>
                     ) : null}
 
                     <div className="ms-3">
@@ -49,7 +50,6 @@ const Navbars = (props) => {
 
                     <div className="ms-3">
                         <Link to="/login"><img src={login} alt="login" /></Link>
-                        <Outlet />
                     </div>
                     <div className="ms-3">
                         <img src={account} alt="account" />
