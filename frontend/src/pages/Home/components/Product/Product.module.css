@@ -1,0 +1,4 @@
+.product:hover {
+    background-color: rgb(218, 218, 218);
+    border: 1px solid #000;
+}
