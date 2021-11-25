@@ -1,5 +1,10 @@
 import { Navbar, Container, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 
+import cart from './cart4.svg'
+import login from './box-arrow-in-right.svg'
+import account from './person-circle.svg'
+import logout from './box-arrow-left.svg'
+
 const Navbars = () => {
     return (
         <Navbar bg="light" expand="lg">
@@ -35,6 +40,18 @@ const Navbars = () => {
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
+                    <div>
+                        <img className="ms-3" src={cart} alt="cart" />
+                    </div>
+                    <div>
+                        <img className="ms-3" src={login} alt="login" />
+                    </div>
+                    <div>
+                        <img className="ms-3" src={account} alt="account" />
+                    </div>
+                    <div>
+                        <img className="ms-3" src={logout} alt="logout" />
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
