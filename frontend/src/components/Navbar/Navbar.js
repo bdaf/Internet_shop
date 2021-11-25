@@ -1,5 +1,5 @@
 import { Navbar, Container, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import cart from './cart4.svg'
 import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
@@ -17,7 +17,7 @@ const Navbars = (props) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Link to="/"><Nav.Link>Strona główna</Nav.Link></Link>
+                        <Nav.Link><NavLink to='/'>Strona główna</NavLink></Nav.Link>
                         <Nav.Link>O nas</Nav.Link>
                         <NavDropdown title="Link" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -34,12 +34,12 @@ const Navbars = (props) => {
                     {props.search ? (<>
                         <Form className="d-flex">
                             <FormControl
-                                type="search"
+                                type="Szukaj"
                                 placeholder="Search"
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <Button variant="outline-success">Search</Button>
+                            <Button variant="outline-success">Szukaj</Button>
                         </Form>
                         <div className="ms-3 vr" /> </>
                     ) : null}
