@@ -5,7 +5,7 @@ import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
 import logout from './box-arrow-left.svg'
 
-const Navbars = () => {
+const Navbars = (props) => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
@@ -31,15 +31,18 @@ const Navbars = () => {
                             Link
                         </Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                    {props.search ? (
+                        <Form className="d-flex">
+                            <FormControl
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                            <Button variant="outline-success">Search</Button>
+                        </Form>
+                    ) : null}
+
                     <div className="ms-3">
                         <img src={cart} alt="cart" />
                     </div>
@@ -49,11 +52,11 @@ const Navbars = () => {
                         <Outlet />
                     </div>
                     <div className="ms-3">
-                        <img  src={account} alt="account" />
+                        <img src={account} alt="account" />
                     </div>
 
                     <div className="ms-3">
-                        <img  src={logout} alt="logout" />
+                        <img src={logout} alt="logout" />
                     </div>
                 </Navbar.Collapse>
             </Container>

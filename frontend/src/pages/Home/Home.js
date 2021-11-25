@@ -7,7 +7,7 @@ import Product from "./components/Product/Product";
 const Home = () => {
     return (
         <div>
-            <Navbar />
+            <Navbar search={true}/>
             <Offer />
             <div className="">
                 <Row className="justify-content-md-center">
