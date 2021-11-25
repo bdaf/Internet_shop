@@ -2,10 +2,17 @@ import { Card, Button } from 'react-bootstrap';
 
 import monitor from './Monitor.jpg'
 
+import styles from './Product.module.css'
+
 
 const Product = (props) => {
+
+    const showDetailsHandler = () => {
+        console.log("show")
+    }
+
     return (
-        <Card className="mt-3 mb-3" style={{ width: '18rem' }}>
+        <Card onClick={showDetailsHandler} className={`${styles.product} mt-3 mb-3`} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={monitor} />
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
