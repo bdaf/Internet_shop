@@ -1,5 +1,5 @@
 import { Navbar, Container, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
-
+import { Outlet, Link } from "react-router-dom";
 import cart from './cart4.svg'
 import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
@@ -40,17 +40,20 @@ const Navbars = () => {
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
-                    <div>
-                        <img className="ms-3" src={cart} alt="cart" />
+                    <div className="ms-3">
+                        <img src={cart} alt="cart" />
                     </div>
-                    <div>
-                        <img className="ms-3" src={login} alt="login" />
+
+                    <div className="ms-3">
+                        <Link to="/login"><img src={login} alt="login" /></Link>
+                        <Outlet />
                     </div>
-                    <div>
-                        <img className="ms-3" src={account} alt="account" />
+                    <div className="ms-3">
+                        <img  src={account} alt="account" />
                     </div>
-                    <div>
-                        <img className="ms-3" src={logout} alt="logout" />
+
+                    <div className="ms-3">
+                        <img  src={logout} alt="logout" />
                     </div>
                 </Navbar.Collapse>
             </Container>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import styles from './Register.module.scss';
 
 const Register = () => {
+    const navigate = useNavigate();
 
     // Costumer
     const [name, setName] = useState('');
@@ -82,6 +84,8 @@ const Register = () => {
         setEmail('');
         setPassword('');
         setConfirmPassword('');
+
+        navigate('/login');
     };
 
     const registerContext = !isStep2 ? (

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import styles from './Login.module.scss';
 
 const Login = () => {
+    const navigate = useNavigate();
 
     const [isShowForgot, setIsShowForgot] = useState(false);
     const [email, setEmail] = useState('');
@@ -25,6 +26,8 @@ const Login = () => {
 
         setEmail('');
         setPassword('');
+        
+        navigate('/');
     };
 
     const sendEmailHandler = () => {
