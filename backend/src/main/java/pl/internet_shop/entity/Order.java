@@ -16,6 +16,11 @@ import java.util.List;
 @Entity
 @Table(name = "IS_order")
 public class Order {
+    public static final String NOT_ORDERED = "NOT ORDERED";
+    public static final String ORDERED = "ORDERED";
+    public static final String PAYED = "PAYED";
+    public static final String SENT = "SENT";
+    public static final String DELIVERED = "DELIVERED";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
     @SequenceGenerator(name = "order_sequence", sequenceName = "order_sequence", allocationSize = 1)
@@ -32,6 +37,9 @@ public class Order {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customer;
+
+    @Column(name = "status")
+    private String status = NOT_ORDERED;
 
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", referencedColumnName = "order_id")
