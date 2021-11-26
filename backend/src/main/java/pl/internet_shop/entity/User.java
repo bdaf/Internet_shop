@@ -1,0 +1,67 @@
+package pl.internet_shop.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "IS_user")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+
+    @Column(name = "login", length = 63, nullable = false)
+    private String login;
+
+    @Column(name = "password", length = 63, nullable = false)
+    private String password;
+
+    @Column(name = "role", length = 63, nullable = false)
+    private String role;
+
+    @Column(name = "name", length = 63, nullable = false)
+    private String name;
+
+    @Column(name = "surname", length = 63, nullable = false)
+    private String surname;
+
+    @Column(name = "email", length = 63, nullable = false)
+    private String email;
+
+    @Column(name = "phone_number", length = 15, nullable = false)
+    private String phoneNumber;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
+    private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "company_id", referencedColumnName = "company_id")
+    private Company company;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address=" + address +
+                ", company=" + company +
+                '}';
+    }
+}

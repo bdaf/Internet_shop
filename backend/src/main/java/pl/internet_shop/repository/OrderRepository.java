@@ -9,7 +9,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
 
     static Order getInstanceForTests() {
         return Order.builder()
-                .customer(CustomerRepository.getInstanceForTests())
+                .user(UserRepository.getInstanceForTests())
                 .delivery(DeliveryRepository.getInstanceForTests())
                 .name("TestOrderName")
                 .build();

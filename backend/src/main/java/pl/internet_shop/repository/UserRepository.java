@@ -1,11 +1,12 @@
 package pl.internet_shop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.internet_shop.entity.Customer;
+import org.springframework.stereotype.Repository;
+import pl.internet_shop.entity.User;
 
-public interface CustomerRepository extends JpaRepository<Customer,Long> {
-    static Customer getInstanceForTests() {
-        return Customer.builder()
+public interface UserRepository extends JpaRepository<User,Long> {
+    static User getInstanceForTests() {
+        return User.builder()
                 .name("testCustomerName")
                 .surname("testCustomerSurname")
                 .company(CompanyRepository.getInstanceForTests())
@@ -14,4 +15,6 @@ public interface CustomerRepository extends JpaRepository<Customer,Long> {
                 .address(AddressRepository.getInstanceForTests())
                 .build();
     }
+
+    User findByLogin (String login);
 }

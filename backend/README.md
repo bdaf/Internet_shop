@@ -45,15 +45,15 @@ Deleting address deletes only address from DB without city.
 <h1>COMPANY</h1>
 To add company you don't have to do any extra acts.
 Adding company to DB is possible.
-Warning! Deleting company may delete customer, but shouldn't. #NotTested
+Warning! Deleting company may delete user, but shouldn't. #NotTested
 
-<h1>CUSTOMER</h1>
-To add customer you don't have to do any extra acts.
-Adding to DB customer with company and address which are not in DB is possible.
-Deleting customer deletes from DB: customer, his company and address.
+<h1>USER</h1>
+To add user you don't have to do any extra acts.
+Adding to DB user with company and address which are not in DB is possible.
+Deleting user deletes from DB: user, his company and address.
 
 <h1>ORDER</h1>
-To add order you have to create customer and add him to database first or get him from DB.
+To add order you have to create user and add him to database first or get him from DB.
 Adding order with delivery which is not in DB is possible.
 Warning! Adding order with products which is not in DB is NOT possible, firstly enter products do DB or get some from DB.
 Warning! Deleting order deletes order with delivery and ALL PRODUCTS from DB.

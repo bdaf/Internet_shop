@@ -21,7 +21,7 @@ class OrderRepositoryTest {
     DeliveryRepository deliveryRepository;
 
     @Autowired
-    CustomerRepository customerRepository;
+    UserRepository userRepository;
 
     @Autowired
     CompanyRepository companyRepository;
@@ -50,7 +50,7 @@ class OrderRepositoryTest {
     private Deliverer deliverer;
     private Delivery delivery;
     private Order order;
-    private Customer customer;
+    private User user;
     private long amountOfDeliverers;
     private long amountOfDeliveries;
     private long amountOfCustomers;
@@ -67,7 +67,7 @@ class OrderRepositoryTest {
         amountOfDeliveries = deliveryRepository.count();
         amountOfCategories = categoryRepository.count();
         amountOfProducers = producerRepository.count();
-        amountOfCustomers = customerRepository.count();
+        amountOfCustomers = userRepository.count();
         amountOfCompanies = companyRepository.count();
         amountOfProducts = productRepository.count();
         amountOfCities = cityRepository.count();
@@ -83,7 +83,7 @@ class OrderRepositoryTest {
         delivery = DeliveryRepository.getInstanceForTests();
         delivery.setDeliverer(deliverer);
         order = OrderRepository.getInstanceForTests();
-        customer = Customer.builder()
+        user = User.builder()
                 .company(company)
                 .address(address)
                 .name("testCustomerName")
@@ -92,9 +92,9 @@ class OrderRepositoryTest {
                 .phoneNumber("testNumber")
                 .build();
 
-        customerRepository.save(customer);
+        userRepository.save(user);
 
-        order.setCustomer(customer);
+        order.setUser(user);
         order.setDelivery(delivery);
     }
 
@@ -104,7 +104,7 @@ class OrderRepositoryTest {
 
         assertEquals(amountOfDeliverers + 1, delivererRepository.count());
         assertEquals(amountOfDeliveries + 1, deliveryRepository.count());
-        assertEquals(amountOfCustomers + 1, customerRepository.count());
+        assertEquals(amountOfCustomers + 1, userRepository.count());
         assertEquals(amountOfCompanies + 1, companyRepository.count());
         assertEquals(amountOfAddressRecords + 1, addressRepository.count());
         assertEquals(amountOfCities + 1, cityRepository.count());
@@ -115,8 +115,8 @@ class OrderRepositoryTest {
         List<Delivery> deliveries = deliveryRepository.findAll();
         System.out.println("deliveries = " + deliveries);
 
-        List<Customer> customers = customerRepository.findAll();
-        System.out.println("customers = " + customers);
+        List<User> users = userRepository.findAll();
+        System.out.println("customers = " + users);
 
         List<Company> companies = companyRepository.findAll();
         System.out.println("companies = " + companies);
@@ -132,16 +132,16 @@ class OrderRepositoryTest {
         assertEquals(amountOfOrders, orderRepository.count());
         assertEquals(amountOfDeliveries, deliveryRepository.count());
         assertEquals(amountOfDeliverers + 1, delivererRepository.count());
-        assertEquals(amountOfCustomers + 1, customerRepository.count());
+        assertEquals(amountOfCustomers + 1, userRepository.count());
         assertEquals(amountOfCompanies + 1, companyRepository.count());
         assertEquals(amountOfAddressRecords + 1, addressRepository.count());
         assertEquals(amountOfCities + 1, cityRepository.count());
 
         delivererRepository.delete(deliverer);
-        customerRepository.delete(customer);
+        userRepository.delete(user);
 
         assertEquals(amountOfDeliverers, delivererRepository.count());
-        assertEquals(amountOfCustomers, customerRepository.count());
+        assertEquals(amountOfCustomers, userRepository.count());
         assertEquals(amountOfCompanies, companyRepository.count());
         assertEquals(amountOfAddressRecords, addressRepository.count());
         assertEquals(amountOfCities + 1, cityRepository.count());
@@ -184,10 +184,10 @@ class OrderRepositoryTest {
         assertEquals(amountOfProducts, productRepository.count());
 
         delivererRepository.delete(deliverer);
-        customerRepository.delete(customer);
+        userRepository.delete(user);
 
         assertEquals(amountOfDeliverers, delivererRepository.count());
-        assertEquals(amountOfCustomers, customerRepository.count());
+        assertEquals(amountOfCustomers, userRepository.count());
         assertEquals(amountOfCompanies, companyRepository.count());
         assertEquals(amountOfAddressRecords, addressRepository.count());
         assertEquals(amountOfCities + 1, cityRepository.count());

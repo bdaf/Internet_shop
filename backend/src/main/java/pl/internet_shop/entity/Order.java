@@ -35,8 +35,8 @@ public class Order {
     private Delivery delivery;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
 
     @Column(name = "status")
     private String status = NOT_ORDERED;

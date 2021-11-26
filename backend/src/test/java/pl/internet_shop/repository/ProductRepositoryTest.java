@@ -28,7 +28,7 @@ class ProductRepositoryTest {
     OrderRepository orderRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private DeliveryRepository deliveryRepository;
@@ -50,21 +50,21 @@ class ProductRepositoryTest {
         Long amountOfOrders = orderRepository.count();
         Long amountOfDeliveries = deliveryRepository.count();
         Long amountOfCities = cityRepository.count();
-        Long amountOfCustomers = customerRepository.count();
+        Long amountOfCustomers = userRepository.count();
         Long amountOfAddresses = addressRepository.count();
         Long amountOfDeliverers = delivererRepository.count();
 
-        Customer customer = CustomerRepository.getInstanceForTests();
-        Address address = customer.getAddress();
+        User user = UserRepository.getInstanceForTests();
+        Address address = user.getAddress();
         City city = address.getCity();
         Order order = Order.builder()
-                .customer(customer)
+                .user(user)
                 .delivery(DeliveryRepository.getInstanceForTests())
                 .name(TEST_ORDER_NAME)
                 .build();
         Deliverer deliverer = order.getDelivery().getDeliverer();
 
-        customerRepository.save(customer);
+        userRepository.save(user);
         assertEquals(amountOfCities+1, cityRepository.count());
 
         orderRepository.save(order);
@@ -132,9 +132,9 @@ class ProductRepositoryTest {
 
         assertEquals(amountOfCities+1, cityRepository.count());
 
-        customerRepository.delete(customer);
+        userRepository.delete(user);
         assertEquals(amountOfCities+1, cityRepository.count());
-        assertEquals(amountOfCustomers, customerRepository.count());
+        assertEquals(amountOfCustomers, userRepository.count());
         assertEquals(amountOfAddresses, addressRepository.count());
 
         cityRepository.delete(city);
