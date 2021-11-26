@@ -2,10 +2,12 @@ package pl.internet_shop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.stereotype.Repository;
 import pl.internet_shop.entity.Address;
 
 import javax.transaction.Transactional;
 
+@Repository
 public interface AddressRepository extends JpaRepository<Address,Long> {
     @Modifying
     @Transactional

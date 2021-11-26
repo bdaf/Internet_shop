@@ -2,11 +2,13 @@ package pl.internet_shop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.stereotype.Repository;
 import pl.internet_shop.entity.City;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Repository
 public interface CityRepository  extends JpaRepository<City,Long> {
 
     static City getInstanceForTests() {
