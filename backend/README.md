@@ -29,7 +29,7 @@ Deleting deliverer deletes only deliverer from DB.
 
 <h1>DELIVERY</h1>
 To add delivery you can create deliverer, but shouldn't have to. #NotTested
-Adding delivery with deliverer which is not in DB is possible.
+Adding delivery with producer which is not in DB is possible.
 Deleting delivery deletes only delivery from DB without deliverer.
 
 <h1>CITY</h1>
@@ -66,8 +66,8 @@ Deleting producer deletes only city from DB.
 <h1>PRODUCT</h1>
 To add product you have to create category and add it to database first or get it from DB, product should also have
 producer (but at this moment it's not requierd) and.
-Adding product with delivery which is not in DB is possible.
-Deleting product deletes product with delivery from DB.
+Adding product with producer which is not in DB is propably NOT possible.
+Deleting product deletes only product from DB.
 
 <h1>PRODUCT AND ORDER RELATION</h1>
 Product can be a replication in database which only Id would be distinct, this means that we have many same things, for example like this mouse for computer:

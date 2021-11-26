@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "IS_producer")
 public class Producer {
+    public static final String UNKNOWN = "Unknown";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producer_sequence")
     @SequenceGenerator(name = "producer_sequence", sequenceName = "producer_sequence", allocationSize = 1)
@@ -21,7 +22,7 @@ public class Producer {
     private Long producerId;
 
     @Column(name = "name", nullable = false, length = 63)
-    private String name;
+    private String name = UNKNOWN;
 
     @Column(name = "surname", nullable = false, length = 63)
     private String surname;

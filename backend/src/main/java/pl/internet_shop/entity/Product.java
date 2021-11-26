@@ -27,13 +27,13 @@ public class Product {
     private Double price;
 
     @Column(name = "amount", nullable = false)
-    private int amount;
+    private int amount = 1;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "producer_id", referencedColumnName = "producer_id")
     private Producer producer;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     private Category category;
 }

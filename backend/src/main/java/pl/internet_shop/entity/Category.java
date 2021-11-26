@@ -16,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "IS_category")
 public class Category {
+    public static final String OTHER = "Other";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_sequence")
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
@@ -23,7 +24,7 @@ public class Category {
     private Long categoryId;
 
     @Column(name = "name", length = 63)
-    private String name;
+    private String name = OTHER;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "IS_category_discount_map",
@@ -43,4 +44,6 @@ public class Category {
         if(discounts == null) discounts = new ArrayList<>();
         discounts.add(aDiscount);
     }
+
+
 }

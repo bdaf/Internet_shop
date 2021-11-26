@@ -9,4 +9,6 @@ public interface ProducerRepository extends JpaRepository<Producer,Long> {
                 .name("TestName").surname("TestSurname")
                 .nip("testNip123").build();
     }
+
+    Producer findProducerByNip(String aNip);
 }
