@@ -16,12 +16,12 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Category saveCategoryOfProduct(Product aProduct){
-        String nameOfCategory;
+        String nameOfCategory = OTHER;
 
         // checking if category is added, if not, we add it default "OTHER"
         if(aProduct.getCategory() != null){
             nameOfCategory = aProduct.getCategory().getName();
-        } else nameOfCategory = OTHER;
+        }
 
         // add category to DB if another with the same name isn't there
         Category category = categoryRepository.findCategoryByName(nameOfCategory);
