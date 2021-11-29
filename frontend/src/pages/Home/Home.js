@@ -21,7 +21,7 @@ const Home = () => {
     }, [])
 
     const searchHandler = (term) => {
-        if(!term)
+        if (!term)
             fetchProducts()
         else {
             const filterProducts = [...products]
@@ -45,11 +45,15 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar search={true} onSearch={(term) => searchHandler(term)}  />
-            <Offer />
+            <Navbar search={true} onSearch={(term) => searchHandler(term)} />
             <div className="">
+                <Offer />
+            </div>
+            <div className="m-4">
+                <h1 className=" justify-content-md-center">Produkty</h1>
+                <hr />
                 <Row className="justify-content-md-center">
-                   {contextProduct}
+                    {contextProduct}
                 </Row>
             </div>
         </div>

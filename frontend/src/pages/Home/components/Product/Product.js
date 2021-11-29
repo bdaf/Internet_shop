@@ -12,16 +12,18 @@ const Product = (props) => {
     }
 
     return (
-        <Card onClick={showDetailsHandler} className={`${styles.product} mt-3 mb-3`} style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={monitor} />
+        <Card className={`${styles.product} mt-3 mb-3`} style={{ width: '18rem' }}>
+            <Card.Img onClick={showDetailsHandler} variant="top" src={monitor} />
             <Card.Body>
-                <Card.Title>{props.name}</Card.Title>
-                <Card.Text>
+                <Card.Title onClick={showDetailsHandler}>{props.name}</Card.Title>
+                <Card.Text onClick={showDetailsHandler}>
                     <p>Cena: {props.price.toFixed(2)} PLN</p>
                     {props.description}...
-                    <div className="d-flex justify-content-md-center mt-2">Zobacz więcej</div>
+                    <div className="d-flex justify-content-center mt-2">Zobacz więcej</div>
                 </Card.Text>
-                <Button variant="outline-danger">Dodaj do koszyka</Button>
+                <div className="d-flex justify-content-end" >
+                    <Button variant="outline-danger">Dodaj do koszyka</Button>
+                </div>
             </Card.Body>
         </Card>
     );
