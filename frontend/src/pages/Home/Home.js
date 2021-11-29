@@ -27,7 +27,7 @@ const Home = () => {
                 id={product.productId}
                 name={product.name}
                 price={product.price}
-                description={"Tutaj bedzie opis produktu dsASas DS sadas fsdf sdfasdaSDD wd asf afdas d asf as dSFADFADSGDFG ASFSADG DSFGSDR FSDAG VDFSGEa fvdfasfadsd asf".substr(0, 90)}
+                description={product.description.substr(0, 90)}
             />
         </Col>
     )

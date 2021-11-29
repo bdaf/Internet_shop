@@ -36,12 +36,12 @@ const ProductDetails = (props) => {
                     </Col>
                     <Col xs={12} md={7}>
                         <h1>{product.name}</h1>
-                        <p>Producent: {product.producer.name}</p>
+                        <p>Producent: {product.producer.nameOfCompany}</p>
                         <hr />
                         <Row>
                             <Col xs={12} md={6}>
                                 <p>Kategoria: {product.category.name}</p>
-                                <p>Niezależnie od tego, czy korzystasz z monitora w domu, czy w biurze, warto zadbać o komfort oczu. Ekran Dell P2422H nie tylko zapewnia wystarczającą przestrzeń roboczą do wygodnej pracy, ale też posiada wysoką rozdzielczość. W efekcie rewelacyjnie sprawdzi się zarówno podczas wpisywania danych w programach, jak i podczas oglądania filmów. Co więcej, nowoczesna konstrukcja urządzenia stanowi eleganckie uzupełnienie każdego miejsca pracy.</p>
+                                <p>{product.description}</p>
                             </Col>
                             <Col xs={12} md={6}>
                                 <Stack gap={3}>
