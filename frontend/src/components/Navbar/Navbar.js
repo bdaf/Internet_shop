@@ -26,7 +26,7 @@ const Navbars = (props) => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">NUIT</Navbar.Brand>
+                <Navbar.Brand href="/">NUIT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -34,7 +34,7 @@ const Navbars = (props) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link><NavLink to='/'>Strona główna</NavLink></Nav.Link>
+                        <Nav.Link href="/">Strona główna</Nav.Link>
                         <Nav.Link>O nas</Nav.Link>
                         <NavDropdown title="Link" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -44,8 +44,11 @@ const Navbars = (props) => {
                                 Something else here
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#" disabled>
-                            Link
+                        <Nav.Link href="/about">
+                            O nas
+                        </Nav.Link>
+                        <Nav.Link href="/contact">
+                            Kontakt
                         </Nav.Link>
                     </Nav>
                     {props.search ? (<>
