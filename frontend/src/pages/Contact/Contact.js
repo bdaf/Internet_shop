@@ -7,39 +7,64 @@ function Contact() {
     return (
         <div>
         <Navbar search={true} />
-    <section className="section sp">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12 text-center">
-                        <h1 className="main-heading">O firmie</h1>
-                        <div className="underline mx-auto"></div>
-                        <p style={{ textAlign: 'left' }}>
-                        Nasza historia rozpoczęła się w 2002 roku z chwilą otwarcia pierwszego salonu stacjonarnego. Od tej pory nieustannie się rozwijamy, dzięki czemu staliśmy się ekspertami w branży komputerowej. Łączymy empatię i technologię, co pozwala nam lepiej rozumieć potrzeby Klientów. Jesteśmy otwarci na sugestie i oferujemy rozwiązania, zapewniające 100% satysfakcji.
-                        </p>
-                        <br/>
-                        <br/>
-                        <p style={{ textAlign: 'left' }}>
-                        Obecnie posiadamy 27 nowoczesnych salonów stacjonarnych w całej Polsce, jeden z najczęściej wybieranych Sklepów Internetowych w kraju i największy sprzedawca na Allegro. Wysoką jakość naszych usług potwierdzają pozytywne komentarze oraz liczne nagrody przyznawane przez Konsumentów.
-                        </p>
+    
+        <div className="contact_info mt-4">
+            <div className="conatiner-fluid">
+                <div className="row">
+                <div className="col-lg-10 offset-lg-1 d-flex">
+                    <div className="contact_info_item d-flex justify-content-start align-items-center">
+                    <img src="https://img.icons8.com/office/40/000000/iphone.png"/>
+                        <div className="contact_info_content">
+                            <div className="contact_info_title">
+                                Telefon
+                            </div>
+                            <div className="contact_info_text">
+                            34 377 00 00
+                                </div>
+                            </div>
+                        </div>
 
+                        <div className="contact_info_item d-flex justify-content-start align-items-center">
+                        <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-email-multimedia-kiranshastry-lineal-color-kiranshastry-1.png"/>
+                        <div className="contact_info_content">
+                            <div className="contact_info_title">
+                                Email
+                            </div>
+                            <div className="contact_info_text">
+                            sentino@gmail.com
+                                </div>
+                            </div>
+                        </div>
+
+                    
+                    <div className="contact_info_item d-flex justify-content-start align-items-center">
+                    <img src="https://img.icons8.com/external-inipagistudio-mixed-inipagistudio/50/000000/external-address-removals-company-inipagistudio-mixed-inipagistudio.png"/>
+                        <div className="contact_info_content">
+                            <div className="contact_info_title">
+                                Adres
+                            </div>
+                            <div className="contact_info_text">
+                            Kaspra Drużbickiego 2 C.H.Plaza, 61-693 Poznań
+
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>
-    </section>
+
 
     <section className="section sp bg-c-light">
         <div className="container">
             <div className="row">
                 <div className="col-md-12 text-center">
-                        <h1 className="main-heading">Dlaczego my?</h1>
+                        <h1 className="main-heading">Odwiedź nas</h1>
                         <div className="underline mx-auto"></div>
-                        <p style={{ textAlign: 'left' }}>Od 18 lat doradzamy w wyborze najlepszych rozwiązań. Do tej pory zapracowaliśmy na zaufanie setek tysięcy Klientów, a ich liczba ciągle rośnie. Zobacz, dlaczego wybrali właśnie nas.</p>
-                        <br/>
-                        <h6 style={{ textAlign: 'left' }}>-Twoja satysfakcja jest najważniejsza</h6><br/>
-                        <h6 style={{ textAlign: 'left' }}>-Stawiamy na wiedzę i pasję</h6><br/>
-                        <h6 style={{ textAlign: 'left' }}>-Oferujemy szeroki wybór i najlepsze ceny</h6><br/>
+                        <div className="google-map-code">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77911.23049776697!2d16.79827259257196!3d52.3935181044626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47044351a495f72b%3A0xa4966ec50fd8c3fe!2sKomputronik!5e0!3m2!1spl!2spl!4v1638222418036!5m2!1spl!2spl" width="800" height="600" style={{border:0}} allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
