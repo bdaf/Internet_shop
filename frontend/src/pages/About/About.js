@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 function About() {
     return (
@@ -14,7 +15,9 @@ function About() {
             </div>
             
         </div>
+        <footer class="footer" id="footer"><Footer/></footer>
         </div>
+
     )
 }
 

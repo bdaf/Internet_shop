@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+#footer{
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
+}
+
+.footer a{
+  color: #fff;
+  text-decoration: none !important;
+}
+.footer a:hover{
+  color: gray;
+}
