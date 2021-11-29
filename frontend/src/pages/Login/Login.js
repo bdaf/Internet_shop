@@ -26,7 +26,7 @@ const Login = () => {
 
         setEmail('');
         setPassword('');
-        
+
         navigate('/');
     };
 
@@ -95,7 +95,7 @@ const Login = () => {
                 <div className={styles.left}>
                 </div>
                 <form onSubmit={submitHandler}>
-                    <h4>We are <span>NUVA</span></h4>
+                    <h4>Sklep <span>NUIT</span></h4>
                     {!isShowForgot ? loginContext : forgotContext}
                     <p className="mt-3">Nie masz konta? <NavLink className={styles.discrete} to='/register'>Zajerejstruj się</NavLink></p>
                 </form>

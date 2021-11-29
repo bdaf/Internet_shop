@@ -1,15 +1,15 @@
 import { Navbar, Container, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
-import { Outlet, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import cart from './cart4.svg'
 import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
 import logout from './box-arrow-left.svg'
 
-const Navbars = () => {
+const Navbars = (props) => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                <Navbar.Brand href="#">NUIT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -17,8 +17,8 @@ const Navbars = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Home</Nav.Link>
-                        <Nav.Link href="#action2">Link</Nav.Link>
+                        <Nav.Link><NavLink to='/'>Strona główna</NavLink></Nav.Link>
+                        <Nav.Link>O nas</Nav.Link>
                         <NavDropdown title="Link" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
@@ -31,29 +31,32 @@ const Navbars = () => {
                             Link
                         </Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                    {props.search ? (<>
+                        <Form className="d-flex">
+                            <FormControl
+                                type="Szukaj"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                            <Button variant="outline-success">Szukaj</Button>
+                        </Form>
+                        <div className="ms-3 vr" /> </>
+                    ) : null}
+
                     <div className="ms-3">
                         <img src={cart} alt="cart" />
                     </div>
 
                     <div className="ms-3">
                         <Link to="/login"><img src={login} alt="login" /></Link>
-                        <Outlet />
                     </div>
                     <div className="ms-3">
-                        <img  src={account} alt="account" />
+                        <img src={account} alt="account" />
                     </div>
 
                     <div className="ms-3">
-                        <img  src={logout} alt="logout" />
+                        <img src={logout} alt="logout" />
                     </div>
                 </Navbar.Collapse>
             </Container>
