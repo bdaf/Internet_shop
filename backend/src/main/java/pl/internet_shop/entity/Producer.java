@@ -21,11 +21,8 @@ public class Producer {
     @Column(name = "producer_id", nullable = false)
     private Long producerId;
 
-    @Column(name = "name", nullable = false, length = 63)
-    private String name = UNKNOWN;
-
-    @Column(name = "surname", nullable = false, length = 63)
-    private String surname;
+    @Column(name = "name_of_company", length = 63)
+    private String nameOfCompany = UNKNOWN;
 
     @Column(name = "nip", nullable = false, length = 15)
     private String nip;

@@ -23,6 +23,9 @@ public class Product {
     @Column(name = "name", nullable = false, length = 63)
     private String name;
 
+    @Column(name = "description", length = 511)
+    private String description = "Here should be description of product.";
+
     @Column(name = "price", nullable = false)
     private Double price;
 

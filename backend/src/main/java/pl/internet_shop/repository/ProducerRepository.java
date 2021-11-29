@@ -6,7 +6,7 @@ import pl.internet_shop.entity.Producer;
 public interface ProducerRepository extends JpaRepository<Producer,Long> {
     static Producer getInstanceForTests() {
         return Producer.builder()
-                .name("TestName").surname("TestSurname")
+                .nameOfCompany("TestName")
                 .nip("testNip123").build();
     }
 

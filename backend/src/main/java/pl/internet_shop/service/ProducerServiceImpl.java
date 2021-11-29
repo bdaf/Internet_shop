@@ -16,14 +16,12 @@ public class ProducerServiceImpl implements ProducerService{
 
     @Override
     public Producer saveProducerOfProduct(Product aProduct) {
-        String surnameOfProducer = UNKNOWN;
         String nameOfProducer = UNKNOWN;
         String nipOfProducer = UNKNOWN;
 
         // checking if producer is added, if not, we add it default "UNKNOWN"
         if(aProduct.getProducer() != null){
-            surnameOfProducer = aProduct.getProducer().getSurname();
-            nameOfProducer = aProduct.getProducer().getName();
+            nameOfProducer = aProduct.getProducer().getNameOfCompany();
             nipOfProducer = aProduct.getProducer().getNip();
         }
 
@@ -31,8 +29,7 @@ public class ProducerServiceImpl implements ProducerService{
         Producer producer = producerRepository.findProducerByNip(nipOfProducer);
         if(producer == null){
             producer = Producer.builder()
-                    .name(nameOfProducer)
-                    .surname(surnameOfProducer)
+                    .nameOfCompany(nameOfProducer)
                     .nip(nipOfProducer).build();
         }
 

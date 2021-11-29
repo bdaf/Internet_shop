@@ -9,6 +9,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     static Product getInstanceForTests(){
         return Product.builder()
                 .name("TestProductName")
+                .description("TestDescription")
                 .price(1D).amount(1)
                 .category(CategoryRepository.getInstanceForTests())
                 .producer(ProducerRepository.getInstanceForTests())
