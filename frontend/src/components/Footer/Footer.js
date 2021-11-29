@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 
 function Footer() {
     return (
-            <section className="section footer bg-dark text-white">
+            <section className="section spl footer bg-dark text-white">
                 <div className="container>">
                     <div className="row">
                         <div className="col-md-4 mt-4">
