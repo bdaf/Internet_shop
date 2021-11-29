@@ -20,6 +20,17 @@ const Home = () => {
         fetchProducts()
     }, [])
 
+    const searchHandler = (term) => {
+        if(!term)
+            fetchProducts()
+        else {
+            const filterProducts = [...products]
+                .filter(product => product.name.toLowerCase()
+                    .includes(term.toLowerCase()))
+            setProducts(filterProducts);
+        }
+    }
+
     const contextProduct = !loading ? <p>loading...</p> : products.map((product) =>
         <Col md="auto">
             <Product
@@ -34,7 +45,7 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar search={true} />
+            <Navbar search={true} onSearch={(term) => searchHandler(term)}  />
             <Offer />
             <div className="">
                 <Row className="justify-content-md-center">
