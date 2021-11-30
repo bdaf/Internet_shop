@@ -39,4 +39,8 @@ public class Product {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     private Category category;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "gallery_id", referencedColumnName = "gallery_id")
+    private Gallery gallery;
 }

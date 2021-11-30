@@ -24,12 +24,12 @@ public class ProductServiceImpl implements  ProductService {
 
     @Override
     public List<Product> fetchAllProducts() {
-        return productRepository.findAll();
+        return productRepository.findAllAndFetchGallery();
     }
 
     @Override
     public Product fetchProductById(Long aProductId) {
-        Product product = productRepository.findById(aProductId).get();
+        Product product = productRepository.findByIdAndFetchGallery(aProductId);
         return product;
     }
 

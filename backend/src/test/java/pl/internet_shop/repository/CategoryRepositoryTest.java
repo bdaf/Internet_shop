@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import pl.internet_shop.entity.Category;
 import pl.internet_shop.entity.Discount;
 
+import javax.persistence.EntityManager;
 import java.sql.Date;
 import java.util.List;
 
@@ -35,11 +36,16 @@ class CategoryRepositoryTest {
         assertEquals(amountOfDiscounts+1,categoryRepository.count());
         assertEquals(amountOfCategories+2,discountRepository.count());
 
-        List<Category> categories = categoryRepository.findAll();
-        System.out.println("categories = " + categories);
-
         List<Discount> discounts = discountRepository.findAll();
         System.out.println("discounts = " + discounts);
+
+        List<Category> categories = categoryRepository.findAll();
+        for (int i = 0; i < categories.size(); i++) {
+            categories.get(i).getDiscounts().size();
+            System.out.println("i = " + categories.get(i).getDiscounts());
+        }
+        System.out.println("categories = " + categories);
+
 
         categoryRepository.delete(category);
 
