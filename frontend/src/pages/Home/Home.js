@@ -6,6 +6,8 @@ import Offer from "./components/Offer/Offer";
 import Product from "./components/Product/Product";
 import Footer from "../../components/Footer/Footer";
 
+
+
 const Home = () => {
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(false)

@@ -5,8 +5,16 @@ import axios from 'axios';
 
 import Navbar from "../../components/Navbar/Navbar";
 import Carousels from "../../components/UI/Carousel/Carousel";
+import { useDispatchCart } from "../../components/Cart";
 
 const ProductDetails = (props) => {
+
+    const dispatch = useDispatchCart();
+
+    const addToCart = (item) => {
+      dispatch({ type: "ADD", item });
+    };
+
     const params = useParams();
 
     const [product, setProduct] = useState(null)
@@ -47,7 +55,7 @@ const ProductDetails = (props) => {
                             <Col xs={12} md={6}>
                                 <Stack gap={3}>
                                     <div className="ms-auto">{product.price.toFixed(2)} PLN</div>
-                                    <Button variant="outline-danger">Dodaj do koszyka</Button>
+                                    <Button variant="outline-danger" onClick={() => addToCart(props)}>Dodaj do koszyka</Button>
                                 </Stack>
                             </Col>
                         </Row>

@@ -3,8 +3,15 @@ import { useNavigate } from 'react-router';
 import monitor from './Monitor.jpg'
 
 import styles from './Product.module.css'
+import { useDispatchCart } from "../../../../components/Cart";
 
 const Product = (props) => {
+
+  const dispatch = useDispatchCart();
+
+  const addToCart = (item) => {
+    dispatch({ type: "ADD", item });
+  };
     const navigate = useNavigate();
 
     const showDetailsHandler = () => {
@@ -22,7 +29,7 @@ const Product = (props) => {
                     <div className="d-flex justify-content-center mt-2">Zobacz więcej</div>
                 </Card.Text>
                 <div className="d-flex justify-content-end" >
-                    <Button variant="outline-danger">Dodaj do koszyka</Button>
+                    <Button variant="outline-danger" onClick={() => addToCart(props)}>Dodaj do koszyka</Button>
                 </div>
             </Card.Body>
         </Card>

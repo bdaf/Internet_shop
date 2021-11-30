@@ -5,8 +5,11 @@ import cart from './cart4.svg'
 import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
 import logout from './box-arrow-left.svg'
+import { useCart } from "../../components/Cart";
 
 const Navbars = (props) => {
+    const items = useCart();
+
     const [term, setTerm] = useState('')
 
     const searchHandler = () => {
@@ -68,7 +71,8 @@ const Navbars = (props) => {
                     ) : null}
 
                     <div className="ms-3">
-                        <img src={cart} alt="cart" />
+                        <Link to="/cart"><img src={cart} alt="cart" /></Link>
+                        ({items.length})
                     </div>
 
                     <div className="ms-3">

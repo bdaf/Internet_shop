@@ -5,11 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {CartProvider} from "./components/Cart"
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <CartProvider>
       <App />
+    </CartProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
