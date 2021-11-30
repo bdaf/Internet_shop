@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static pl.internet_shop.entity.User.*;
+
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -24,8 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/admin").hasAuthority("ADMIN")
-                .antMatchers("/user").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/admin").hasAuthority(ADMIN)
+                .antMatchers("/user").hasAnyAuthority(ADMIN, USER, WORKER)
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/").permitAll()
                 .and().formLogin();

@@ -22,7 +22,7 @@ public class RegistrationService {
     public String register(RegistrationRequest request) {
         City city = cityService.saveCity(request.getTownName(),request.getPostCode(),request.getCountry());
         Address address = addressService.saveAddress(city, request.getStreet(), request.getHouseNumber());
-        User user = myUserDetailsService.signUpUser(request.getUserName(),request.getSurname(),request.getName(),request.getEmail(),request.getPassword(),request.getPhoneNumber(), address);
+        User user = myUserDetailsService.signUpUser(request.getUserName(),request.getSurname(),request.getName(),request.getEmail(),request.getPassword(),request.getPhoneNumber(), address, request.getRole());
         return "Done";
     }
 }

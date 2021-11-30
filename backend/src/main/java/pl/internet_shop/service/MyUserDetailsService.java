@@ -24,7 +24,7 @@ public class MyUserDetailsService implements UserDetailsService {
         return user.map(MyUserDetails::new).get();
     }
 
-    public User signUpUser(String userName, String surname, String name, String email, String password, String phoneNumber, Address address) {
+    public User signUpUser(String userName, String surname, String name, String email, String password, String phoneNumber, Address address, String role) {
         boolean userExists = userRepository
                 .findByEmail(email)
                 .isPresent();
@@ -42,7 +42,7 @@ public class MyUserDetailsService implements UserDetailsService {
                .surname(surname)
                .email(email)
                .password(password)
-               .role("USER")
+               .role(role)
                .phoneNumber(phoneNumber)
                .address(address)
                .company(null)

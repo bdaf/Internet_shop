@@ -14,6 +14,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "is_passuser")
 public class User {
+    public static final String USER = "USER";
+    public static final String ADMIN = "ADMIN";
+    public static final String WORKER = "WORKER";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
@@ -27,7 +30,7 @@ public class User {
     private String password;
 
     @Column(name = "ROLE", length = 63, nullable = false)
-    private String role;
+    private String role = USER;
 
     @Column(name = "name", length = 63, nullable = false)
     private String name;
