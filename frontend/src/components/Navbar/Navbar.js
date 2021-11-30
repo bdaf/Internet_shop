@@ -50,6 +50,9 @@ const Navbars = (props) => {
                         <Nav.Link href="/contact">
                             Kontakt
                         </Nav.Link>
+                        <Nav.Link href="/faq">
+                            FAQ
+                        </Nav.Link>
                     </Nav>
                     {props.search ? (<>
                         <Form className="d-flex">
