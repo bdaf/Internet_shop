@@ -42,7 +42,12 @@ public class GalleryController {
     }
 
     @PutMapping("/api/products/{id}/gallery")
-    public Gallery updateGallery(@PathVariable("id") Long aProductId, @RequestBody Gallery aGallery){
+    public Gallery updateGalleryByProductId(@PathVariable("id") Long aProductId, @RequestBody Gallery aGallery){
         return galleryService.updateGalleryByProductId(aProductId,aGallery);
+    }
+
+    @PutMapping("/api/gallery/{id}")
+    public Gallery updateGallery(@PathVariable("id") Long aGalleryId, @RequestBody Gallery aGallery){
+        return galleryService.updateGalleryById(aGalleryId,aGallery);
     }
 }

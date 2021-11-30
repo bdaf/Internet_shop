@@ -7,6 +7,7 @@ import pl.internet_shop.entity.Product;
 import pl.internet_shop.repository.GalleryRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class GalleryServiceImpl implements GalleryService{
@@ -52,10 +53,22 @@ public class GalleryServiceImpl implements GalleryService{
     }
 
     @Override
-    public Gallery updateGalleryByProductId(Long aGalleryId, Gallery aGallery) {
-        return null;
+    public Gallery updateGalleryById(Long aGalleryId, Gallery aGallery) {
+        Gallery resultGallery = galleryRepository.findById(aGalleryId).get();
+
+        if(Objects.nonNull(aGallery.getPhotos()))
+            resultGallery.setPhotos(aGallery.getPhotos());
+
+        return galleryRepository.save(resultGallery);
     }
 
+    //throws null pointer exception for products without galleries
+    @Override
+    public Gallery updateGalleryByProductId(Long aProductId, Gallery aGallery) {
+        Product product = productService.fetchProductById(aProductId);
+        Long galleryId = product.getGallery().getGalleryId();
+        return updateGalleryById(galleryId, aGallery);
+    }
 
     //cannot delete gallery which is used by some product
     @Override
