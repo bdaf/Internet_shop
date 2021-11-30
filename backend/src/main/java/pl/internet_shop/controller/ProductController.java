@@ -19,6 +19,16 @@ public class ProductController {
         return productService.fetchAllProducts();
     }
 
+    @GetMapping("/api/products/gallery")
+    public List<Product> fetchAllProductsWithGalleries(){
+        return productService.fetchAllProductsWithGalleries();
+    }
+
+    @GetMapping("/api/products/gallery/null")
+    public List<Product> fetchAllProductsWithoutGalleries(){
+        return productService.fetchAllProductsWithoutGalleries();
+    }
+
     @GetMapping("/api/products/{id}")
     public Product fetchProduct(@PathVariable("id") Long aProductId){
         return productService.fetchProductById(aProductId);
@@ -26,7 +36,7 @@ public class ProductController {
 
     @PostMapping("/api/products/save")
     public Product saveProduct(@RequestBody Product aProduct){
-        return productService.saveProduct(aProduct);
+        return productService.addProductAndSave(aProduct);
     }
 
     @DeleteMapping("/api/products/{id}")

@@ -22,19 +22,10 @@ public class ProductServiceImpl implements  ProductService {
     @Autowired
     private ProducerService producerService;
 
-    @Override
-    public List<Product> fetchAllProducts() {
-        return productRepository.findAllAndFetchGallery();
-    }
+
 
     @Override
-    public Product fetchProductById(Long aProductId) {
-        Product product = productRepository.findByIdAndFetchGallery(aProductId);
-        return product;
-    }
-
-    @Override
-    public Product saveProduct(Product aProduct) {
+    public Product addProductAndSave(Product aProduct) {
         //save category and producer if they are not in database, or they weren't defined
         Category category = categoryService.saveCategoryOfProduct(aProduct);
         aProduct.setCategory(category);
@@ -74,5 +65,36 @@ public class ProductServiceImpl implements  ProductService {
 //            resultProduct.setCategory(aProduct.getCategory());
 
         return productRepository.save(resultProduct);
+    }
+
+    @Override
+    public Product fetchProductById(Long aProductId) {
+        Product product = productRepository.findByIdAndFetchGallery(aProductId);
+        if(product == null){
+            product = productRepository.findById(aProductId).get();
+        }
+        return product;
+    }
+
+    @Override
+    public List<Product> fetchAllProductsWithGalleries() {
+        return productRepository.findAllProductsWithGalleryAndFetchGallery();
+    }
+
+    @Override
+    public List<Product> fetchAllProductsWithoutGalleries() {
+        return productRepository.findAllProductsWithoutGallery();
+    }
+
+    @Override
+    public Product saveProduct(Product aProduct) {
+        return productRepository.save(aProduct);
+    }
+
+    @Override
+    public List<Product> fetchAllProducts() {
+        List<Product> products = productRepository.findAllProductsWithGalleryAndFetchGallery();
+        products.addAll(productRepository.findAllProductsWithoutGallery());
+        return products;
     }
 }

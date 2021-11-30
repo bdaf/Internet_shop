@@ -26,5 +26,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     Product findByIdAndFetchGallery(@Param("id") Long aProductId);
 
     @Query("SELECT p FROM Product p JOIN FETCH p.gallery")
-    List<Product> findAllAndFetchGallery();
+    List<Product> findAllProductsWithGalleryAndFetchGallery();
+
+    @Query("SELECT p FROM Product p where p.gallery is null")
+    List<Product> findAllProductsWithoutGallery();
 }

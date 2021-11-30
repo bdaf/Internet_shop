@@ -29,13 +29,19 @@ public class GalleryController {
         return galleryService.saveGalleryByproductId(aGallery, aProductId);
     }
 
-    @DeleteMapping("/api/galleries/{id}")
-    public String deleteGallery(@PathVariable("id") Long aProductId){
+    @DeleteMapping("/api/products/{id}/gallery")
+    public String deleteGalleryByProductId(@PathVariable("id") Long aProductId){
         galleryService.deleteGalleryByProductId(aProductId);
         return "Gallery in product with product ID "+aProductId+" has been deleted successfully!";
     }
 
-    @PutMapping("/api/galleries/{id}")
+    @DeleteMapping("/api/gallery/{id}")
+    public String deleteGallery(@PathVariable("id") Long aGalleryId){
+        galleryService.deleteGalleryById(aGalleryId);
+        return "Gallery with ID "+aGalleryId+" has been deleted successfully!";
+    }
+
+    @PutMapping("/api/products/{id}/gallery")
     public Gallery updateGallery(@PathVariable("id") Long aProductId, @RequestBody Gallery aGallery){
         return galleryService.updateGalleryByProductId(aProductId,aGallery);
     }
