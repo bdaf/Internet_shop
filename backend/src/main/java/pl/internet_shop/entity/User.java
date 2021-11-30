@@ -12,21 +12,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "IS_user")
+@Table(name = "is_passuser")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "USER_ID", nullable = false)
     private Long userId;
 
-    @Column(name = "login", length = 63, nullable = false)
-    private String login;
+    @Column(name = "USER_NAME", length = 63, nullable = false)
+    private String userName;
 
-    @Column(name = "password", length = 63, nullable = false)
+    @Column(name = "PASSWORD", length = 63, nullable = false)
     private String password;
 
-    @Column(name = "role", length = 63, nullable = false)
+    @Column(name = "ROLE", length = 63, nullable = false)
     private String role;
 
     @Column(name = "name", length = 63, nullable = false)
@@ -49,19 +49,4 @@ public class User {
     @JoinColumn(name = "company_id", referencedColumnName = "company_id")
     private Company company;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address=" + address +
-                ", company=" + company +
-                '}';
-    }
 }

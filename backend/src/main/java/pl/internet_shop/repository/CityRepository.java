@@ -19,6 +19,14 @@ public interface CityRepository  extends JpaRepository<City,Long> {
                 .build();
     }
 
+    static City getCity(String name, String country, String postcode) {
+        return City.builder()
+                .name(name)
+                .country(country)
+                .postcode(postcode)
+                .build();
+    }
+
     List<City> findByPostcode(String postcode);
 
     @Modifying

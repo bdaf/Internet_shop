@@ -1,20 +1,21 @@
-package pl.internet_shop;
+package pl.internet_shop.service;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.internet_shop.entity.User;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
-
-public class CustomUserDetails implements UserDetails {
+public class MyUserDetails implements UserDetails {
 
     private User user;
 
-    public CustomUserDetails(User user) {
-        super();
+    public MyUserDetails(User user) {
         this.user = user;
     }
 
@@ -30,7 +31,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getLogin();
+        return user.getUserName();
     }
 
     @Override
