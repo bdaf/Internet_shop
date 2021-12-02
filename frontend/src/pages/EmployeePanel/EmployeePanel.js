@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Col, Row, Tab, Nav, Tabs, FloatingLabel, Form, Button } from "react-bootstrap";
 import Select from 'react-select';
+import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import AddProduct from "./components/Products/AddProduct";
 
@@ -54,19 +55,56 @@ const EmployeePanel = () => {
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="categories">
-                                    asdasdasds\
+                                    <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
+                                        <Tab eventKey="add" title="Dodaj kategorie">
+                                            <AddProduct />
+                                        </Tab>
+                                        <Tab eventKey="edit" title="Edytuj kategorie">
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                        <Tab eventKey="delate" title="Usuń kategorie" >
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                    </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="order">
-                                    asdasdasds\
+                                    przegląd zamówienien!
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="producers">
-                                    asdasdasds\
+                                    <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
+                                        <Tab eventKey="add" title="Dodaj producenta">
+                                            <AddProduct />
+                                        </Tab>
+                                        <Tab eventKey="edit" title="Edytuj producenta">
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                        <Tab eventKey="delate" title="Usuń producenta" >
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                    </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="sales">
-                                    asdasdasds\
+                                    <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
+                                        <Tab eventKey="add" title="Dodaj przecene">
+                                            <AddProduct />
+                                        </Tab>
+                                        <Tab eventKey="edit" title="Edytuj przecene">
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                        <Tab eventKey="delate" title="Usuń przecene" >
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                    </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="employee">
-                                    asdasdasds\
+                                <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
+                                        <Tab eventKey="add" title="Dodaj pracownika">
+                                            <AddProduct />
+                                        </Tab>
+                                        <Tab eventKey="delate" title="Usuń pracownika" >
+                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                        </Tab>
+                                    </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="client">
                                     asdasdasds\
