@@ -6,6 +6,8 @@ import pl.internet_shop.entity.Category;
 import pl.internet_shop.entity.Product;
 import pl.internet_shop.repository.CategoryRepository;
 
+import java.util.List;
+
 import static pl.internet_shop.entity.Category.OTHER;
 
 @Service
@@ -35,6 +37,11 @@ public class CategoryServiceImpl implements CategoryService{
 
     public Category findCategoryByName(String aName){
         return categoryRepository.findCategoryByName(aName);
+    }
+
+    @Override
+    public List<Category> fetchAllCategories() {
+        return categoryRepository.findAll();
     }
 
 }
