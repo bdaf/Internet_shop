@@ -9,11 +9,8 @@ import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import Faq from './pages/FAQ/Faq';
 import EmployeePanel from './pages/EmployeePanel/EmployeePanel';
-
 import Cart from './pages/Cart/Cart';
 
-import Faq from './pages/FAQ/Faq';
-import EmployeePanel from './pages/EmployeePanel/EmployeePanel';
 
 function App() {
 
