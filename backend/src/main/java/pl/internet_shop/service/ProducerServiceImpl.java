@@ -7,6 +7,7 @@ import pl.internet_shop.entity.Product;
 import pl.internet_shop.repository.ProducerRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 import static pl.internet_shop.entity.Producer.UNKNOWN;
 
@@ -41,5 +42,39 @@ public class ProducerServiceImpl implements ProducerService{
     @Override
     public List<Producer> fetchAllProducers() {
         return producerRepository.findAll();
+    }
+
+    @Override
+    public Producer saveProducer(Producer aProducer) {
+        Producer producer = producerRepository.findProducerByNip(aProducer.getNip());
+        if(producer != null) throwExceptionAboutTheSameNip();
+        return producerRepository.save(aProducer);
+    }
+
+    // cannot delete if it's linked to some product
+    @Override
+    public void deleteProducerById(Long aProducerId) {
+        Producer producerToDelete = producerRepository.findById(aProducerId).get();
+        producerRepository.delete(producerToDelete);
+    }
+    @Override
+    public Producer updateProducerById(Producer aProducer, Long aProducerId) {
+
+        Producer resultProducer = producerRepository.findById(aProducerId).get();
+
+        if(Objects.nonNull(aProducer.getNameOfCompany()) && !aProducer.getNameOfCompany().equalsIgnoreCase("")){
+            resultProducer.setNameOfCompany(aProducer.getNameOfCompany());
+        }
+        if(Objects.nonNull(aProducer.getNip()) && !aProducer.getNip().equalsIgnoreCase("")){
+            if(producerRepository.findProducerByNip(aProducer.getNip()) != null)
+                throwExceptionAboutTheSameNip();
+            resultProducer.setNip(aProducer.getNip());
+        }
+
+        return producerRepository.save(resultProducer);
+    }
+
+    private void throwExceptionAboutTheSameNip() {
+        throw new IllegalArgumentException("Producer with the same nip already exists in database.");
     }
 }

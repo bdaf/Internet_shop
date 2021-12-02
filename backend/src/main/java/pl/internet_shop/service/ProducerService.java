@@ -10,4 +10,10 @@ public interface ProducerService {
     Producer saveProducerOfProduct(Product aProduct);
 
     List<Producer> fetchAllProducers();
+
+    Producer saveProducer(Producer aProducer);
+
+    void deleteProducerById(Long aProducerId);
+
+    Producer updateProducerById(Producer aProducer, Long aProducerId);
 }
