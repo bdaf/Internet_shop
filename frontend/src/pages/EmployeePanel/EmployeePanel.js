@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Col, Row, Tab, Nav, Tabs } from "react-bootstrap";
+import { Col, Row, Tab, Nav, Tabs, FloatingLabel, Form, Button } from "react-bootstrap";
+import Select from 'react-select';
 import Navbar from "../../components/Navbar/Navbar";
+import AddProduct from "./components/Products/AddProduct";
 
 import './EmployeePanel.css'
 
 const EmployeePanel = () => {
-
     return (
         <>
             <Navbar />
@@ -42,7 +43,7 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="product">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj produkt">
-                                            fadfdsfdsgwethwtege
+                                            <AddProduct />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj produkt">
                                             fadfdsfdsgwethwtegefadfdsfdsgwethwtege
