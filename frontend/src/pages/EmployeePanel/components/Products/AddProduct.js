@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
 import Select from 'react-select';
@@ -11,13 +11,39 @@ const AddProduct = () => {
     const [category, setCategory] = useState('')
     const [producer, setProducer] = useState('')
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ]
+    const [optionsCategory, setOptionsCategory] = useState([])
+    const [optionsProducer, setOptionsProducer] = useState([])
 
-    const addProductHandler = async () => {
+
+
+    const fetchDate = async () => {
+        await axios.get("http://localhost:8888/api/categories").then((response) => {
+            const optionsC = response.data.map((c) => {
+                const opt = { value: c.categoryId, label: c.name}
+                return opt
+            })
+            setOptionsCategory(optionsC)
+        })
+        await axios.get("http://localhost:8888/api/producers").then((response) => {
+            const optionsP = response.data.map((p) => {
+                const opt = { value: p.nip, label: p.nameOfCompany}
+                return opt
+            })
+            setOptionsProducer(optionsP)
+
+        })
+
+    }
+
+
+
+    useEffect(() => {
+        fetchDate()
+    }, [])
+
+    const addProductHandler = async (e) => {
+        e.preventDefault();
+
         const newProduct =
         {
             name: name,
@@ -25,12 +51,12 @@ const AddProduct = () => {
             price: price,
             amount: amount,
             category: {
-                name: category,
+                 name: category.label,
                 discounts: []
             },
             producer: {
-                nameOfCompany: producer.nameOfCompany,
-                nip: producer.nip
+                nameOfCompany: producer.label,
+                nip: producer.value
             }
         }
 
@@ -41,7 +67,7 @@ const AddProduct = () => {
 
     return (
         <div className="m-3">
-            <Form onSubmit={addProductHandler}>
+            <Form onSubmit={(e) => addProductHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa produktu">
@@ -71,10 +97,10 @@ const AddProduct = () => {
                 </Row>
                 <Row className="mb-3">
                     <Col xs={6} md={6}>
-                        <Select onChange={(e) => setCategory(e.value)} options={options} placeholder="Kategoria" />
+                        <Select onChange={(e) => setCategory(e.value)} options={optionsCategory} placeholder="Kategoria" />
                     </Col>
                     <Col xs={6} md={6}>
-                        <Select onChange={(e) => setProducer(e.value)} options={options} placeholder="Producent" />
+                        <Select onChange={(e) => setProducer(e)} options={optionsProducer} placeholder="Producent" />
                     </Col>
                 </Row>
                 <Button variant="primary" type="submit">
