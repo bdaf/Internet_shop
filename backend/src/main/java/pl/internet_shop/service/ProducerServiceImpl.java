@@ -6,6 +6,8 @@ import pl.internet_shop.entity.Producer;
 import pl.internet_shop.entity.Product;
 import pl.internet_shop.repository.ProducerRepository;
 
+import java.util.List;
+
 import static pl.internet_shop.entity.Producer.UNKNOWN;
 
 @Service
@@ -34,5 +36,10 @@ public class ProducerServiceImpl implements ProducerService{
         }
 
         return producerRepository.save(producer);
+    }
+
+    @Override
+    public List<Producer> fetchAllProducers() {
+        return producerRepository.findAll();
     }
 }
