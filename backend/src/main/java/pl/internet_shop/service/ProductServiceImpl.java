@@ -49,10 +49,12 @@ public class ProductServiceImpl implements  ProductService {
 
     @Override
     public Product updateProductById(Long aProductId, Product aProduct) {
-        Product resultProduct = productRepository.findById(aProductId).get();
+        Product resultProduct = productRepository.findByIdAndFetchGallery(aProductId);
 
         if(Objects.nonNull(aProduct.getName()) && !aProduct.getName().equalsIgnoreCase(""))
             resultProduct.setName(aProduct.getName());
+        if(Objects.nonNull(aProduct.getDescription()) && !aProduct.getDescription().equalsIgnoreCase(""))
+            resultProduct.setDescription(aProduct.getDescription());
         if(Objects.nonNull(aProduct.getPrice()) && aProduct.getPrice() != 0)
             resultProduct.setPrice(aProduct.getPrice());
         if(Objects.nonNull(aProduct.getAmount()) && aProduct.getAmount() != 0)
