@@ -7,6 +7,7 @@ import pl.internet_shop.entity.Product;
 import pl.internet_shop.repository.CategoryRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 import static pl.internet_shop.entity.Category.OTHER;
 
@@ -42,6 +43,30 @@ public class CategoryServiceImpl implements CategoryService{
     @Override
     public List<Category> fetchAllCategories() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public void saveCategory(Category aCategory) {
+        categoryRepository.save(aCategory);
+    }
+
+    // throws exception if category is linked to some product
+    @Override
+    public void deleteCategoryById(Long aCategoryId) {
+        Category categoryToDelete = categoryRepository.findById(aCategoryId).get();
+        categoryRepository.delete(categoryToDelete);
+    }
+
+    // update name of category
+    @Override
+    public Category updateCategoryById(Category aCategory, Long aCategoryId) {
+        Category resultCategory = categoryRepository.findById(aCategoryId).get();
+
+        if(Objects.nonNull(aCategory.getName()) && !aCategory.getName().equalsIgnoreCase("")){
+            resultCategory.setName(aCategory.getName());
+        }
+
+        return categoryRepository.save(resultCategory);
     }
 
 }

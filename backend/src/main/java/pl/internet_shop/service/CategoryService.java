@@ -12,4 +12,10 @@ public interface CategoryService {
     Category findCategoryByName(String aName);
 
     List<Category> fetchAllCategories();
+
+    void saveCategory(Category aCategory);
+
+    void deleteCategoryById(Long aCategoryId);
+
+    Category updateCategoryById(Category aCategory, Long aCategoryId);
 }
