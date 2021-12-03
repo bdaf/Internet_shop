@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import AddCategory from "./components/Category/AddCategory";
 import AddProducer from "./components/Producer/AddProducer";
+import DeleteProducer from "./components/Producer/DeletePoducer";
 import EditProducer from "./components/Producer/EditProducer";
 import AddProduct from "./components/Products/AddProduct";
 import AddSales from "./components/Sales/AddSales";
@@ -83,7 +84,7 @@ const EmployeePanel = () => {
                                             <EditProducer />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń producenta" >
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <DeleteProducer />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
