@@ -20,7 +20,7 @@ public class DiscountController {
         return discountService.fetchAllDiscounts();
     }
 
-    @PostMapping("/api/discounts/save/{id}")
+    @PostMapping("/api/discounts/save/category/{id}")
     public Category saveDiscount(@RequestBody Discount aDiscount, @PathVariable("id") Long aCategoryId){
         return discountService.saveDiscountByCategoryId(aDiscount, aCategoryId);
     }

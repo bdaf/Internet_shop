@@ -29,7 +29,7 @@ Deleting deliverer deletes only deliverer from DB.
 
 <h1>DELIVERY</h1>
 To add delivery you can create deliverer, but shouldn't have to. #NotTested
-Adding delivery with producer which is not in DB is possible.
+Adding delivery with deliverer which is not in DB is possible.
 Deleting delivery deletes only delivery from DB without deliverer.
 
 <h1>CITY</h1>
