@@ -7,7 +7,7 @@ import pl.internet_shop.service.ProducerService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 public class ProducerController {
 
