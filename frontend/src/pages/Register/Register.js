@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import styles from './Register.module.scss';
 
@@ -71,13 +72,29 @@ const Register = () => {
 
 
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
 
         console.log('Email: ' + email);
         console.log('Password: ' + password);
         console.log('Confirm Password: ' + confirmPassword);
-
+        const newUser = {
+            userName: email,
+                name: name,
+            surname: surname,
+            email: email,
+            password: password,
+            phoneNumber: phone,
+            houseNumber: houseNumber,
+            street: street,
+            country: country,
+            townName: city,
+            postCode: postCode,
+            role: "USER"
+        }
+        await axios.post("http://localhost:8888/registration", newUser).then((response) => {
+            console.log(response)
+            })
         setName('');
         setSurname('');
         setPhone('');
