@@ -20,9 +20,14 @@ public class RegistrationService {
     private final AddressService addressService;
 
     public String register(RegistrationRequest request) {
-        City city = cityService.saveCity(request.getTownName(),request.getPostCode(),request.getCountry());
-        Address address = addressService.saveAddress(city, request.getStreet(), request.getHouseNumber());
-        User user = myUserDetailsService.signUpUser(request.getUserName(),request.getSurname(),request.getName(),request.getEmail(),request.getPassword(),request.getPhoneNumber(), address, request.getRole());
+        if( request.getTownName() != null) {
+            City city = cityService.saveCity(request.getTownName(), request.getPostCode(), request.getCountry());
+            Address address = addressService.saveAddress(city, request.getStreet(), request.getHouseNumber());
+            User user = myUserDetailsService.signUpUser(request.getUserName(),request.getSurname(),request.getName(),request.getEmail(),request.getPassword(),request.getPhoneNumber(), address, request.getRole());
+        }
+        else {
+            User user = myUserDetailsService.signUpUser(request.getUserName(), request.getSurname(), request.getName(), request.getEmail(), request.getPassword(), request.getPhoneNumber(), null, request.getRole());
+        }
         return "Done";
     }
 }

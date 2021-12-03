@@ -45,7 +45,7 @@ public class User {
     private String phoneNumber;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
     @OneToOne(cascade = CascadeType.ALL)
