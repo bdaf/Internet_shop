@@ -66,6 +66,9 @@ public class ProducerServiceImpl implements ProducerService{
             resultProducer.setNameOfCompany(aProducer.getNameOfCompany());
         }
         if(Objects.nonNull(aProducer.getNip()) && !aProducer.getNip().equalsIgnoreCase("")){
+            Producer producerFetchedByNip = producerRepository.findProducerByNip(aProducer.getNip());
+            if(producerFetchedByNip != null && producerFetchedByNip.getProducerId() != aProducerId)
+                throwExceptionAboutTheSameNip();
             resultProducer.setNip(aProducer.getNip());
         }
 
