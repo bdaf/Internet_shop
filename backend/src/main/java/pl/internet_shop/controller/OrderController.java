@@ -34,4 +34,9 @@ public class OrderController {
         orderService.deleteOrderById(aOrderId);
         return "Order with ID "+aOrderId+" has been deleted successfully!";
     }
+
+    @PutMapping("/api/orders/{id}")
+    public Order updateOrder(@PathVariable("id") Long aOrderId, @RequestBody Order aOrder){
+        return orderService.updateStatusInOrderById(aOrder,aOrderId);
+    }
 }

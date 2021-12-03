@@ -12,4 +12,6 @@ public interface OrderService {
     void deleteOrderById(Long aOrderId);
 
     Order fetchOrderById(Long aOrderId);
+
+    Order updateStatusInOrderById(Order aOrder, Long aOrderId);
 }

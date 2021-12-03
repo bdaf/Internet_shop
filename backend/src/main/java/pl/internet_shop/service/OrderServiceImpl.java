@@ -6,6 +6,7 @@ import pl.internet_shop.entity.Order;
 import pl.internet_shop.repository.OrderRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -31,5 +32,16 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Order fetchOrderById(Long aOrderId) {
         return orderRepository.findById(aOrderId).get();
+    }
+
+    @Override
+    public Order updateStatusInOrderById(Order aOrder, Long aOrderId) {
+        Order orderToUpdate = orderRepository.findById(aOrderId).get();
+
+        if(Objects.nonNull(aOrder.getStatus()) && !aOrder.getStatus().equalsIgnoreCase("")){
+            orderToUpdate.setStatus(aOrder.getStatus());
+        }
+
+        return orderRepository.save(orderToUpdate);
     }
 }
