@@ -4,17 +4,12 @@ import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
 import Select from 'react-select';
 
 const AddSales = () => {
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(0)
-    const [amount, setAmount] = useState(0)
-    const [category, setCategory] = useState('')
-    const [producer, setProducer] = useState('')
+    const [discount, setDiscount] = useState('')
+    const [start, setStart] = useState('')
+    const [end, setEnd] = useState(0)
+    const [categoryId, setCategoryId] = useState('')
 
     const [optionsCategory, setOptionsCategory] = useState([])
-    
-
-
 
     const fetchDate = async () => {
         await axios.get("http://localhost:8888/api/categories").then((response) => {
@@ -26,8 +21,6 @@ const AddSales = () => {
         })
     }
 
-
-
     useEffect(() => {
         fetchDate()
     }, [])
@@ -35,25 +28,16 @@ const AddSales = () => {
     const addProductHandler = async (e) => {
         e.preventDefault();
 
-        // const newProduct =
-        // {
-        //     name: name,
-        //     description: description,
-        //     price: price,
-        //     amount: amount,
-        //     category: {
-        //          name: category.label,
-        //         discounts: []
-        //     },
-        //     producer: {
-        //         nameOfCompany: producer.label,
-        //         nip: producer.value
-        //     }
-        // }
+        const newDiscount =
+        {
+            percent: discount,
+            fromDate: start,
+            toDate: end
+        }
 
-        // await axios.post(`http://localhost:8888/api/products/save`, newProduct).then((response) => {
-        //     console.log(response.data)
-        // })
+        await axios.post(`http://localhost:8888/api/discounts/save/category/${categoryId}`, newDiscount).then((response) => {
+            console.log(response.data)
+        })
     }
 
     return (
@@ -61,25 +45,25 @@ const AddSales = () => {
             <Form onSubmit={(e) => addProductHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
-                        <Select onChange={(e) => setCategory(e.value)} options={optionsCategory} placeholder="Kategoria" />
+                        <Select onChange={(e) => setCategoryId(e.value)} options={optionsCategory} placeholder="Kategoria" />
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
                 <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
-                        <FloatingLabel controlId="floatingAmount" label="Przecena">
-                            <Form.Control onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Przecena" />
+                        <FloatingLabel controlId="floatingAmount" label="Przecena (%)">
+                            <Form.Control onChange={(e) => setDiscount(e.target.value)} type="number" max="100" placeholder="Przecena (%)" />
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridPrice">
                         <FloatingLabel controlId="floatingPassword" label="Data rozpoczęcia">
-                            <Form.Control onChange={(e) => setPrice(e.target.value)} type="date" placeholder="Data rozpoczęcia" />
+                            <Form.Control onChange={(e) => setStart(e.target.value)} type="date" placeholder="Data rozpoczęcia" />
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
                         <FloatingLabel controlId="floatingAmount" label="Data zakończenia">
-                            <Form.Control onChange={(e) => setAmount(e.target.value)} type="date" placeholder="Data zakończenia" />
+                            <Form.Control onChange={(e) => setEnd(e.target.value)} type="date" placeholder="Data zakończenia" />
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
