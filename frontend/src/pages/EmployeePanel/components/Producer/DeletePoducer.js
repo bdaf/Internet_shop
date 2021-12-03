@@ -49,7 +49,7 @@ const DeleteProducer = () => {
                 </Row>
                 {producer ? (<>
                     <Row className="mb-3">
-                        <h6>Producent:</h6>
+                        <h6>Producent</h6>
                         <hr/>
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa producenta">
