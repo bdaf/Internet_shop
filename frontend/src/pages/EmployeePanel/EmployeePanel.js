@@ -4,6 +4,8 @@ import Select from 'react-select';
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import AddCategory from "./components/Category/AddCategory";
+import DeleteCategory from "./components/Category/DeleteCategory";
+import EditCategory from "./components/Category/EditCategory";
 import AddProducer from "./components/Producer/AddProducer";
 import DeleteProducer from "./components/Producer/DeletePoducer";
 import EditProducer from "./components/Producer/EditProducer";
@@ -65,10 +67,10 @@ const EmployeePanel = () => {
                                             <AddCategory />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj kategorie">
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <EditCategory />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń kategorie" >
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <DeleteCategory />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
