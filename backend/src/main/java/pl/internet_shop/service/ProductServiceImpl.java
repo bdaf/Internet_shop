@@ -49,7 +49,7 @@ public class ProductServiceImpl implements  ProductService {
 
     @Override
     public Product updateProductById(Long aProductId, Product aProduct) {
-        Product resultProduct = productRepository.findByIdAndFetchGallery(aProductId);
+        Product resultProduct = fetchProductById(aProductId);
 
         if(Objects.nonNull(aProduct.getName()) && !aProduct.getName().equalsIgnoreCase(""))
             resultProduct.setName(aProduct.getName());
