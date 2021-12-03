@@ -2,13 +2,13 @@ package pl.internet_shop.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static pl.internet_shop.entity.User.*;
 
@@ -17,10 +17,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public SecurityConfiguration(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.authenticationProvider(daoAuthenticationProvider());
+    }
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider =
+                new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(bCryptPasswordEncoder);
+        provider.setUserDetailsService(userDetailsService);
+        return provider;
     }
 
     @Override
@@ -32,11 +46,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/").permitAll()
                 .and().formLogin();
-    }
-
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean

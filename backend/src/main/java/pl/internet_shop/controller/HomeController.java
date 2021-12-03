@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import pl.internet_shop.entity.User;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class HomeController {
 

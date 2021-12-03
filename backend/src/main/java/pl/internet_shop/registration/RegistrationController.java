@@ -15,6 +15,6 @@ public class RegistrationController {
         registrationService.register(request);
     }
 
-    @PostMapping("/worker/registration")
+    @GetMapping("/worker/registration")
     public void registerWorker(@RequestBody RegistrationRequest request) {registrationService.register(request);}
 }

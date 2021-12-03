@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.internet_shop.entity.Address;
 import pl.internet_shop.entity.User;
@@ -16,6 +17,12 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public MyUserDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -35,13 +42,14 @@ public class MyUserDetailsService implements UserDetailsService {
 
             throw new IllegalStateException("email already taken");
         }
+        String encodedPassword = bCryptPasswordEncoder.encode(password);
 
        User user = User.builder()
                .userName(userName)
                .name(name)
                .surname(surname)
                .email(email)
-               .password(password)
+               .password(encodedPassword)
                .role(role)
                .phoneNumber(phoneNumber)
                .address(address)
