@@ -51,7 +51,7 @@ const AddProduct = () => {
             price: price,
             amount: amount,
             category: {
-                 name: category.label,
+                 name: category,
                 discounts: []
             },
             producer: {
@@ -97,7 +97,7 @@ const AddProduct = () => {
                 </Row>
                 <Row className="mb-3">
                     <Col xs={6} md={6}>
-                        <Select onChange={(e) => setCategory(e.value)} options={optionsCategory} placeholder="Kategoria" />
+                        <Select onChange={(e) => setCategory(e.label)} options={optionsCategory} placeholder="Kategoria" />
                     </Col>
                     <Col xs={6} md={6}>
                         <Select onChange={(e) => setProducer(e)} options={optionsProducer} placeholder="Producent" />

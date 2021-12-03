@@ -3,7 +3,14 @@ import { Col, Row, Tab, Nav, Tabs, FloatingLabel, Form, Button } from "react-boo
 import Select from 'react-select';
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import AddCategory from "./components/Category/AddCategory";
+import DeleteCategory from "./components/Category/DeleteCategory";
+import EditCategory from "./components/Category/EditCategory";
+import AddProducer from "./components/Producer/AddProducer";
+import DeleteProducer from "./components/Producer/DeletePoducer";
+import EditProducer from "./components/Producer/EditProducer";
 import AddProduct from "./components/Products/AddProduct";
+import AddSales from "./components/Sales/AddSales";
 
 import './EmployeePanel.css'
 
@@ -57,13 +64,13 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="categories">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj kategorie">
-                                            <AddProduct />
+                                            <AddCategory />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj kategorie">
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <EditCategory />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń kategorie" >
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <DeleteCategory />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
@@ -73,20 +80,20 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="producers">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj producenta">
-                                            <AddProduct />
+                                            <AddProducer />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj producenta">
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <EditProducer />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń producenta" >
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <DeleteProducer />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="sales">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj przecene">
-                                            <AddProduct />
+                                            <AddSales />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj przecene">
                                             fadfdsfdsgwethwtegefadfdsfdsgwethwtege
