@@ -46,8 +46,9 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public void saveCategory(Category aCategory) {
+    public Category saveCategory(Category aCategory) {
         categoryRepository.save(aCategory);
+        return aCategory;
     }
 
     // throws exception if category is linked to some product
@@ -67,6 +68,11 @@ public class CategoryServiceImpl implements CategoryService{
         }
 
         return categoryRepository.save(resultCategory);
+    }
+
+    @Override
+    public Category findById(Long aCategoryId) {
+        return categoryRepository.findById(aCategoryId).get();
     }
 
 }

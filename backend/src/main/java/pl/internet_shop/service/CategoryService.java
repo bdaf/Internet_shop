@@ -13,9 +13,11 @@ public interface CategoryService {
 
     List<Category> fetchAllCategories();
 
-    void saveCategory(Category aCategory);
+    Category saveCategory(Category aCategory);
 
     void deleteCategoryById(Long aCategoryId);
 
     Category updateCategoryById(Category aCategory, Long aCategoryId);
+
+    Category findById(Long aCategoryId);
 }

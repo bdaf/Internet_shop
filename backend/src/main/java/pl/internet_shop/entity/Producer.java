@@ -24,6 +24,6 @@ public class Producer {
     @Column(name = "name_of_company", length = 63)
     private String nameOfCompany = UNKNOWN;
 
-    @Column(name = "nip", nullable = false, length = 15)
+    @Column(name = "nip", nullable = false, unique = true, length = 15)
     private String nip;
 }
