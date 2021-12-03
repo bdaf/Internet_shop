@@ -25,7 +25,7 @@ const AddSales = () => {
         fetchDate()
     }, [])
 
-    const addProductHandler = async (e) => {
+    const addDiscountHandler = async (e) => {
         e.preventDefault();
 
         const newDiscount =
@@ -42,7 +42,7 @@ const AddSales = () => {
 
     return (
         <div className="m-3">
-            <Form onSubmit={(e) => addProductHandler(e)}>
+            <Form onSubmit={(e) => addDiscountHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                         <Select onChange={(e) => setCategoryId(e.value)} options={optionsCategory} placeholder="Kategoria" />

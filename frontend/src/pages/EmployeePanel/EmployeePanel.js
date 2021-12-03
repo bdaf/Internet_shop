@@ -13,6 +13,7 @@ import AddProduct from "./components/Products/AddProduct";
 import DeleteProduct from "./components/Products/DeleteProduct";
 import EditProduct from "./components/Products/EditProduct";
 import AddSales from "./components/Sales/AddSales";
+import DeleteSales from "./components/Sales/DeleteSales";
 
 import './EmployeePanel.css'
 
@@ -97,11 +98,8 @@ const EmployeePanel = () => {
                                         <Tab eventKey="add" title="Dodaj przecene">
                                             <AddSales />
                                         </Tab>
-                                        <Tab eventKey="edit" title="Edytuj przecene">
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtege
-                                        </Tab>
                                         <Tab eventKey="delate" title="Usuń przecene" >
-                                            fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
+                                            <DeleteSales />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
