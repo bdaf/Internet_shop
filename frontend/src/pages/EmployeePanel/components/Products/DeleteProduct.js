@@ -55,6 +55,7 @@ const DeleteProduct = () => {
                 price={product.price}
                 description={product.description.substr(0, 90)}
                 panel={true}
+                action="Usuń"
                 onId={setEditProductId}
             />
         </Col>

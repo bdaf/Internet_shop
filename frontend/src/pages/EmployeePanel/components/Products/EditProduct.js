@@ -70,6 +70,7 @@ const EditProduct = () => {
                 price={product.price}
                 description={product.description.substr(0, 90)}
                 panel={true}
+                action="Edytuj"
                 onId={setEditProductId}
             />
         </Col>

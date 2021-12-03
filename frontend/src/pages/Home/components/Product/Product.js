@@ -32,7 +32,7 @@ const Product = (props) => {
                     <div className="d-flex justify-content-center mt-2">Zobacz więcej</div>
                 </Card.Text>
                 <div className="d-flex justify-content-end" >
-                    {props.panel ? <Button variant="outline-danger" onClick={showDetailsHandler} >Edytuj</Button> : (<Button variant="outline-danger" onClick={() => addToCart(props)}>Dodaj do koszyka</Button>)}
+                    {props.panel ? <Button variant="outline-danger" onClick={showDetailsHandler} >{props.action}</Button> : (<Button variant="outline-danger" onClick={() => addToCart(props)}>Dodaj do koszyka</Button>)}
                 </div>
             </Card.Body>
         </Card>
