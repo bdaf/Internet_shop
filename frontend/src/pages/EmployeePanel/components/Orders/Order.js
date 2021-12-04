@@ -17,7 +17,7 @@ const Order = (props) => {
                     <p>Kwota: {props.cost} PLN</p>
                 </Card.Text>
                 <div className="d-flex justify-content-center" >
-                    <Button variant="outline-danger" className="ps-5 pe-5">Szczegóły zamówienia</Button>
+                    <Button variant="outline-danger" onClick={() => props.onSetEditOrderId(props.id)} className="ps-5 pe-5">Szczegóły zamówienia</Button>
                 </div>
             </Card.Body>
         </Card>
