@@ -39,7 +39,7 @@ const EditCategory = (props) => {
         }
 
         await axios.put(`http://localhost:8888/api/categories/${category.value}`, updateCategory).then((response) => {
-            props.setUpdateData(true)
+            props.setUpdateData(6)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

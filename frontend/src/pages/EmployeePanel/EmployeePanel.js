@@ -19,7 +19,7 @@ import DeleteSales from "./components/Sales/DeleteSales";
 import './EmployeePanel.css'
 
 const EmployeePanel = () => {
-    const [updateData, setUpdateData] = useState(false)
+    const [updateData, setUpdateData] = useState(0)
     return (
         <>
             <Navbar />
@@ -85,13 +85,13 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="producers">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj producenta">
-                                            <AddProducer />
+                                            <AddProducer onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj producenta">
-                                            <EditProducer />
+                                            <EditProducer change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń producenta" >
-                                            <DeleteProducer />
+                                            <DeleteProducer change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>

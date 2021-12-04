@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
-const DeleteProducer = () => {
+const DeleteProducer = (props) => {
     const [name, setName] = useState('')
     const [nip, setNip] = useState('')
     const [producer, setProducer] = useState(null)
@@ -24,7 +24,7 @@ const DeleteProducer = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [feedback])
+    }, [feedback, props.change])
 
     useEffect(() => {
         setFeedback(null)
@@ -34,7 +34,7 @@ const DeleteProducer = () => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/producers/${producer.id}`).then((response) => {
-            console.log(response.data)
+            props.onChange(2)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

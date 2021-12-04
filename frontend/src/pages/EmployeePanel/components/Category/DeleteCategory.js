@@ -33,7 +33,7 @@ const DeleteCategory = (props) => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/categories/${category.value}`).then((response) => {
-            props.onChange(true)
+            props.onChange(5)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

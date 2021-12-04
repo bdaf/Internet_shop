@@ -19,7 +19,7 @@ const AddCategory = (props) => {
         console.log(newCategory)
 
         await axios.post('http://localhost:8888/api/categories/save', newCategory).then((response) => {
-            props.onChange(true)
+            props.onChange(4)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

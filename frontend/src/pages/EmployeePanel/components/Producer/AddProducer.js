@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 
 
-const AddProducer = () => {
+const AddProducer = (props) => {
     const [name, setName] = useState('')
     const [nip, setNip] = useState('')
 
@@ -20,7 +20,7 @@ const AddProducer = () => {
         console.log(newProducer)
 
         await axios.post('http://localhost:8888/api/producers/save', newProducer).then((response) => {
-            console.log(response.data)
+            props.onChange(1)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">
