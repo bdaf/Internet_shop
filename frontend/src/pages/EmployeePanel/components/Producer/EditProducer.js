@@ -26,6 +26,10 @@ const EditProducer = () => {
         fetchDate()
     }, [feedback])
 
+    useEffect(() => {
+        setFeedback(null)
+    }, [producer])
+
     const addProducerHandler = async (e) => {
         e.preventDefault();
 

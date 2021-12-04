@@ -26,6 +26,10 @@ const DeleteProducer = () => {
         fetchDate()
     }, [feedback])
 
+    useEffect(() => {
+        setFeedback(null)
+    }, [producer])
+
     const addProducerHandler = async (e) => {
         e.preventDefault();
 
