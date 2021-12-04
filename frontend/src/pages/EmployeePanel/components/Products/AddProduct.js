@@ -63,7 +63,7 @@ const AddProduct = (props) => {
         }
 
         await axios.post(`http://localhost:8888/api/products/save`, newProduct).then((response) => {
-            props.onChange(10)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 navigate(`/detail/${response.data.productId}`)
             else

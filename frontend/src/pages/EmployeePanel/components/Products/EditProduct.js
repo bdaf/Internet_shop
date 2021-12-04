@@ -60,7 +60,7 @@ const EditProduct = (props) => {
         }
 
         await axios.put(`http://localhost:8888/api/products/${editProductId}`, editProduct).then((response) => {
-            props.onChange(12)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

@@ -45,7 +45,7 @@ const DeleteProduct = (props) => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/products/${editProductId}`).then((response) => {
-            props.onChange(11)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

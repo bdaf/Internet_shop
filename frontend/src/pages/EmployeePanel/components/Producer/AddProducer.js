@@ -20,7 +20,7 @@ const AddProducer = (props) => {
         console.log(newProducer)
 
         await axios.post('http://localhost:8888/api/producers/save', newProducer).then((response) => {
-            props.onChange(1)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

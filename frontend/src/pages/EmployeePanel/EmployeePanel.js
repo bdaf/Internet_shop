@@ -19,7 +19,7 @@ import DeleteSales from "./components/Sales/DeleteSales";
 import './EmployeePanel.css'
 
 const EmployeePanel = () => {
-    const [updateData, setUpdateData] = useState(0)
+    const [updateData, setUpdateData] = useState(false)
     return (
         <>
             <Navbar />

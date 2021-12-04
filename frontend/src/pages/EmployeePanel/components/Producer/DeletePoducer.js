@@ -34,7 +34,7 @@ const DeleteProducer = (props) => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/producers/${producer.id}`).then((response) => {
-            props.onChange(2)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

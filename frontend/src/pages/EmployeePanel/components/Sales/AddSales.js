@@ -37,7 +37,7 @@ const AddSales = (props) => {
         }
 
         await axios.post(`http://localhost:8888/api/discounts/save/category/${categoryId}`, newDiscount).then((response) => {
-            props.onChange(8)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

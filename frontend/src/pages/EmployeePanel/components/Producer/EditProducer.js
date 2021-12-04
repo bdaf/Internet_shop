@@ -40,7 +40,7 @@ const EditProducer = (props) => {
         }
 
         await axios.put(`http://localhost:8888/api/producers/${producer.id}`, editProducer).then((response) => {
-            props.onChange(3)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

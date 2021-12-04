@@ -30,7 +30,7 @@ const DeleteSales = (props) => {
 
     const deleteSale = async (id) => {
         await axios.delete(`http://localhost:8888/api/discounts/${id}`).then((response) => {
-            props.onChange(9)
+            props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">
