@@ -107,7 +107,7 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="employee">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj pracownika">
-                                            <AddProduct />
+                                            sdasd
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń pracownika" >
                                             fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
