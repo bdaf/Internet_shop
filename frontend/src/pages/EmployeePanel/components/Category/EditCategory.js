@@ -25,6 +25,10 @@ const EditCategory = () => {
         fetchDate()
     }, [])
 
+    useEffect(() => {
+        setFeedback(null)
+    }, [category])
+
     const updateCategoryHandler = async (e) => {
         e.preventDefault();
 

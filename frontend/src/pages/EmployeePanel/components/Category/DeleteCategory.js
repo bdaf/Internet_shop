@@ -25,6 +25,10 @@ const DeleteCategory = () => {
         fetchDate()
     }, [])
 
+    useEffect(() => {
+        setFeedback(null)
+    }, [category])
+
     const deleteCategoryHandler = async (e) => {
         e.preventDefault();
 
