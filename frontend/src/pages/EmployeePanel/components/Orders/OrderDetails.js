@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col, Table, Button } from "react-bootstrap";
+import { Row, Col, Table, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
 const OrderDetails = (props) => {
     const [status, setStatus] = useState()
 
+    const [feedback, setFeedback] = useState(null)
     const options = [
         { value: 'NOT ORDERED', label: 'Niezamówiono' },
         { value: 'ORDERED', label: 'Zamówiono' },
@@ -28,6 +29,25 @@ const OrderDetails = (props) => {
 
         await axios.put(`http://localhost:8888/api/orders/${props.order.orderId}`, updateOrder).then((response) => {
             console.log(response.data)
+            if (response.status === 200)
+            setFeedback(
+                <Alert variant="success">
+                    Status przesyłki został zmieniony!
+                </Alert>
+            )
+        else
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się zmienić statusu przesyłki!
+                </Alert>
+            )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się zmienić statusu przesyłki!
+                </Alert>
+            )
         })
     }
 
@@ -37,6 +57,7 @@ const OrderDetails = (props) => {
             <Col xs={2} className="d-flex justify-content-end">ID: {props.order.orderId}</Col>
         </Row>
         <hr className="ms-5 me-5" />
+        {feedback}
         <Row className="mb-3">
             <h5>Status przesyłki</h5>
             <Col xs={6} md={6}>
