@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
+import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
 const DeleteCategory = () => {
     const [name, setName] = useState('')
     const [category, setCategory] = useState(null)
 
+    const [feedback, setFeedback] = useState(null)
     const [optionsCategory, setOptionsCategory] = useState([])
 
     const fetchDate = async () => {
@@ -29,6 +30,25 @@ const DeleteCategory = () => {
 
         await axios.delete(`http://localhost:8888/api/categories/${category.value}`).then((response) => {
             console.log(response.data)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Kategoria została usunięta!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się usunąć kategorii!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się usunąć kategorii!
+                </Alert>
+            )
         })
     }
 
@@ -48,16 +68,19 @@ const DeleteCategory = () => {
                 {category ? (<>
                     <Row className="mb-3">
                         <h6>Kategoria</h6>
-                        <hr/>
+                        <hr />
+                        {feedback}
                     <Form.Group as={Col} xs={12} md={12} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa kategorii">
                             <Form.Control onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Nazwa kategorii" disabled />
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
-                <Button variant="primary" type="submit">
-                    Submit
-                    </Button>
+                <div className="d-flex justify-content-end">
+                        <Button className="ps-4 pe-4" variant="outline-danger" type="submit" disabled={feedback == null ? false : true}>
+                            Usuń kategorie
+                        </Button>
+                    </div>
                 </>) : null}
             </Form>
         </div>
