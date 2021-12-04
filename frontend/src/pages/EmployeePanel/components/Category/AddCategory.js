@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 
 
-const AddCategory = () => {
+const AddCategory = (props) => {
     const [name, setName] = useState('')
 
     const [feedback, setFeedback] = useState(null)
@@ -19,7 +19,7 @@ const AddCategory = () => {
         console.log(newCategory)
 
         await axios.post('http://localhost:8888/api/categories/save', newCategory).then((response) => {
-            console.log(response.data)
+            props.onChange(true)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

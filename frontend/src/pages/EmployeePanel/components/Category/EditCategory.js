@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
-const EditCategory = () => {
+const EditCategory = (props) => {
     const [name, setName] = useState('')
     const [category, setCategory] = useState(null)
 
@@ -23,7 +23,7 @@ const EditCategory = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [props.change])
 
     useEffect(() => {
         setFeedback(null)
@@ -39,7 +39,7 @@ const EditCategory = () => {
         }
 
         await axios.put(`http://localhost:8888/api/categories/${category.value}`, updateCategory).then((response) => {
-            console.log(response.data)
+            props.setUpdateData(true)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

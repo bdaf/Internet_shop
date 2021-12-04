@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
-const DeleteCategory = () => {
+const DeleteCategory = (props) => {
     const [name, setName] = useState('')
     const [category, setCategory] = useState(null)
 
@@ -23,7 +23,7 @@ const DeleteCategory = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [props.change])
 
     useEffect(() => {
         setFeedback(null)
@@ -33,7 +33,7 @@ const DeleteCategory = () => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/categories/${category.value}`).then((response) => {
-            console.log(response.data)
+            props.onChange(true)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">
