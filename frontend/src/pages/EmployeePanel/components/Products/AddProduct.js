@@ -78,7 +78,7 @@ const AddProduct = () => {
             <Form onSubmit={(e) => addProductHandler(e)}>
                 {isError ?
                     <Alert variant="danger">
-                        Nie udało się dodać nowego przedmiotu!
+                        Nie udało się dodać nowego produktu !
                     </Alert>
                     : null}
 
@@ -118,7 +118,6 @@ const AddProduct = () => {
                     </Col>
                 </Row>
                 <div className="d-flex justify-content-end">
-
                     <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
                         Dodaj nowy produkt
                     </Button>

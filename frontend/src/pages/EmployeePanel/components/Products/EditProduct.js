@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Stack, Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Row, Col, Stack, Form, FloatingLabel, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
@@ -13,6 +13,8 @@ const EditProduct = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0)
+
+    const [feedback, setFeedback] = useState(null)
 
     const fetchProducts = async () => {
         await axios.get("http://localhost:8888/api/products").then((response) => {
@@ -36,6 +38,7 @@ const EditProduct = () => {
 
     useEffect(() => {
         fetchProduct()
+        setFeedback(null)
     }, [editProductId])
 
     const editProductHandler = async (e) => {
@@ -48,16 +51,35 @@ const EditProduct = () => {
             price: price,
             category: {
                 name: "s",
-               discounts: []
-           },
-           producer: {
-               nameOfCompany: "d",
-               nip: "12"
-           }
+                discounts: []
+            },
+            producer: {
+                nameOfCompany: "d",
+                nip: "12"
+            }
         }
 
         await axios.put(`http://localhost:8888/api/products/${editProductId}`, editProduct).then((response) => {
-            console.log(response.data)
+            console.log(response)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Przedmiot został zedytowany!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się edytować produktu!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się edytować produktu!
+                </Alert>
+            )
         })
     }
 
@@ -78,6 +100,8 @@ const EditProduct = () => {
 
     const contextEditProduct = !editProduct ? <p>loading...</p> : (
         <Row>
+            {feedback}
+
             <Col xs={12} md={5}>
                 <Carousels />
             </Col>
@@ -108,9 +132,11 @@ const EditProduct = () => {
                             </Stack>
                         </Col>
                     </Row>
-                    <Button className="mt-2" variant="primary" type="submit">
-                    Submit
-                </Button>
+                    <div className="d-flex justify-content-end">
+                        <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                            Edytuj produkt
+                        </Button>
+                    </div>
                 </Form>
             </Col>
         </Row>
