@@ -101,7 +101,6 @@ const EditProduct = () => {
     const contextEditProduct = !editProduct ? <p>loading...</p> : (
         <Row>
             {feedback}
-
             <Col xs={12} md={5}>
                 <Carousels />
             </Col>

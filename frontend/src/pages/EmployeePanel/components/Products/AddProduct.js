@@ -68,9 +68,10 @@ const AddProduct = () => {
                 navigate(`/detail/${response.data.productId}`)
             else
                 setIsError(true)
-        }).catch(
+        }).catch((e) => {
+            console.log(e)
             setIsError(true)
-        )
+        })
     }
 
     return (
