@@ -39,6 +39,7 @@ const DeleteProduct = () => {
 
     useEffect(() => {
         fetchProduct()
+        setFeedback(null)
     }, [editProductId])
 
     const deleteProductHandler = async (e) => {
