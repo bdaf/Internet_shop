@@ -24,6 +24,10 @@ const DeleteSales = () => {
         fetchDate()
     }, [feedback])
 
+    useEffect(() => {
+        setFeedback(null)
+    }, [category])
+
     const deleteSale = async (id) => {
         await axios.delete(`http://localhost:8888/api/discounts/${id}`).then((response) => {
             console.log(response.data)
