@@ -3,7 +3,7 @@ import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
-const AddSales = () => {
+const AddSales = (props) => {
     const [discount, setDiscount] = useState('')
     const [start, setStart] = useState('')
     const [end, setEnd] = useState(0)
@@ -24,7 +24,7 @@ const AddSales = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [props.change])
 
     const addDiscountHandler = async (e) => {
         e.preventDefault();
@@ -37,7 +37,7 @@ const AddSales = () => {
         }
 
         await axios.post(`http://localhost:8888/api/discounts/save/category/${categoryId}`, newDiscount).then((response) => {
-            console.log(response.data)
+            props.onChange(8)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

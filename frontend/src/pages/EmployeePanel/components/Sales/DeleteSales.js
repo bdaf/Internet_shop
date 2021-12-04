@@ -4,7 +4,7 @@ import { Col, Row, Form, Alert } from "react-bootstrap";
 import Select from 'react-select';
 import Sale from "./Sale";
 
-const DeleteSales = () => {
+const DeleteSales = (props) => {
     const [category, setCategory] = useState('')
 
     const [optionsCategory, setOptionsCategory] = useState([])
@@ -22,7 +22,7 @@ const DeleteSales = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [feedback])
+    }, [feedback, props.change])
 
     useEffect(() => {
         setFeedback(null)
@@ -30,7 +30,7 @@ const DeleteSales = () => {
 
     const deleteSale = async (id) => {
         await axios.delete(`http://localhost:8888/api/discounts/${id}`).then((response) => {
-            console.log(response.data)
+            props.onChange(9)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

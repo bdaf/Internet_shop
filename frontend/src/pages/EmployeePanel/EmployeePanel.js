@@ -98,10 +98,10 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="sales">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj przecene">
-                                            <AddSales />
+                                            <AddSales change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń przecene" >
-                                            <DeleteSales />
+                                            <DeleteSales change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
