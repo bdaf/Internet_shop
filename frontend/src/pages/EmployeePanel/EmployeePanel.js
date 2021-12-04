@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import AddCategory from "./components/Category/AddCategory";
 import DeleteCategory from "./components/Category/DeleteCategory";
 import EditCategory from "./components/Category/EditCategory";
+import Orders from "./components/Orders/Orders";
 import AddProducer from "./components/Producer/AddProducer";
 import DeleteProducer from "./components/Producer/DeletePoducer";
 import EditProducer from "./components/Producer/EditProducer";
@@ -78,7 +79,7 @@ const EmployeePanel = () => {
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="order">
-                                    przegląd zamówienien!
+                                    <Orders />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="producers">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
@@ -104,9 +105,9 @@ const EmployeePanel = () => {
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="employee">
-                                <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
+                                    <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj pracownika">
-                                            <AddProduct />
+                                            sdasd
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń pracownika" >
                                             fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
