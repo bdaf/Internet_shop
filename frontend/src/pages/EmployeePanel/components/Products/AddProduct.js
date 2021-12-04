@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
-const AddProduct = () => {
+const AddProduct = (props) => {
     const navigate = useNavigate();
 
     const [name, setName] = useState('')
@@ -39,7 +39,7 @@ const AddProduct = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [props.change])
 
     const addProductHandler = async (e) => {
         e.preventDefault();
@@ -63,7 +63,7 @@ const AddProduct = () => {
         }
 
         await axios.post(`http://localhost:8888/api/products/save`, newProduct).then((response) => {
-            console.log(response)
+            props.onChange(10)
             if (response.status === 200)
                 navigate(`/detail/${response.data.productId}`)
             else

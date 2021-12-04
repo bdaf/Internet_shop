@@ -56,13 +56,13 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="product">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj produkt">
-                                            <AddProduct />
+                                            <AddProduct change={updateData} onChange={setUpdateData}/>
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj produkt">
-                                            <EditProduct />
+                                            <EditProduct change={updateData} onChange={setUpdateData}/>
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń produkt" >
-                                            <DeleteProduct />
+                                            <DeleteProduct change={updateData} onChange={setUpdateData}/>
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>

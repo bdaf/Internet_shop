@@ -4,7 +4,7 @@ import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
 
-const EditProduct = () => {
+const EditProduct = (props) => {
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(false)
     const [editProductId, setEditProductId] = useState(null)
@@ -34,7 +34,7 @@ const EditProduct = () => {
 
     useEffect(() => {
         fetchProducts()
-    }, [])
+    }, [props.change])
 
     useEffect(() => {
         fetchProduct()
@@ -60,7 +60,7 @@ const EditProduct = () => {
         }
 
         await axios.put(`http://localhost:8888/api/products/${editProductId}`, editProduct).then((response) => {
-            console.log(response)
+            props.onChange(12)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">

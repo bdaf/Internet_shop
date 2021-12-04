@@ -4,7 +4,7 @@ import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
 
-const DeleteProduct = () => {
+const DeleteProduct = (props) => {
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(false)
     const [editProductId, setEditProductId] = useState(null)
@@ -34,7 +34,7 @@ const DeleteProduct = () => {
 
     useEffect(() => {
         fetchProducts()
-    }, [])
+    }, [props.change])
 
     useEffect(() => {
         fetchProduct()
@@ -45,7 +45,7 @@ const DeleteProduct = () => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/products/${editProductId}`).then((response) => {
-            console.log(response)
+            props.onChange(11)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">
