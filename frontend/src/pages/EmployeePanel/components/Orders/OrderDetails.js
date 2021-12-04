@@ -28,7 +28,7 @@ const OrderDetails = (props) => {
         }
 
         await axios.put(`http://localhost:8888/api/orders/${props.order.orderId}`, updateOrder).then((response) => {
-            console.log(response.data)
+            props.onChange(true)
             if (response.status === 200)
             setFeedback(
                 <Alert variant="success">

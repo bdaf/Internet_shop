@@ -80,7 +80,7 @@ const EmployeePanel = () => {
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="order">
-                                    <Orders />
+                                    <Orders change={updateData} onChange={setUpdateData} />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="producers">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">

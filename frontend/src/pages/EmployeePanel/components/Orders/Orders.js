@@ -6,7 +6,7 @@ import axios from "axios";
 import Order from "./Order";
 import OrderDetails from "./OrderDetails";
 
-const Orders = () => {
+const Orders = (props) => {
     const [orders, setOrders] = useState(null)
     const [editOrdeId, setEditOrderId] = useState(null)
     const [editOrder, setEditOrder] = useState(null)
@@ -19,7 +19,7 @@ const Orders = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [props.change])
 
     const fetchOrder = () => {
         const order = orders.filter(order => order.orderId === editOrdeId)
@@ -59,7 +59,7 @@ const Orders = () => {
     return (<div className="m-3">
         <h4>{editOrder ? "Zamówienie" : "Zamówienia"}</h4>
         <hr />
-        {editOrder ? <OrderDetails order={editOrder} /> : contextOrders}
+        {editOrder ? <OrderDetails onChange={props.onChange} order={editOrder} /> : contextOrders}
     </div>);
 }
 
