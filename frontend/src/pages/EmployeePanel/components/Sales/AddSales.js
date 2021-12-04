@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
+import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
 const AddSales = () => {
@@ -10,6 +10,7 @@ const AddSales = () => {
     const [categoryId, setCategoryId] = useState('')
 
     const [optionsCategory, setOptionsCategory] = useState([])
+    const [feedback, setFeedback] = useState(null)
 
     const fetchDate = async () => {
         await axios.get("http://localhost:8888/api/categories").then((response) => {
@@ -37,11 +38,31 @@ const AddSales = () => {
 
         await axios.post(`http://localhost:8888/api/discounts/save/category/${categoryId}`, newDiscount).then((response) => {
             console.log(response.data)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Przecena została dodana!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się dodać przeceny!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się dodać przeceny!
+                </Alert>
+            )
         })
     }
 
     return (
         <div className="m-3">
+            {feedback}
             <Form onSubmit={(e) => addDiscountHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
@@ -67,9 +88,11 @@ const AddSales = () => {
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                <div className="d-flex justify-content-end">
+                        <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                            Dodaj przecene
+                        </Button>
+                    </div>
             </Form>
         </div>
     );

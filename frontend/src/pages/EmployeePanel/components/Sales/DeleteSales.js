@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
+import { Col, Row, Form, Alert } from "react-bootstrap";
 import Select from 'react-select';
 import Sale from "./Sale";
 
 const DeleteSales = () => {
-    const [discount, setDiscount] = useState('')
-    const [start, setStart] = useState('')
-    const [end, setEnd] = useState(0)
     const [category, setCategory] = useState('')
-    const [categories, setCategories] = useState('')
 
     const [optionsCategory, setOptionsCategory] = useState([])
+    const [feedback, setFeedback] = useState(null)
 
     const fetchDate = async () => {
         await axios.get("http://localhost:8888/api/categories").then((response) => {
-            setCategories(response.data)
             const optionsC = response.data.map((c) => {
                 const opt = { value: c.categoryId, label: c.name, category: c }
                 return opt
@@ -26,7 +22,32 @@ const DeleteSales = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [feedback])
+
+    const deleteSale = async (id) => {
+        await axios.delete(`http://localhost:8888/api/discounts/${id}`).then((response) => {
+            console.log(response.data)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Przecena z {id} została usunięta!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się usunąć przeceny z ID {id}!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się usunąć przeceny z ID {id}!
+                </Alert>
+            )
+        })
+    }
 
     return (
         <div className="m-3">
@@ -39,6 +60,7 @@ const DeleteSales = () => {
                     <Row>
                     <h4>Przeceny na kategorie {category.name}</h4>
                     <hr />
+                    {feedback}
                         {category.discounts.map((discount) =>
                             <Col xs="auto" key={discount.discountId}>
                                 <Sale
@@ -46,6 +68,7 @@ const DeleteSales = () => {
                                     discount={discount.percent}
                                     start={discount.fromDate}
                                     end={discount.toDate}
+                                    onDelete={deleteSale}
                                 />
                             </Col>
                     )}
