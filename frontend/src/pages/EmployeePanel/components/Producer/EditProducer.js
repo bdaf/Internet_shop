@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
+import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
 
 const EditProducer = () => {
@@ -8,6 +8,7 @@ const EditProducer = () => {
     const [nip, setNip] = useState('')
     const [producer, setProducer] = useState(null)
 
+    const [feedback, setFeedback] = useState(null)
     const [optionsProducer, setOptionsProducer] = useState([])
 
     const fetchDate = async () => {
@@ -23,7 +24,7 @@ const EditProducer = () => {
 
     useEffect(() => {
         fetchDate()
-    }, [])
+    }, [feedback])
 
     const addProducerHandler = async (e) => {
         e.preventDefault();
@@ -36,6 +37,25 @@ const EditProducer = () => {
 
         await axios.put(`http://localhost:8888/api/producers/${producer.id}`, editProducer).then((response) => {
             console.log(response.data)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Producent został zedytowany!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się edytować producenta!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się edytować producenta!
+                </Alert>
+            )
         })
     }
 
@@ -57,6 +77,7 @@ const EditProducer = () => {
                     <Row className="mb-3">
                         <h6>Producent</h6>
                         <hr />
+                        {feedback}
                         <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                             <FloatingLabel controlId="floatingPassword" label="Nazwa producenta">
                                 <Form.Control onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Nazwa producenta" />
@@ -68,9 +89,11 @@ const EditProducer = () => {
                             </FloatingLabel>
                         </Form.Group>
                     </Row>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <div className="d-flex justify-content-end">
+                        <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                            Edytuj producenta
+                        </Button>
+                    </div>
                 </>) : null}
             </Form>
         </div>

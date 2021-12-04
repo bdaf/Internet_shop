@@ -29,7 +29,6 @@ const DeleteProduct = () => {
             setName(response.data.name)
             setDescription(response.data.description)
             setPrice(response.data.price)
-
         })
     }
 
