@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Stack, Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Row, Col, Stack, Form, FloatingLabel, Button, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
@@ -14,6 +14,8 @@ const DeleteProduct = () => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(0)
 
+    const [feedback, setFeedback] = useState(null)
+
     const fetchProducts = async () => {
         await axios.get("http://localhost:8888/api/products").then((response) => {
             setProducts(response.data)
@@ -27,6 +29,7 @@ const DeleteProduct = () => {
             setName(response.data.name)
             setDescription(response.data.description)
             setPrice(response.data.price)
+
         })
     }
 
@@ -42,7 +45,26 @@ const DeleteProduct = () => {
         e.preventDefault();
 
         await axios.delete(`http://localhost:8888/api/products/${editProductId}`).then((response) => {
-            console.log(response.data)
+            console.log(response)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Przedmiot został usunięty!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się usunąć produktu!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się usunąć produktu!
+                </Alert>
+            )
         })
     }
 
@@ -63,6 +85,7 @@ const DeleteProduct = () => {
 
     const contextEditProduct = !editProduct ? <p>loading...</p> : (
         <Row>
+            {feedback}
             <Col xs={12} md={5}>
                 <Carousels />
             </Col>
@@ -94,9 +117,11 @@ const DeleteProduct = () => {
                             </Stack>
                         </Col>
                     </Row>
-                    <Button className="mt-2" variant="primary" type="submit">
-                    Submit
-                </Button>
+                    <div className="d-flex justify-content-end">
+                        <Button className="ps-4 pe-4" variant="outline-danger" type="submit" disabled={feedback == null ? false : true}>
+                            Usuń produkt
+                        </Button>
+                    </div>
                 </Form>
             </Col>
         </Row>
