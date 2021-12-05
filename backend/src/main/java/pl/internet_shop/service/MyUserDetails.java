@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 public class MyUserDetails implements UserDetails {
 
     private User user;
-
+    private String userName;
     public MyUserDetails(User user) {
-        this.user = user;
+        this.user = user; this.userName = user.getUserName();
     }
-
+    public String getUSR(){return userName;}
+    public User getUser(){return user;}
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(user.getRole()));
