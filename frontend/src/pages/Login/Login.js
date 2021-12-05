@@ -30,7 +30,9 @@ const Login = () => {
         await axios.post("http://localhost:8888/api/login", { userName: email, password: password }).then((response) => {
             console.log(response)
             if (response.status === 200) {
-                authCtx.login(response.data)
+                const expirationTime = new Date(new Date().getTime() + (+3600 * 1000))
+                authCtx.login(response.data, expirationTime.toISOString())
+
                 setEmail('');
                 setPassword('');
                 setIsError(false)
