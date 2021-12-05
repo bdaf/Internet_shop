@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navbar, Container, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import { NavLink, Link } from "react-router-dom";
 import cart from './cart4.svg'
@@ -6,8 +6,12 @@ import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
 import logout from './box-arrow-left.svg'
 import { useCart } from "../../components/Cart";
+import AuthContext from '../../store/auth-context';
 
 const Navbars = (props) => {
+    const authCtx = useContext(AuthContext)
+    const isLoggedIn = authCtx.isLoggedIn;
+
     const items = useCart();
 
     const [term, setTerm] = useState('')
@@ -70,16 +74,20 @@ const Navbars = (props) => {
                         ({items.length})
                     </div>
 
-                    <div className="ms-3">
-                        <Link to="/login"><img src={login} alt="login" /></Link>
-                    </div>
-                    <div className="ms-3">
-                        <img src={account} alt="account" />
-                    </div>
+                    {!authCtx.isLoggedIn && <>
+                        <div className="ms-3">
+                            <Link to="/login"><img src={login} alt="login" /></Link>
+                        </div>
+                    </>}
+                    {authCtx.isLoggedIn && <>
+                        <div className="ms-3">
+                            <img src={account} alt="account" />
+                        </div>
 
-                    <div className="ms-3">
-                        <img src={logout} alt="logout" />
-                    </div>
+                        <div className="ms-3">
+                            <img src={logout} alt="logout" />
+                        </div>
+                    </>}
                 </Navbar.Collapse>
             </Container>
         </Navbar>
