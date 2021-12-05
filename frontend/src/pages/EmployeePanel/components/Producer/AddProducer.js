@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Col, Row, FloatingLabel, Form, Button } from "react-bootstrap";
+import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 
 
-const AddProducer = () => {
+const AddProducer = (props) => {
     const [name, setName] = useState('')
     const [nip, setNip] = useState('')
+
+    const [feedback, setFeedback] = useState(null)
 
     const addProducerHandler = async (e) => {
         e.preventDefault();
@@ -18,12 +20,32 @@ const AddProducer = () => {
         console.log(newProducer)
 
         await axios.post('http://localhost:8888/api/producers/save', newProducer).then((response) => {
-            console.log(response.data)
+            props.onChange((prevState) => !prevState)
+            if (response.status === 200)
+                setFeedback(
+                    <Alert variant="success">
+                        Producent został dodany!
+                    </Alert>
+                )
+            else
+                setFeedback(
+                    <Alert variant="danger">
+                        Nie udało się dodać producenta!
+                    </Alert>
+                )
+        }).catch((e) => {
+            console.log(e)
+            setFeedback(
+                <Alert variant="danger">
+                    Nie udało się dodać producenta!
+                </Alert>
+            )
         })
     }
 
     return (
         <div className="m-3">
+            {feedback}
             <Form onSubmit={(e) => addProducerHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
@@ -37,9 +59,11 @@ const AddProducer = () => {
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                <div className="d-flex justify-content-end">
+                        <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                            Dodaj producenta
+                        </Button>
+                    </div>
             </Form>
         </div>
     );

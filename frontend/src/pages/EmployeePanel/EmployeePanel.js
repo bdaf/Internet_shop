@@ -19,6 +19,7 @@ import DeleteSales from "./components/Sales/DeleteSales";
 import './EmployeePanel.css'
 
 const EmployeePanel = () => {
+    const [updateData, setUpdateData] = useState(false)
     return (
         <>
             <Navbar />
@@ -55,52 +56,52 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="product">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj produkt">
-                                            <AddProduct />
+                                            <AddProduct change={updateData} onChange={setUpdateData}/>
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj produkt">
-                                            <EditProduct />
+                                            <EditProduct change={updateData} onChange={setUpdateData}/>
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń produkt" >
-                                            <DeleteProduct />
+                                            <DeleteProduct change={updateData} onChange={setUpdateData}/>
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="categories">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj kategorie">
-                                            <AddCategory />
+                                            <AddCategory onChange={setUpdateData}/>
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj kategorie">
-                                            <EditCategory />
+                                            <EditCategory change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń kategorie" >
-                                            <DeleteCategory />
+                                            <DeleteCategory change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="order">
-                                    <Orders />
+                                    <Orders change={updateData} onChange={setUpdateData} />
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="producers">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj producenta">
-                                            <AddProducer />
+                                            <AddProducer onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="edit" title="Edytuj producenta">
-                                            <EditProducer />
+                                            <EditProducer change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń producenta" >
-                                            <DeleteProducer />
+                                            <DeleteProducer change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="sales">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj przecene">
-                                            <AddSales />
+                                            <AddSales change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń przecene" >
-                                            <DeleteSales />
+                                            <DeleteSales change={updateData} onChange={setUpdateData} />
                                         </Tab>
                                     </Tabs>
                                 </Tab.Pane>
