@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
 import { NavLink, useNavigate } from "react-router-dom";
 
 import styles from './Login.module.scss';
+import { Alert } from 'react-bootstrap';
+import AuthContext from '../../store/auth-context';
 
 const Login = () => {
     const navigate = useNavigate();
+    const authCtx = useContext(AuthContext)
 
     const [isShowForgot, setIsShowForgot] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [isError, setIsError] = useState(false)
 
     const emailHandler = (event) => {
         setEmail(event.target.value);
@@ -18,16 +24,24 @@ const Login = () => {
         setPassword(event.target.value);
     };
 
-    const submitHandler = (event) => {
+    const submitHandler = async (event) => {
         event.preventDefault();
 
-        console.log('Email: ' + email);
-        console.log('Password: ' + password);
-
-        setEmail('');
-        setPassword('');
-
-        navigate('/');
+        await axios.post("http://localhost:8888/api/login", { userName: email, password: password }).then((response) => {
+            console.log(response)
+            if (response.status === 200) {
+                authCtx.login(response.data)
+                setEmail('');
+                setPassword('');
+                setIsError(false)
+                navigate('/');
+            }
+            if (response.status === 401) {
+                setIsError(true)
+            }
+        }).catch(() => {
+            setIsError(true)
+        })
     };
 
     const sendEmailHandler = () => {
@@ -37,6 +51,10 @@ const Login = () => {
     const loginContext = (
         <>
             <p>Witamy spowrotem! Zaloguj się do swojego konta i kupuj w najlepszym sklepie komputerowym</p>
+            {isError &&
+                <Alert variant="danger">
+                    Nie prawidłowe hasło lub E-mail!
+                </Alert>}
             <div className={styles.floatingLabel}>
                 <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" />
                 <label htmlFor="email">E-mail: </label>
