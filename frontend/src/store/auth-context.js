@@ -3,26 +3,31 @@ import React, { useState } from 'react'
 const AuthContext = React.createContext({
     token: '',
     isLoggedIn: false,
-    user  : null,
+    user: null,
     role: '',
-    login: (authData) => {},
-    logout: () => {}
+    login: (authData) => { },
+    logout: () => { }
 })
 
 export const AuthContextProvider = (props) => {
-    const [token, setToken] = useState(null)
-    const [user, setUser] = useState(null)
-    const [role, setRole] = useState(null)
+    const initialAuth = JSON.parse(localStorage.getItem('auth'))
+
+
+    const [token, setToken] = useState(!!initialAuth ? initialAuth.token : null)
+    const [user, setUser] = useState(!!initialAuth ? initialAuth.user : null)
+    const [role, setRole] = useState(!!initialAuth ? initialAuth.user.role : null)
 
     const userIsLoggedIn = !!token
 
     const loginHandler = (authData) => {
+        localStorage.setItem('auth', JSON.stringify(authData))
         setToken(authData.token)
         setUser(authData.user);
         setRole(authData.user.role)
     }
 
     const logoutHandler = () => {
+        localStorage.removeItem('auth')
         setToken(null)
         setUser(null)
         setRole(null)
@@ -38,8 +43,8 @@ export const AuthContextProvider = (props) => {
     }
 
     return <AuthContext.Provider value={contextValue}>
-                {props.children}
-            </AuthContext.Provider>
+        {props.children}
+    </AuthContext.Provider>
 }
 
 export default AuthContext
