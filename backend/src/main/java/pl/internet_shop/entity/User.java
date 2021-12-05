@@ -44,6 +44,11 @@ public class User {
     @Column(name = "phone_number", length = 15, nullable = false)
     private String phoneNumber;
 
+    @Column(name = "verification_code", length = 64)
+    private String verificationCode;
+
+    private boolean enabled;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
