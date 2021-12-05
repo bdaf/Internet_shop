@@ -10,7 +10,6 @@ import AuthContext from '../../store/auth-context';
 
 const Navbars = (props) => {
     const authCtx = useContext(AuthContext)
-    const isLoggedIn = authCtx.isLoggedIn;
 
     const items = useCart();
 
@@ -28,6 +27,10 @@ const Navbars = (props) => {
     const searchOnChangeHandler = (e) => {
         props.onSearch(e.target.value.trim())
         setTerm(e.target.value)
+    }
+
+    const logoutHandler = () => {
+        authCtx.logout()
     }
 
     return (
@@ -85,7 +88,7 @@ const Navbars = (props) => {
                         </div>
 
                         <div className="ms-3">
-                            <img src={logout} alt="logout" />
+                            <img onClick={() => logoutHandler()} src={logout} alt="logout" />
                         </div>
                     </>}
                 </Navbar.Collapse>
