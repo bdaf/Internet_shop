@@ -23,7 +23,7 @@ public class RegistrationController {
         String siteURL = request.getRequestURL().toString();
         return siteURL.replace(request.getServletPath(), "");
     }
-    @GetMapping("/worker/registration")
+    @PostMapping("/worker/registration")
     public void registerWorker(@RequestBody RegistrationRequest request, HttpServletRequest servletRequest) throws MessagingException, UnsupportedEncodingException {registrationService.register(request, getSiteURL(servletRequest));}
 
     @GetMapping("/verify")
