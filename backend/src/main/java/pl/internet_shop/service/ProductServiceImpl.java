@@ -73,21 +73,7 @@ public class ProductServiceImpl implements ProductService {
         if (product == null) {
             product = productRepository.findById(aProductId).get();
         }
-        // take category of product
-        Long categoryId = product.getCategory().getCategoryId();
-        List<Discount> discounts = categoryService.findById(categoryId).getDiscounts();
-        // count the biggest discount which product has
-        Discount theBiggestDiscount = null;
-        Date now = new Date(System.currentTimeMillis()); // if date includes now
-        for (int i = 0; i < discounts.size(); i++) {
-            if (theBiggestDiscount == null || ( theBiggestDiscount.getPercent() < discounts.get(i).getPercent()
-            && theBiggestDiscount.getFromDate().getTime() < now.getTime() && now.getTime() < theBiggestDiscount.getToDate().getTime() ));
-                theBiggestDiscount = discounts.get(i);
-        }
-        if (theBiggestDiscount != null){
-            product.setPrice(product.getPrice() * (1-theBiggestDiscount.getPercent()) );
-        }
-        return product;
+        return getDiscountedProduct(product);
     }
 
     @Override
@@ -109,6 +95,27 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> fetchAllProducts() {
         List<Product> products = productRepository.findAllProductsWithGalleryAndFetchGallery();
         products.addAll(productRepository.findAllProductsWithoutGallery());
+        for (int i = 0; i < products.size(); i++) {
+            products.set(i, getDiscountedProduct(products.get(i)));
+        }
         return products;
+    }
+
+    private Product getDiscountedProduct(Product product) {
+        // take category of product
+        Long categoryId = product.getCategory().getCategoryId();
+        List<Discount> discounts = categoryService.findById(categoryId).getDiscounts();
+        // count the biggest discount which product has
+        Discount theBiggestDiscount = null;
+        Date now = new Date(System.currentTimeMillis()); // if date includes now
+        for (int i = 0; i < discounts.size(); i++) {
+            if (theBiggestDiscount == null || ( theBiggestDiscount.getPercent() < discounts.get(i).getPercent()
+                    && theBiggestDiscount.getFromDate().getTime() < now.getTime() && now.getTime() < theBiggestDiscount.getToDate().getTime() ));
+            theBiggestDiscount = discounts.get(i);
+        }
+        if (theBiggestDiscount != null){
+            product.setPrice(product.getPrice() * (1-theBiggestDiscount.getPercent()) );
+        }
+        return product;
     }
 }
