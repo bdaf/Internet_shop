@@ -41,6 +41,7 @@ const AddEmployee = (props) => {
             role: "WORKER"
         }
         await axios.post("http://localhost:8888/worker/registration", newEmployee).then((response) => {
+            props.onChange((prev) => !prev)
             if (response.status === 200)
                 setFeedback(
                     <Alert variant="success">
@@ -54,7 +55,7 @@ const AddEmployee = (props) => {
                         Nie udało się stworzyć konta dla pracownika {newEmployee.name}!
                     </Alert>
                 )
-        }).catch((e) => {
+        }).catch(() => {
             setFeedback(
                 <Alert variant="danger">
                     Nie udało się stworzyć konta dla pracownika {newEmployee.name}!
