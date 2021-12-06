@@ -45,7 +45,7 @@ const Navbars = (props) => {
                         navbarScroll
                     >
                         <Nav.Link href="/">Strona główna</Nav.Link>
-                        {authCtx.role === "WORKER" && <Nav.Link href="/panel">Panel</Nav.Link>}
+                        {(authCtx.role === "WORKER" || authCtx.role === "ADMIN") && <Nav.Link href="/panel">Panel</Nav.Link>}
                         <Nav.Link href="/about">
                             O nas
                         </Nav.Link>
