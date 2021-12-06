@@ -12,23 +12,23 @@ import java.util.Objects;
 import static pl.internet_shop.entity.Category.OTHER;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
     @Override
-    public Category saveCategoryOfProduct(Product aProduct){
+    public Category saveCategoryOfProduct(Product aProduct) {
         String nameOfCategory = OTHER;
 
         // checking if category is added, if not, we add it default "OTHER"
-        if(aProduct.getCategory() != null){
+        if (aProduct.getCategory() != null) {
             nameOfCategory = aProduct.getCategory().getName();
         }
 
         // add category to DB if another with the same name isn't there
         Category category = categoryRepository.findCategoryByName(nameOfCategory);
-        if(category == null){
+        if (category == null) {
             category = Category.builder().name(nameOfCategory).build();
         }
 
@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
 
-    public Category findCategoryByName(String aName){
+    public Category findCategoryByName(String aName) {
         return categoryRepository.findCategoryByName(aName);
     }
 
@@ -47,8 +47,13 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Category saveCategory(Category aCategory) {
-        categoryRepository.save(aCategory);
-        return aCategory;
+        Category categoryFoundByName = categoryRepository.findCategoryByName(aCategory.getName());
+
+        // if categories differ from that one from DB, save it to DB
+        if (categoryFoundByName == null)
+            return categoryRepository.save(aCategory);
+
+        return categoryFoundByName;
     }
 
     // throws exception if category is linked to some product
@@ -63,7 +68,7 @@ public class CategoryServiceImpl implements CategoryService{
     public Category updateCategoryById(Category aCategory, Long aCategoryId) {
         Category resultCategory = categoryRepository.findById(aCategoryId).get();
 
-        if(Objects.nonNull(aCategory.getName()) && !aCategory.getName().equalsIgnoreCase("")){
+        if (Objects.nonNull(aCategory.getName()) && !aCategory.getName().equalsIgnoreCase("")) {
             resultCategory.setName(aCategory.getName());
         }
 

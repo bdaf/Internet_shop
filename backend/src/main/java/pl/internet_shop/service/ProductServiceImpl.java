@@ -59,12 +59,6 @@ public class ProductServiceImpl implements  ProductService {
             resultProduct.setPrice(aProduct.getPrice());
         if(Objects.nonNull(aProduct.getAmount()) && aProduct.getAmount() != 0)
             resultProduct.setAmount(aProduct.getAmount());
-        // TODO make category and producer updatable
-        // code below doesn't work yet
-//        if(Objects.nonNull(aProduct.getProducer()) && !aProduct.getProducer().getNip().equalsIgnoreCase(resultProduct.getProducer().getNip()))
-//            resultProduct.setProducer(aProduct.getProducer());
-//        if(Objects.nonNull(aProduct.getCategory()) && !aProduct.getCategory().getName().equalsIgnoreCase(resultProduct.getCategory().getName()))
-//            resultProduct.setCategory(aProduct.getCategory());
 
         return productRepository.save(resultProduct);
     }
@@ -75,6 +69,8 @@ public class ProductServiceImpl implements  ProductService {
         if(product == null){
             product = productRepository.findById(aProductId).get();
         }
+        // count the biggest discount which product has
+
         return product;
     }
 

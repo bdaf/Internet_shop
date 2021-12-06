@@ -23,7 +23,7 @@ public class Category {
     @Column(name = "category_id", nullable = false)
     private Long categoryId;
 
-    @Column(name = "name", length = 63)
+    @Column(name = "name", length = 63, unique = true)
     private String name = OTHER;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

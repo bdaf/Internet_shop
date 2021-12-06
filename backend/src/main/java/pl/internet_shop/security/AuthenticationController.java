@@ -50,7 +50,6 @@ public class AuthenticationController {
         response.setToken(jwtToken);
         response.setUser(user.getUser());
 
-
         return ResponseEntity.ok(response);
     }
 }

@@ -21,8 +21,8 @@ public class CategoryController {
     }
 
     @PostMapping("/api/categories/save")
-    public void saveCategory(@RequestBody Category aCategory){
-        categoryService.saveCategory(aCategory);
+    public Category saveCategory(@RequestBody Category aCategory){
+        return categoryService.saveCategory(aCategory);
     }
 
     @DeleteMapping("/api/categories/{id}")
