@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import AddCategory from "./components/Category/AddCategory";
 import DeleteCategory from "./components/Category/DeleteCategory";
 import EditCategory from "./components/Category/EditCategory";
+import AddEmployee from "./components/Employee/AddEmployee";
 import Orders from "./components/Orders/Orders";
 import AddProducer from "./components/Producer/AddProducer";
 import DeleteProducer from "./components/Producer/DeletePoducer";
@@ -108,7 +109,7 @@ const EmployeePanel = () => {
                                 <Tab.Pane eventKey="employee">
                                     <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
                                         <Tab eventKey="add" title="Dodaj pracownika">
-                                            sdasd
+                                            <AddEmployee onChange={setUpdateData} />
                                         </Tab>
                                         <Tab eventKey="delate" title="Usuń pracownika" >
                                             fadfdsfdsgwethwtegefadfdsfdsgwethwtegefadfdsfdsgwethwtege
