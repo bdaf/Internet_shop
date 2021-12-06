@@ -7,12 +7,14 @@ import account from './person-circle.svg'
 import logout from './box-arrow-left.svg'
 import AuthContext from '../../store/auth-context';
 
+import styles from './Navbar.module.css'
+
 const Navbars = (props) => {
     const authCtx = useContext(AuthContext)
-    
-    let productList=[]
-    if(localStorage.cartList){
-    productList = JSON.parse(localStorage.cartList);
+
+    let productList = []
+    if (localStorage.cartList) {
+        productList = JSON.parse(localStorage.cartList);
     }
 
     const [term, setTerm] = useState('')
@@ -38,7 +40,7 @@ const Navbars = (props) => {
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="/">NUIT</Navbar.Brand>
+                <Navbar.Brand>NUIT</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -46,16 +48,16 @@ const Navbars = (props) => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="/">Strona główna</Nav.Link>
+                        <Nav.Link><NavLink className={({ isActive }) => (isActive ? `${styles.menuItemActive}` : `${styles.menuItem}`)} to="/"> Strona główna</NavLink></Nav.Link>
                         {(authCtx.role === "WORKER" || authCtx.role === "ADMIN") && <Nav.Link href="/panel">Panel</Nav.Link>}
-                        <Nav.Link href="/about">
-                            O nas
+                        <Nav.Link>
+                            <NavLink className={({ isActive }) => (isActive ? `${styles.menuItemActive}` : `${styles.menuItem}`)} to="/about"> O nas </NavLink>
                         </Nav.Link>
-                        <Nav.Link href="/contact">
-                            Kontakt
+                        <Nav.Link>
+                            <NavLink className={({ isActive }) => (isActive ? `${styles.menuItemActive}` : `${styles.menuItem}`)} to="/contact">Kontakt</NavLink>
                         </Nav.Link>
-                        <Nav.Link href="/faq">
-                            FAQ
+                        <Nav.Link>
+                        <NavLink className={({ isActive }) => (isActive ? `${styles.menuItemActive}` : `${styles.menuItem}`)} to="/faq">FAQ</NavLink>
                         </Nav.Link>
                     </Nav>
                     {props.search ? (<>
