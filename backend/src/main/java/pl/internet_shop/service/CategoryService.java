@@ -7,13 +7,15 @@ import java.util.List;
 
 public interface CategoryService {
 
-    Category saveCategoryOfProduct(Product aProduct);
+    Category saveCategory(Category aCategory);
+
+    Category addCategoryOfProduct(Product aProduct);
 
     Category findCategoryByName(String aName);
 
     List<Category> fetchAllCategories();
 
-    Category saveCategory(Category aCategory);
+    Category addCategory(Category aCategory);
 
     void deleteCategoryById(Long aCategoryId);
 

@@ -18,7 +18,12 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public Category saveCategoryOfProduct(Product aProduct) {
+    public Category saveCategory(Category aCategory) {
+        return categoryRepository.save(aCategory);
+    }
+
+    @Override
+    public Category addCategoryOfProduct(Product aProduct) {
         String nameOfCategory = OTHER;
 
         // checking if category is added, if not, we add it default "OTHER"
@@ -32,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
             category = Category.builder().name(nameOfCategory).build();
         }
 
-        return categoryRepository.save(category);
+        return addCategory(category);
     }
 
 
@@ -45,8 +50,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findAll();
     }
 
+
     @Override
-    public Category saveCategory(Category aCategory) {
+    public Category addCategory(Category aCategory) {
         Category categoryFoundByName = categoryRepository.findCategoryByName(aCategory.getName());
 
         // if categories differ from that one from DB, save it to DB

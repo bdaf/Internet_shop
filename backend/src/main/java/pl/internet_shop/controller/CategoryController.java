@@ -3,7 +3,6 @@ package pl.internet_shop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.internet_shop.entity.Category;
-import pl.internet_shop.entity.Product;
 import pl.internet_shop.service.CategoryService;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class CategoryController {
 
     @PostMapping("/api/categories/save")
     public Category saveCategory(@RequestBody Category aCategory){
-        return categoryService.saveCategory(aCategory);
+        return categoryService.addCategory(aCategory);
     }
 
     @DeleteMapping("/api/categories/{id}")

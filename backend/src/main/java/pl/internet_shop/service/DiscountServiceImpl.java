@@ -28,7 +28,9 @@ public class DiscountServiceImpl implements DiscountService{
 
         if(aDiscount.getPercent() >= 1) aDiscount.setPercent(0.99F);
         if(aDiscount.getPercent() <= 0) aDiscount.setPercent(0.01F);
-        categoryToAddDiscountIn.addDiscount(aDiscount);
+
+        categoryToAddDiscountIn.addDiscount(discountRepository.save(aDiscount));
+
         return categoryService.saveCategory(categoryToAddDiscountIn);
     }
 
