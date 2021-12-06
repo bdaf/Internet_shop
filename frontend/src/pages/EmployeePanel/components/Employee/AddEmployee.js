@@ -20,6 +20,10 @@ const AddEmployee = (props) => {
 
     const [feedback, setFeedback] = useState(null)
 
+    const hideFeedback = () => {
+        setFeedback(null)
+    }
+
     const submitHandler = async (event) => {
         event.preventDefault();
 
@@ -73,6 +77,8 @@ const AddEmployee = (props) => {
         setStreet('')
         setHouseNumber('')
         setPostCode('')
+
+        setTimeout(hideFeedback, 1000 * 60)
 
     };
 
