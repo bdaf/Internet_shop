@@ -14,6 +14,9 @@ const AddProduct = (props) => {
     const [category, setCategory] = useState('')
     const [producer, setProducer] = useState('')
 
+    const [photo1, setPhoto1] = useState('')
+    const [photo2, setPhoto2] = useState('')
+
     const [optionsCategory, setOptionsCategory] = useState([])
     const [optionsProducer, setOptionsProducer] = useState([])
 
@@ -46,6 +49,14 @@ const AddProduct = (props) => {
 
         setIsError(false)
 
+        let photoSend = []
+
+        if (photo1 != '')
+            photoSend.push({ url: photo1 })
+        if (photo2 != '')
+            photoSend.push({url: photo2})
+
+        console.log(photoSend)
         const newProduct =
         {
             name: name,
@@ -59,6 +70,9 @@ const AddProduct = (props) => {
             producer: {
                 nameOfCompany: producer.label,
                 nip: producer.value
+            },
+            gallery: {
+                photos: photoSend
             }
         }
 
@@ -98,6 +112,18 @@ const AddProduct = (props) => {
                         style={{ height: '100px' }}
                     />
                 </FloatingLabel>
+                <Row className="mb-3">
+                <Form.Group as={Col} xs={12} md={6} controlId="formGridPrice">
+                        <FloatingLabel controlId="floatingPassword" label="URL zdjęcia">
+                            <Form.Control onChange={(e) => setPhoto1(e.target.value)} type="text" placeholder="URL zdjęcia" />
+                        </FloatingLabel>
+                    </Form.Group>
+                    <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
+                        <FloatingLabel controlId="floatingAmount" label="URL zdjęcia">
+                            <Form.Control onChange={(e) => setPhoto2(e.target.value)} type="text" placeholder="URL zdjęcia" />
+                        </FloatingLabel>
+                    </Form.Group>
+                </Row>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridPrice">
                         <FloatingLabel controlId="floatingPassword" label="Cena">
