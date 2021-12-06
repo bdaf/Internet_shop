@@ -5,13 +5,15 @@ import cart from './cart4.svg'
 import login from './box-arrow-in-right.svg'
 import account from './person-circle.svg'
 import logout from './box-arrow-left.svg'
-import { useCart } from "../../components/Cart";
 import AuthContext from '../../store/auth-context';
 
 const Navbars = (props) => {
     const authCtx = useContext(AuthContext)
-
-    const items = useCart();
+    
+    let productList=[]
+    if(localStorage.cartList){
+    productList = JSON.parse(localStorage.cartList);
+    }
 
     const [term, setTerm] = useState('')
 
@@ -74,7 +76,7 @@ const Navbars = (props) => {
 
                     <div className="ms-3">
                         <Link to="/cart"><img src={cart} alt="cart" /></Link>
-                        ({items.length})
+                        ({productList.length})
                     </div>
 
                     {!authCtx.isLoggedIn && <>

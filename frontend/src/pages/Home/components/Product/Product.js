@@ -3,14 +3,21 @@ import { useNavigate } from 'react-router';
 import monitor from './Monitor.jpg'
 
 import styles from './Product.module.css'
-import { useDispatchCart } from "../../../../components/Cart";
+
+
+
 
 const Product = (props) => {
-
-  const dispatch = useDispatchCart();
-
   const addToCart = (item) => {
-    dispatch({ type: "ADD", item });
+      let productList=[]
+      if(localStorage.cartList){
+      productList = JSON.parse(localStorage.cartList);
+      }
+      Array.from(productList)
+      console.log(productList);
+      productList.push(item);
+      localStorage.cartList = JSON.stringify(productList);
+      window.location.href='/'
   };
     const navigate = useNavigate();
 

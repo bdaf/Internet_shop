@@ -1,38 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="611446e0-1210-4d43-8b9d-6557946df54e" name="Changes" comment="" />
+    <list default="true" id="5277f509-4a8b-47b2-bf5b-6ea50d2109f6" name="Changes" comment="cart styled">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Cart/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/components/Product/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home/components/Product/Product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProductDetails/ProductDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProductDetails/ProductDetails.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="ProjectId" id="21Q3FFYNlpQzBh4nlpSMijvZYd6" />
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="21YyzW3kpHcklxvXUi0I7IriFQ2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InternetShopApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="internet_shop" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="pl.internet_shop.InternetShopApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="611446e0-1210-4d43-8b9d-6557946df54e" name="Changes" comment="" />
-      <created>1637859395563</created>
+      <changelist id="5277f509-4a8b-47b2-bf5b-6ea50d2109f6" name="Changes" comment="" />
+      <created>1638132585604</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1637859395563</updated>
-      <workItem from="1637859401509" duration="222000" />
+      <updated>1638132585604</updated>
+      <workItem from="1638132586934" duration="926000" />
+      <workItem from="1638216051840" duration="822000" />
+      <workItem from="1638217195005" duration="5000" />
+      <workItem from="1638217214877" duration="78000" />
+      <workItem from="1638217308423" duration="6017000" />
+      <workItem from="1638469611557" duration="3793000" />
+      <workItem from="1638744640300" duration="991000" />
+      <workItem from="1638756447942" duration="1842000" />
     </task>
+    <task id="LOCAL-00001" summary="add contact and about us pages">
+      <created>1638217366472</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1638217366472</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add footer">
+      <created>1638219750633</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1638219750633</updated>
+    </task>
+    <task id="LOCAL-00003" summary="about us page finished">
+      <created>1638222018109</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1638222018109</updated>
+    </task>
+    <task id="LOCAL-00004" summary="contact page finished">
+      <created>1638225022966</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1638225022966</updated>
+    </task>
+    <task id="LOCAL-00005" summary="contact page finished">
+      <created>1638225318631</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1638225318631</updated>
+    </task>
+    <task id="LOCAL-00006" summary="navbar improvements">
+      <created>1638225530979</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1638225530979</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add cart">
+      <created>1638233444598</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1638233444598</updated>
+    </task>
+    <task id="LOCAL-00008" summary="cart styled">
+      <created>1638472970216</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1638472970216</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add contact and about us pages" />
+    <MESSAGE value="add footer" />
+    <MESSAGE value="about us page finished" />
+    <MESSAGE value="contact page finished" />
+    <MESSAGE value="navbar improvements" />
+    <MESSAGE value="add cart" />
+    <MESSAGE value="cart styled" />
+    <option name="LAST_COMMIT_MESSAGE" value="cart styled" />
   </component>
 </project>

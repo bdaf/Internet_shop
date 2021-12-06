@@ -1,5 +1,4 @@
 import React from "react";
-import { useCart, useDispatchCart } from "../../components/Cart";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
@@ -20,9 +19,6 @@ const CartItem = ({ product, index, handleRemove }) => {
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
-                        <div style={{width: '50px'}}>
-                          <h5 class="fw-normal mb-0">2</h5>
-                        </div>
                         <div style={{width: '80px'}}>
                           <h5 class="mb-0">{product.price} PLN</h5>
                         </div>
@@ -36,12 +32,17 @@ const CartItem = ({ product, index, handleRemove }) => {
 };
 
 export default function Store() {
-  const items = useCart();
-  const dispatch = useDispatchCart();
-  const totalPrice = items.reduce((total, b) => total + b.price, 0);
+  let productList=[]
+  if(localStorage.cartList){
+  productList = JSON.parse(localStorage.cartList);
+  }
+  const totalPrice = productList.reduce((total, b) => total + b.price, 0);
+  
 
   const handleRemove = (index) => {
-    dispatch({ type: "REMOVE", index });
+    productList.splice(index, 1);
+    localStorage.cartList = JSON.stringify(productList);
+    window.location.href='/cart'
   };
 
     return (
@@ -66,11 +67,11 @@ export default function Store() {
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
                     <p class="mb-1">Koszyk</p>
-                    <p class="mb-0">Masz {items.length} przedmiotów w koszyku</p>
+                    <p class="mb-0">Masz {productList.length} przedmiotów w koszyku</p>
                   </div>
                 </div>
 
-                {items.map((item, index) => (
+                {productList.map((item, index) => (
 
 
 <CartItem

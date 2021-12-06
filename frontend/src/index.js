@@ -5,18 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CartProvider } from "./components/Cart"
 import { AuthContextProvider } from './store/auth-context';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <CartProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </CartProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
