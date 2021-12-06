@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "IS_category")
 public class Category {
-    public static final String OTHER = "Other";
+    public static final String OTHER = "Inny";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_sequence")
     @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
