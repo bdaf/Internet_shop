@@ -31,7 +31,7 @@ const AddSales = (props) => {
 
         const newDiscount =
         {
-            percent: discount,
+            percent: discount / 100,
             fromDate: start,
             toDate: end
         }
