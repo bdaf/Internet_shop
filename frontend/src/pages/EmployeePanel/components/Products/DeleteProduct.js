@@ -76,6 +76,7 @@ const DeleteProduct = (props) => {
                 name={product.name}
                 price={product.price}
                 description={product.description.substr(0, 90)}
+                gallery={product.gallery.photos}
                 panel={true}
                 action="Usuń"
                 onId={setEditProductId}
