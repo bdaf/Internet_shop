@@ -1,0 +1,10 @@
+.bodyContainer {
+    margin: 0;
+    padding: 0;
+    font-family: 'Hind', sans-serif;
+    min-height: 100vh;
+  }
+
+  .mar {
+    margin-top: 80px;
+  }

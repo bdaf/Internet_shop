@@ -8,6 +8,7 @@ import logout from './box-arrow-left.svg'
 import AuthContext from '../../store/auth-context';
 
 import styles from './Navbar.module.css'
+import UserProfile from '../UserProfile/UserProfile';
 
 const Navbars = (props) => {
     const authCtx = useContext(AuthContext)
@@ -17,12 +18,8 @@ const Navbars = (props) => {
         productList = JSON.parse(localStorage.cartList);
     }
 
-    const logoutHandler = () => {
-        authCtx.logout()
-    }
-
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar sticky="top" bg="light" expand="lg">
             <Container fluid>
                 <Navbar.Brand> <h2>NU<span style={{ color: "red" }} >IT</span></h2></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
@@ -73,12 +70,9 @@ const Navbars = (props) => {
                         </div>
                     </>}
                     {authCtx.isLoggedIn && <>
-                        <div className="ms-3">
-                            <img src={account} alt="account" />
-                        </div>
-
-                        <div className="ms-3">
-                            <img onClick={() => logoutHandler()} src={logout} alt="logout" />
+                        <div className="ms-3">{authCtx.user.name} </div>
+                        <div className="ms-2">
+                            <UserProfile />
                         </div>
                     </>}
                 </Navbar.Collapse>
