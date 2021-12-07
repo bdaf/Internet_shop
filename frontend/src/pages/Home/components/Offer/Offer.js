@@ -7,22 +7,20 @@ const Offer = () => {
     return (
         <div  className="d-flex justify-content-md-center">
 
-            <Carousel className="w-50 h-50s" variant="dark">
-                <Carousel.Item interval={1000}>
+            <Carousel className="" variant="dark">
+                <Carousel.Item interval={3000}>
                     <img
+                        height="300px"
                         className="d-block w-100"
-                        src={test}
+                        src="https://cdn.x-kom.pl/i/img/banners/normal,,x-mas-top_1638345490.jpg?filters=trim"
                         alt="First slide"
                     />
-                    <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item interval={500}>
+                <Carousel.Item interval={3000}>
                     <img
+                        height="300px"
                         className="d-block w-100"
-                        src={test}
+                        src="https://cdn.x-kom.pl/i/img/banners/normal,,pierwiastek-x-promocja_1638803183.jpg?filters=trim"
                         alt="Second slide"
                     />
                     <Carousel.Caption>
@@ -32,14 +30,11 @@ const Offer = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
+                        height="300px"
                         className="d-block w-100"
-                        src={test}
+                        src="https://cdn.x-kom.pl/i/img/banners/normal,,windows11-huawei-matebook_1638795709.jpg?filters=trim"
                         alt="Third slide"
                     />
-                    <Carousel.Caption>
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
         </div>
