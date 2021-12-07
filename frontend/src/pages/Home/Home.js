@@ -70,34 +70,34 @@ const Home = () => {
     )
 
     return (
-        <div>
-            <Navbar search={true} name={name} onSetName={setName}/>
-            <div className="">
+        <>
+            <Navbar search={true} name={name} onSetName={setName} />
+            <div className={styles.bodyContainer}>
                 <Offer />
-            </div>
-            <div className="m-4">
-                <Row>
-                    <Col xs={11}><h1>Produkty</h1></Col>
-                    <Col className="d-flex justify-content-end" xs={1}>
-                        <i onClick={() => setIsFiler((prev) => !prev)} className={`bi bi-filter ${isFiler ? styles.filterActive : styles.filter}`}></i>
-                    </Col>
-                </Row>
-                <hr />
-                {isFiler &&
-                    <Filter
-                        name={name}
-                        fromPrice={fromPrice}
-                        toPrice={toPrice}
-                        onSetName={setName}
-                        onSetFromPirice={setFromPrice}
-                        onSetToPirice={setToPrice}
-                    />}
-                <Row className="justify-content-md-center">
-                    {contextProduct}
-                </Row>
+                <div className="m-4">
+                    <Row>
+                        <Col xs={11}><h1>Produkty</h1></Col>
+                        <Col className="d-flex justify-content-end" xs={1}>
+                            <i onClick={() => setIsFiler((prev) => !prev)} className={`bi bi-filter ${isFiler ? styles.filterActive : styles.filter}`}></i>
+                        </Col>
+                    </Row>
+                    <hr />
+                    {isFiler &&
+                        <Filter
+                            name={name}
+                            fromPrice={fromPrice}
+                            toPrice={toPrice}
+                            onSetName={setName}
+                            onSetFromPirice={setFromPrice}
+                            onSetToPirice={setToPrice}
+                        />}
+                    <Row className="justify-content-md-center">
+                        {contextProduct}
+                    </Row>
+                </div>
             </div>
             <Footer />
-        </div>
+        </>
     );
 }
 
