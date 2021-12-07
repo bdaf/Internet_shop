@@ -16,6 +16,7 @@ import DeleteProduct from "./components/Products/DeleteProduct";
 import EditProduct from "./components/Products/EditProduct";
 import AddSales from "./components/Sales/AddSales";
 import DeleteSales from "./components/Sales/DeleteSales";
+import Users from "./components/User/Users";
 
 import styles from './EmployeePanel.module.css'
 
@@ -118,7 +119,7 @@ const EmployeePanel = () => {
                                         </Tabs>
                                     </Tab.Pane>
                                     <Tab.Pane eventKey="client">
-                                        asdasdasds\
+                                        <Users change={updateData} onChange={setUpdateData}/>
                                     </Tab.Pane>
                                 </Tab.Content>
                             </Col>
