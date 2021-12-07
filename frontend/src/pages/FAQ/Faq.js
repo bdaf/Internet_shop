@@ -12,7 +12,7 @@ const Faq = () => {
     return (
         <>
             <Navbar />
-            <div className={styles.bodyContainer}>
+            <div className={`${styles.mar} ${styles.bodyContainer}`}>
                 <div className={styles.container}>
                     <h2>Często Zadawane Pytania</h2>
                     <div className={styles.accordion}>

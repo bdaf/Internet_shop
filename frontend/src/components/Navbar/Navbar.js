@@ -23,7 +23,7 @@ const Navbars = (props) => {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar fixed="top" bg="light" expand="lg">
             <Container fluid>
                 <Navbar.Brand> <h2>NU<span style={{ color: "red" }} >IT</span></h2></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />

@@ -23,7 +23,7 @@ const EmployeePanel = () => {
     return (
         <>
             <Navbar />
-            <div className={styles.bodyContainer}>
+            <div className={`${styles.mar} ${styles.bodyContainer}`}>
                 <div className="m-4">
                     <Tab.Container id="left-tabs-example" defaultActiveKey="product">
                         <Row>
