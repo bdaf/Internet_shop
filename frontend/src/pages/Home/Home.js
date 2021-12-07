@@ -34,9 +34,13 @@ const Home = () => {
 
     const actProduct = () => {
         let newActualyProduct = allProducts;
+        if (fromPrice) {
+            newActualyProduct = [...newActualyProduct]
+                .filter(product => product.price >= (+fromPrice))
+        }
         if (fromPrice || toPrice) {
             newActualyProduct = [...newActualyProduct]
-                .filter(product => (product.price >= (fromPrice ? (+fromPrice) : 0)) && (product.price <= (toPrice ? (+toPrice) : 100000000000000)))
+                .filter(product => product.price <= (+toPrice))
         }
         if (name) {
             newActualyProduct = [...newActualyProduct]
