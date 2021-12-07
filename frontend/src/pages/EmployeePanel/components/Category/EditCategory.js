@@ -72,7 +72,7 @@ const EditCategory = (props) => {
             <Form onSubmit={(e) => updateCategoryHandler(e)}>
             <Row className="mb-3">
                     <Col xs={6} md={6}>
-                        <Select onChange={(e) => setCategoryHandler(e)} options={optionsCategory} placeholder="Producent" />
+                        <Select onChange={(e) => setCategoryHandler(e)} options={optionsCategory} placeholder="Kategoria" />
                     </Col>
                 </Row>
                 {category ? (<>
