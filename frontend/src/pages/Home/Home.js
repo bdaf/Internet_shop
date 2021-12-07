@@ -34,18 +34,20 @@ const Home = () => {
 
     const actProduct = () => {
         let newActualyProduct = allProducts;
-        if (fromPrice) {
-            newActualyProduct = [...newActualyProduct]
-                .filter(product => product.price >= (+fromPrice))
-        }
-        if (fromPrice || toPrice) {
-            newActualyProduct = [...newActualyProduct]
-                .filter(product => product.price <= (+toPrice))
-        }
-        if (name.trim()) {
-            newActualyProduct = [...newActualyProduct]
-                .filter(product => product.name.toLowerCase()
-                    .includes(name.trim().toLowerCase()))
+        if (newActualyProduct) {
+            if (fromPrice) {
+                newActualyProduct = [...newActualyProduct]
+                    .filter(product => product.price >= (+fromPrice))
+            }
+            if (fromPrice || toPrice) {
+                newActualyProduct = [...newActualyProduct]
+                    .filter(product => product.price <= (+toPrice))
+            }
+            if (name.trim()) {
+                newActualyProduct = [...newActualyProduct]
+                    .filter(product => product.name.toLowerCase()
+                        .includes(name.trim().toLowerCase()))
+            }
         }
         return newActualyProduct
     }
