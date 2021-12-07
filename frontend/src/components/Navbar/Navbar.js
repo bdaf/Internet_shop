@@ -18,12 +18,8 @@ const Navbars = (props) => {
         productList = JSON.parse(localStorage.cartList);
     }
 
-    const logoutHandler = () => {
-        authCtx.logout()
-    }
-
     return (
-        <Navbar fixed="top" bg="light" expand="lg">
+        <Navbar sticky="top" bg="light" expand="lg">
             <Container fluid>
                 <Navbar.Brand> <h2>NU<span style={{ color: "red" }} >IT</span></h2></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />

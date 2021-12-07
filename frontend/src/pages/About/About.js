@@ -8,7 +8,7 @@ function About() {
     return (
         <>
             <Navbar />
-            <div className={`${styles.mar} ${styles.bodyContainer}`}>
+            <div className={`${styles.bodyContainer}`}>
                 <Row className="m-3">
                     <h1 className="text-center mb-4" >O firmie</h1>
                     <div className="ps-5 pe-5">

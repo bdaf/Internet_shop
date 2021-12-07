@@ -72,7 +72,7 @@ const Home = () => {
     return (
         <>
             <Navbar search={true} name={name} onSetName={setName} />
-            <div className={`mt-5 ${styles.bodyContainer}`}>
+            <div className={`${styles.bodyContainer}`}>
                 <Offer />
                 <div className="m-4">
                     <Row>
