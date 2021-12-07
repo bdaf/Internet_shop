@@ -3,6 +3,7 @@ import { Row, Col, Stack, Form, FloatingLabel, Button, Alert, CloseButton } from
 import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
+import LoadingIcon from '../../../../components/LoadingIcon/LoadingIcon';
 
 const DeleteProduct = (props) => {
     const [products, setProducts] = useState(null)
@@ -68,7 +69,7 @@ const DeleteProduct = (props) => {
         })
     }
 
-    const contextProduct = !loading ? <p>loading...</p> : products.map((product) =>
+    const contextProduct = !loading ? <LoadingIcon /> : products.map((product) =>
         <Col md="auto">
             <Product
                 key={product.productId}
@@ -84,7 +85,7 @@ const DeleteProduct = (props) => {
         </Col>
     )
 
-    const contextEditProduct = !editProduct ? <p>loading...</p> : (
+    const contextEditProduct = !editProduct ? <LoadingIcon /> : (
         <Row>
             {feedback}
             <Col xs={12} md={5}>

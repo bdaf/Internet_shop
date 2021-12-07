@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Order from "./Order";
 import OrderDetails from "./OrderDetails";
+import LoadingIcon from "../../../../components/LoadingIcon/LoadingIcon";
 
 const Orders = (props) => {
     const [orders, setOrders] = useState(null)
@@ -54,7 +55,7 @@ const Orders = (props) => {
                 </Col>
             )}
         </Row>
-    ) : null
+    ) : <LoadingIcon />
 
     return (<div className="m-3">
         <Row>
