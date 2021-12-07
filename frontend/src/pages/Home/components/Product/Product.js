@@ -1,6 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
-import monitor from './Monitor.jpg'
+import absencePhoto from './absencePhoto.svg'
 
 import styles from './Product.module.css'
 
@@ -30,7 +30,7 @@ const Product = (props) => {
 
     return (
         <Card className={`${styles.product} mt-3 mb-3`} style={{ width: '18rem' }}>
-            <Card.Img onClick={showDetailsHandler} variant="top" src={monitor} />
+            <Card.Img onClick={showDetailsHandler} style={{ height: '18rem' }} variant="top" src={props.gallery.length > 0 ? props.gallery[0].url : absencePhoto} />
             <Card.Body>
                 <Card.Title onClick={showDetailsHandler}>{props.name}</Card.Title>
                 <Card.Text onClick={showDetailsHandler}>

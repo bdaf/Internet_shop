@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, CloseButton } from "react-bootstrap";
 import axios from "axios";
 
 import Order from "./Order";
@@ -28,9 +28,9 @@ const Orders = (props) => {
 
 
     useEffect(() => {
-        if(editOrdeId)
+        if (editOrdeId)
             fetchOrder()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editOrdeId])
 
     const countPrice = (products) => {
@@ -57,7 +57,14 @@ const Orders = (props) => {
     ) : null
 
     return (<div className="m-3">
-        <h4>{editOrder ? "Zamówienie" : "Zamówienia"}</h4>
+        <Row>
+            <Col xs={10}>
+                <h4>{editOrder ? "Zamówienie" : "Zamówienia"}</h4>
+            </Col>
+            <Col xs={1} className="d-flex justify-content-md-end" >
+                {editOrder && <CloseButton onClick={() => setEditOrder(null)} />}
+            </Col>
+        </Row>
         <hr />
         {editOrder ? <OrderDetails onChange={props.onChange} order={editOrder} /> : contextOrders}
     </div>);

@@ -1,0 +1,17 @@
+.menuItem {
+    list-style-type: none;
+    color:rgb(49, 49, 49);
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.menuItem:hover {
+    color:rgb(196, 39, 39);
+}
+
+.menuItemActive {
+    list-style-type: none;
+    text-decoration: none;
+    color:rgb(44, 108, 192);
+    margin-right: 8px;
+}

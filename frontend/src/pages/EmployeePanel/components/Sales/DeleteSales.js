@@ -6,6 +6,7 @@ import Sale from "./Sale";
 
 const DeleteSales = (props) => {
     const [category, setCategory] = useState('')
+    const [discounts, setDiscounts] = useState('')
 
     const [optionsCategory, setOptionsCategory] = useState([])
     const [feedback, setFeedback] = useState(null)
@@ -31,12 +32,16 @@ const DeleteSales = (props) => {
     const deleteSale = async (id) => {
         await axios.delete(`http://localhost:8888/api/discounts/${id}`).then((response) => {
             props.onChange((prevState) => !prevState)
-            if (response.status === 200)
+            if (response.status === 200) {
                 setFeedback(
                     <Alert variant="success">
                         Przecena z {id} została usunięta!
                     </Alert>
                 )
+
+                const actDiscounts = discounts.filter(discount => discount.discountId !== id)
+                setDiscounts(actDiscounts)
+            }
             else
                 setFeedback(
                     <Alert variant="danger">
@@ -53,23 +58,28 @@ const DeleteSales = (props) => {
         })
     }
 
+    const setChangeCategoryHandler = (e) => {
+        setCategory(e.category)
+        setDiscounts(e.category.discounts)
+    }
+
     return (
         <div className="m-3">
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
-                        <Select onChange={(e) => setCategory(e.category)} options={optionsCategory} placeholder="Kategoria" />
+                        <Select onChange={(e) => setChangeCategoryHandler(e)} options={optionsCategory} placeholder="Kategoria" />
                     </Form.Group>
                 </Row>
-                {category ? (
+                {discounts ? (
                     <Row>
                     <h4>Przeceny na kategorie {category.name}</h4>
                     <hr />
                     {feedback}
-                        {category.discounts.map((discount) =>
+                        {discounts.map((discount) =>
                             <Col xs="auto" key={discount.discountId}>
                                 <Sale
                                     id={discount.discountId}
-                                    discount={discount.percent}
+                                    discount={discount.percent * 100}
                                     start={discount.fromDate}
                                     end={discount.toDate}
                                     onDelete={deleteSale}

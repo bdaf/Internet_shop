@@ -42,6 +42,7 @@ const Home = () => {
                 name={product.name}
                 price={product.price}
                 description={product.description.substr(0, 90)}
+                gallery={product.gallery.photos}
             />
         </Col>
     )

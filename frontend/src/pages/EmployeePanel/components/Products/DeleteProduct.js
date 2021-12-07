@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Stack, Form, FloatingLabel, Button, Alert } from 'react-bootstrap';
+import { Row, Col, Stack, Form, FloatingLabel, Button, Alert, CloseButton } from 'react-bootstrap';
 import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
@@ -76,6 +76,7 @@ const DeleteProduct = (props) => {
                 name={product.name}
                 price={product.price}
                 description={product.description.substr(0, 90)}
+                gallery={product.gallery.photos}
                 panel={true}
                 action="Usuń"
                 onId={setEditProductId}
@@ -92,7 +93,7 @@ const DeleteProduct = (props) => {
             <Col xs={12} md={7}>
                 <Form onSubmit={(e) => deleteProductHandler(e)}>
                     <FloatingLabel className="mb-3" controlId="floatingPassword" label="Nazwa produktu">
-                        <Form.Control onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Nazwa produktu" disabled/>
+                        <Form.Control onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Nazwa produktu" disabled />
                     </FloatingLabel>
                     <p>Producent: {editProduct.producer.nameOfCompany}</p>
                     <hr />
@@ -112,7 +113,7 @@ const DeleteProduct = (props) => {
                         <Col xs={12} md={4}>
                             <Stack gap={3}>
                                 <FloatingLabel controlId="floatingPassword" label="Cena">
-                                    <Form.Control onChange={(e) => setPrice(e.target.value)} value={price} type="number" placeholder="Cena" disabled/>
+                                    <Form.Control onChange={(e) => setPrice(e.target.value)} value={price} type="number" placeholder="Cena" disabled />
                                 </FloatingLabel>
                             </Stack>
                         </Col>
@@ -130,7 +131,15 @@ const DeleteProduct = (props) => {
     return (
         <>
             <div className="m-4">
-                <h1 className=" justify-content-md-center">{editProduct ? "Produkt" : "Produkty"}</h1>
+                <Row>
+                    <Col xs={10}>
+                        <h1>{editProduct ? "Produkt" : "Produkty"}</h1>
+                    </Col>
+                    <Col xs={1} className="d-flex justify-content-md-end" >
+                        {editProduct && <CloseButton onClick={() => setEditProduct(null)}/>}
+                    </Col>
+                </Row>
+
                 <hr />
                 <Row className="justify-content-md-center">
                     {editProduct ? contextEditProduct : contextProduct}
