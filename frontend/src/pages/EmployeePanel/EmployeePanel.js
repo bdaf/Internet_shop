@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Col, Row, Tab, Nav, Tabs, FloatingLabel, Form, Button } from "react-bootstrap";
-import Select from 'react-select';
+import { Col, Row, Tab, Nav, Tabs} from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import AddCategory from "./components/Category/AddCategory";

@@ -8,6 +8,7 @@ import logout from './box-arrow-left.svg'
 import AuthContext from '../../store/auth-context';
 
 import styles from './Navbar.module.css'
+import UserProfile from '../UserProfile/UserProfile';
 
 const Navbars = (props) => {
     const authCtx = useContext(AuthContext)
@@ -74,11 +75,7 @@ const Navbars = (props) => {
                     </>}
                     {authCtx.isLoggedIn && <>
                         <div className="ms-3">
-                            <img src={account} alt="account" />
-                        </div>
-
-                        <div className="ms-3">
-                            <img onClick={() => logoutHandler()} src={logout} alt="logout" />
+                            <UserProfile />
                         </div>
                     </>}
                 </Navbar.Collapse>
