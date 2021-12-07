@@ -74,7 +74,8 @@ const Navbars = (props) => {
                         </div>
                     </>}
                     {authCtx.isLoggedIn && <>
-                        <div className="ms-3">
+                        <div className="ms-3">{authCtx.user.name} </div>
+                        <div className="ms-2">
                             <UserProfile />
                         </div>
                     </>}
