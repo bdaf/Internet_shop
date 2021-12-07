@@ -49,6 +49,8 @@ public class User {
 
     private boolean enabled;
 
+    private boolean blocked;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;

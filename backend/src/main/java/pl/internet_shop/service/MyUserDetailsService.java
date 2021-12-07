@@ -10,12 +10,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.internet_shop.entity.Address;
+import pl.internet_shop.entity.Product;
 import pl.internet_shop.entity.User;
 import pl.internet_shop.repository.UserRepository;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -63,6 +65,7 @@ public class MyUserDetailsService implements UserDetailsService {
                .phoneNumber(phoneNumber)
                .address(address)
                .company(null)
+               .blocked(false)
                .build();
         String randomCode = RandomString.make(64);
         user.setVerificationCode(randomCode);
@@ -71,6 +74,24 @@ public class MyUserDetailsService implements UserDetailsService {
         return userRepository.save(user);
 
     }
+
+
+    public void deleteUserById(Long aUserId) {
+        userRepository.deleteById(aUserId);
+    }
+
+    public void blockadeUserById(Long aUserId) {
+        User user = userRepository.findByUserId(aUserId);
+    user.setBlocked(true);
+    userRepository.save(user);}
+
+    public List<User> fetchAllWorkers() {
+        return userRepository.findAllWorkers();
+    }
+    public List<User> fetchAllClients() {
+        return userRepository.findAllClients();
+    }
+
     private void sendVerificationEmail(User user, String siteURL)
             throws MessagingException, UnsupportedEncodingException {
         String toAddress = user.getEmail();
