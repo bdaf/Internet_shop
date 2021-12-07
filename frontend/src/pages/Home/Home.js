@@ -42,10 +42,10 @@ const Home = () => {
             newActualyProduct = [...newActualyProduct]
                 .filter(product => product.price <= (+toPrice))
         }
-        if (name) {
+        if (name.trim()) {
             newActualyProduct = [...newActualyProduct]
                 .filter(product => product.name.toLowerCase()
-                    .includes(name.toLowerCase()))
+                    .includes(name.trim().toLowerCase()))
         }
         return newActualyProduct
     }
@@ -53,17 +53,6 @@ const Home = () => {
     useEffect(() => {
         setFilterProducts(actProduct())
     }, [name, allProducts, fromPrice, toPrice])
-
-    const searchHandler = (term) => {
-        if (!term)
-            fetchProducts()
-        else {
-            // const filterProducts = [...allProducts]
-            //     .filter(product => product.name.toLowerCase()
-            //         .includes(term.toLowerCase()))
-            // setAllProducts(filterProducts);
-        }
-    }
 
     const contextProduct = !loading ? <LoadingIcon /> : filterProducts.map((product) =>
         <Col md="auto">
@@ -80,7 +69,7 @@ const Home = () => {
 
     return (
         <div>
-            <Navbar search={true} onSearch={(term) => searchHandler(term)} />
+            <Navbar search={true} name={name} onSetName={setName}/>
             <div className="">
                 <Offer />
             </div>

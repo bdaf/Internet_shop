@@ -23,6 +23,7 @@ const Filter = (props) => {
                                 type="number"
                                 onChange={(e) => props.onSetFromPirice(e.target.value)}
                                 value={props.fromPrice}
+                                min="0"
                             />
                             <InputGroup.Text id="basic-addon2">PLN</InputGroup.Text>
                         </InputGroup>
@@ -36,6 +37,7 @@ const Filter = (props) => {
                                 type="number"
                                 onChange={(e) => props.onSetToPirice(e.target.value)}
                                 value={props.toPrice}
+                                min="0"
                             />
                             <InputGroup.Text id="basic-addon2">PLN</InputGroup.Text>
                         </InputGroup>

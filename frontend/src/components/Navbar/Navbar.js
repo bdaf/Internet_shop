@@ -17,22 +17,6 @@ const Navbars = (props) => {
         productList = JSON.parse(localStorage.cartList);
     }
 
-    const [term, setTerm] = useState('')
-
-    const searchHandler = () => {
-        props.onSearch(term.trim())
-    }
-
-    const searchKeyHandler = (e) => {
-        e.preventDefault();
-        props.onSearch(term.trim())
-    }
-
-    const searchOnChangeHandler = (e) => {
-        props.onSearch(e.target.value.trim())
-        setTerm(e.target.value)
-    }
-
     const logoutHandler = () => {
         authCtx.logout()
     }
@@ -66,15 +50,14 @@ const Navbars = (props) => {
                     {props.search ? (<>
                         <Form className="d-flex">
                             <FormControl
-                                onKeyDown={e => e.key === 'Enter' && searchKeyHandler(e)}
-                                onChange={e => searchOnChangeHandler(e)}
-                                value={term}
+                                onChange={e => props.onSetName(e.target.value)}
+                                value={props.name}
                                 type="Search"
                                 placeholder="Nazwa produktu"
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <Button onClick={searchHandler} variant="outline-success">Szukaj</Button>
+                            <Button variant="outline-success">Szukaj</Button>
                         </Form>
                         <div className="ms-3 vr" /> </>
                     ) : null}
