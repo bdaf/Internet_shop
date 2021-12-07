@@ -4,8 +4,7 @@ import { Carousel } from 'react-bootstrap';
 const Offer = () => {
     return (
         <div  className="d-flex justify-content-md-center">
-
-            <Carousel className="" variant="dark">
+            <Carousel  variant="dark">
                 <Carousel.Item interval={3000}>
                     <img
                         className="d-block w-100"
@@ -19,10 +18,6 @@ const Offer = () => {
                         src="https://cdn.x-kom.pl/i/img/banners/normal,,pierwiastek-x-promocja_1638803183.jpg?filters=trim"
                         alt="Second slide"
                     />
-                    <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
