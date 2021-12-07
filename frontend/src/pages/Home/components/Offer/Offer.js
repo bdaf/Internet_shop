@@ -4,7 +4,7 @@ import { Carousel } from 'react-bootstrap';
 const Offer = () => {
     return (
         <div  className="d-flex justify-content-md-center">
-            <Carousel  variant="dark">
+            <Carousel className="d-block w-100" variant="dark">
                 <Carousel.Item interval={3000}>
                     <img
                         className="d-block w-100"
