@@ -1,0 +1,12 @@
+.filter {
+    font-size: 40px;
+}
+
+.filterActive {
+    font-size: 40px;
+    color:rgb(44, 108, 192);
+}
+
+.filter:hover , .filterActive:hover{
+    color:rgb(196, 39, 39);
+}
