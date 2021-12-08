@@ -6,6 +6,7 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import ProductDetails from './pages/ProductDetails/ProductDetails';
 import About from './pages/About/About';
+import Payment from './pages/Payment/Payment';
 import Contact from './pages/Contact/Contact';
 import Faq from './pages/FAQ/Faq';
 import EmployeePanel from './pages/EmployeePanel/EmployeePanel';
@@ -27,6 +28,7 @@ function App() {
       <Route path="/register" element={authCtx.isLoggedIn ? <Navigate to="/"/> : <Register />} />
       <Route path="/detail/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/payment" element={<Payment />} />
     </Routes>
   );
 }
