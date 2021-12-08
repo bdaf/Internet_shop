@@ -52,7 +52,7 @@ const Login = () => {
 
     const loginContext = (
         <>
-            <p>Witamy spowrotem! Zaloguj się do swojego konta i kupuj w najlepszym sklepie komputerowym</p>
+            <p>Witamy z powrotem! Zaloguj się do swojego konta i kupuj w najlepszym sklepie komputerowym</p>
             {isError &&
                 <Alert variant="danger">
                     Nie prawidłowe hasło lub E-mail!
