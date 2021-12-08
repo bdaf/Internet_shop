@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5277f509-4a8b-47b2-bf5b-6ea50d2109f6" name="Changes" comment="cart styled">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5277f509-4a8b-47b2-bf5b-6ea50d2109f6" name="Changes" comment="add Payment page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Cart/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Home/components/Product/Product.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home/components/Product/Product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProductDetails/ProductDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProductDetails/ProductDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Payment/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Payment/Payment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +82,9 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="5277f509-4a8b-47b2-bf5b-6ea50d2109f6" name="Changes" comment="" />
@@ -106,7 +99,9 @@
       <workItem from="1638217308423" duration="6017000" />
       <workItem from="1638469611557" duration="3793000" />
       <workItem from="1638744640300" duration="991000" />
-      <workItem from="1638756447942" duration="1842000" />
+      <workItem from="1638756447942" duration="2122000" />
+      <workItem from="1638925121637" duration="1035000" />
+      <workItem from="1638982817209" duration="644000" />
     </task>
     <task id="LOCAL-00001" summary="add contact and about us pages">
       <created>1638217366472</created>
@@ -164,7 +159,21 @@
       <option name="project" value="LOCAL" />
       <updated>1638472970216</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="cart work correctly uses localstorage">
+      <created>1638763311577</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1638763311577</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add Payment page">
+      <created>1638927644774</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1638927644774</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +199,8 @@
     <MESSAGE value="navbar improvements" />
     <MESSAGE value="add cart" />
     <MESSAGE value="cart styled" />
-    <option name="LAST_COMMIT_MESSAGE" value="cart styled" />
+    <MESSAGE value="cart work correctly uses localstorage" />
+    <MESSAGE value="add Payment page" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Payment page" />
   </component>
 </project>
