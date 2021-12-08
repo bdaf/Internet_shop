@@ -57,9 +57,9 @@ const Home = () => {
     }, [name, allProducts, fromPrice, toPrice])
 
     const contextProduct = !loading ? <LoadingIcon /> : filterProducts.map((product) =>
-        <Col md="auto">
+        <Col xs="auto" key={product.productId}>
             <Product
-                key={product.productId}
+                item={product}
                 id={product.productId}
                 name={product.name}
                 price={product.price}
