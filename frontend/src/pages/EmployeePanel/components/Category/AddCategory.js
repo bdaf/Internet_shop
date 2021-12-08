@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
+import AuthContext from "../../../../store/auth-context";
 
 
 const AddCategory = (props) => {
+    const authCtx = useContext(AuthContext)
+
     const [name, setName] = useState('')
 
     const [feedback, setFeedback] = useState(null)
@@ -18,7 +21,11 @@ const AddCategory = (props) => {
         }
         console.log(newCategory)
 
-        await axios.post('http://localhost:8888/api/categories/save', newCategory).then((response) => {
+        await axios.post('http://localhost:8888/api/categories/save', newCategory, {
+            headers: {
+                'Authorization': `Bearer ${authCtx.token}`
+            }
+        }).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(

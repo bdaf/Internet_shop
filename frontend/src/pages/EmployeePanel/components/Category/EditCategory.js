@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
+import AuthContext from "../../../../store/auth-context";
 
 const EditCategory = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
+
     const [name, setName] = useState('')
     const [category, setCategory] = useState(null)
 
@@ -11,7 +19,7 @@ const EditCategory = (props) => {
     const [feedback, setFeedback] = useState(null)
 
     const fetchDate = async () => {
-        await axios.get("http://localhost:8888/api/categories").then((response) => {
+        await axios.get("http://localhost:8888/api/categories", authJWT).then((response) => {
             const optionsP = response.data.map((p) => {
                 const opt = { value: p.categoryId, label: p.name, discounts: p.discounts}
                 return opt
@@ -38,7 +46,7 @@ const EditCategory = (props) => {
             discounts: category.discounts
         }
 
-        await axios.put(`http://localhost:8888/api/categories/${category.value}`, updateCategory).then((response) => {
+        await axios.put(`http://localhost:8888/api/categories/${category.value}`, updateCategory, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(
