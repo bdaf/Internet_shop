@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.internet_shop.entity.Address;
+import pl.internet_shop.entity.Company;
 import pl.internet_shop.entity.Product;
 import pl.internet_shop.entity.User;
 import pl.internet_shop.repository.UserRepository;
@@ -41,18 +42,20 @@ public class MyUserDetailsService implements UserDetailsService {
         user.orElseThrow(() -> new UsernameNotFoundException("Not found: " + userName));
         return user.map(MyUserDetails::new).get();
     }
-
-    public User signUpUser(String userName, String surname, String name, String email, String password, String phoneNumber, Address address, String role, String siteURL) throws MessagingException, UnsupportedEncodingException {
+    public void checkUserData(String userName, String email) throws MessagingException, UnsupportedEncodingException{
         boolean userExists = userRepository
                 .findByEmail(email)
                 .isPresent();
-
         if (userExists) {
-            // TODO check of attributes are the same and
-            // TODO if email not confirmed send confirmation email.
 
             throw new IllegalStateException("email already taken");
         }
+        userExists = userRepository.findByUserName(userName).isPresent();
+        if(userExists) {
+            throw new IllegalStateException("username already taken");
+        }
+    }
+    public User signUpUser(String userName, String surname, String name, String email, String password, String phoneNumber, Address address, Company company, String role ,String siteURL) throws MessagingException, UnsupportedEncodingException {
         String encodedPassword = bCryptPasswordEncoder.encode(password);
 
        User user = User.builder()
@@ -61,12 +64,13 @@ public class MyUserDetailsService implements UserDetailsService {
                .surname(surname)
                .email(email)
                .password(encodedPassword)
-               .role(role)
+               .company(company)
                .phoneNumber(phoneNumber)
                .address(address)
-               .company(null)
+               .role(role)
                .blocked(false)
                .build();
+
         String randomCode = RandomString.make(64);
         user.setVerificationCode(randomCode);
         user.setEnabled(false);
@@ -96,13 +100,13 @@ public class MyUserDetailsService implements UserDetailsService {
             throws MessagingException, UnsupportedEncodingException {
         String toAddress = user.getEmail();
         String fromAddress = "bazydanych647@gmail.com";
-        String senderName = "Your company name";
+        String senderName = "NUIT";
         String subject = "Please verify your registration";
         String content = "Dear [[name]],<br>"
                 + "Please click the link below to verify your registration:<br>"
                 + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
                 + "Thank you,<br>"
-                + "Your company name.";
+                + "NUIT.";
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);

@@ -21,5 +21,6 @@ public class RegistrationRequest {
     private final String country;
     private final String townName;
     private final String postCode;
-    private final String role;
+    private final String companyName;
+    private final String nip;
 }
