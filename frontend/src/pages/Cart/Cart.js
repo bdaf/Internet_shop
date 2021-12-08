@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ product, index, handleRemove }) => {
   return (
@@ -60,8 +61,10 @@ export default function Store() {
             <div class="row">
 
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="/" class="text-body"><i
-                      class="fas fa-long-arrow-alt-left me-2"></i>Kontynuuj zakupy</a></h5>
+              <Link to="/">
+                <h5 class="mb-3"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Kontynuuj zakupy</h5>
+                      </Link>
                 <hr/>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -131,9 +134,9 @@ index={index}
                     </div>
 
                     <button type="button" class="btn btn-info btn-block btn-lg">
-                      <div class="d-flex justify-content-between">
+                    <Link to="/payment"> <div class="d-flex justify-content-between">
                         <span> Płacę <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
+                      </div></Link>
                     </button>
 
                   </div>

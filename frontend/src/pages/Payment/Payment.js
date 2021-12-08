@@ -11,11 +11,13 @@ function Payment() {
 
 
 <br />
+<div className="container">
+<h2>Przerwa w obsłudze płatności kartą, możesz w dalszym ciągu zapłacić przelewem tradycyjnym.</h2>
+<br />
 <h2>Dane do wpłaty:</h2>
 <h5><b>Numer konta:</b> 4234 8900 0001 2139 4356 67</h5>
 <h5><b>Tytuł przelewu: </b>Numer twojego zamówienia</h5>
-<h5 style={{paddingTop: '5px'}}>Jeżeli nie korzystasz z MBanku, wybierz poniżej kafelek swojego banku, zostaniesz przekierowany do strony logowania:</h5>
-<div className="container">
+
     <div className="row">
         <div className="jumper  col-3 noPadding" style={{padding: '0px'},{height: '100px'}}>
             <a href="https://online.mbank.pl/pl/Login "><img src="https://i.ibb.co/yNwXjH7/mBank.png" alt="mBank" class="img-thumbnail"/></a>
