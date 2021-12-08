@@ -25,6 +25,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order saveOrder(Order aOrder) {
+
+
         Order orderWithId = orderRepository.save(aOrder);
         Order resultOrderWithProductsWithGalleries = orderRepository.findOrderWithProductsAndGalleriesInIt(orderWithId.getOrderId());
         resultOrderWithProductsWithGalleries.setName("Zamówienie " + resultOrderWithProductsWithGalleries.getOrderId());
