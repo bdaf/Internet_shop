@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Col, Row, Tab, Nav, Tabs} from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Col, Row, Tab, Nav, Tabs } from "react-bootstrap";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import AuthContext from "../../store/auth-context";
 import AddCategory from "./components/Category/AddCategory";
 import DeleteCategory from "./components/Category/DeleteCategory";
 import EditCategory from "./components/Category/EditCategory";
@@ -21,6 +22,8 @@ import Users from "./components/User/Users";
 import styles from './EmployeePanel.module.css'
 
 const EmployeePanel = () => {
+    const authCtx = useContext(AuthContext)
+
     const [updateData, setUpdateData] = useState(false)
     return (
         <>
@@ -46,12 +49,14 @@ const EmployeePanel = () => {
                                     <Nav.Item>
                                         <Nav.Link eventKey="sales">Przeceny</Nav.Link>
                                     </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="employee">Pracownicy</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="client">Klienci</Nav.Link>
-                                    </Nav.Item>
+                                    {authCtx.role === "ADMIN" &&
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="employee">Pracownicy</Nav.Link>
+                                        </Nav.Item>}
+                                    {authCtx.role === "ADMIN" &&
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="client">Klienci</Nav.Link>
+                                        </Nav.Item>}
                                 </Nav>
                             </Col>
                             <Col sm={9}>
@@ -108,19 +113,21 @@ const EmployeePanel = () => {
                                             </Tab>
                                         </Tabs>
                                     </Tab.Pane>
-                                    <Tab.Pane eventKey="employee">
-                                        <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
-                                            <Tab eventKey="add" title="Dodaj pracownika">
-                                                <AddEmployee onChange={setUpdateData} />
-                                            </Tab>
-                                            <Tab eventKey="delate" title="Usuń pracownika" >
-                                                <RemoveEmployee change={updateData} onChange={setUpdateData}/>
-                                            </Tab>
-                                        </Tabs>
-                                    </Tab.Pane>
-                                    <Tab.Pane eventKey="client">
-                                        <Users change={updateData} onChange={setUpdateData}/>
-                                    </Tab.Pane>
+                                    {authCtx.role === "ADMIN" &&
+                                        <Tab.Pane eventKey="employee">
+                                            <Tabs defaultActiveKey="add" id="uncontrolled-tab-example" className="mb-3">
+                                                <Tab eventKey="add" title="Dodaj pracownika">
+                                                    <AddEmployee onChange={setUpdateData} />
+                                                </Tab>
+                                                <Tab eventKey="delate" title="Usuń pracownika" >
+                                                    <RemoveEmployee change={updateData} onChange={setUpdateData} />
+                                                </Tab>
+                                            </Tabs>
+                                        </Tab.Pane>}
+                                    {authCtx.role === "ADMIN" &&
+                                        <Tab.Pane eventKey="client">
+                                            <Users change={updateData} onChange={setUpdateData} />
+                                        </Tab.Pane>}
                                 </Tab.Content>
                             </Col>
                         </Row>
