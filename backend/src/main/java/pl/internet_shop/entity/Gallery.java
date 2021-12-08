@@ -27,8 +27,4 @@ public class Gallery {
         if(photos==null) photos = new ArrayList<>();
         photos.add(aPhoto);
     }
-
-    public List<Photo> getPhotos(){
-        return photos;
-    }
 }

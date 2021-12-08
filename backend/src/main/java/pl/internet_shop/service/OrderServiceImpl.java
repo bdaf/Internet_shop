@@ -25,10 +25,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order saveOrder(Order aOrder) {
-        Order resultOrder = orderRepository.save(aOrder);
-        resultOrder.setName("Zamówienie " + resultOrder.getOrderId());
-        resultOrder.getDelivery().setName("Przesyłka nr "+ resultOrder.getDelivery().getDelivery_id());
-        return orderRepository.save(resultOrder);
+        Order orderWithId = orderRepository.save(aOrder);
+        Order resultOrderWithProductsWithGalleries = orderRepository.findOrderWithProductsAndGalleriesInIt(orderWithId.getOrderId());
+        resultOrderWithProductsWithGalleries.setName("Zamówienie " + resultOrderWithProductsWithGalleries.getOrderId());
+        resultOrderWithProductsWithGalleries.getDelivery().setName("Przesyłka nr "+ resultOrderWithProductsWithGalleries.getDelivery().getDelivery_id());
+        return orderRepository.save(resultOrderWithProductsWithGalleries);
     }
 
     @Override

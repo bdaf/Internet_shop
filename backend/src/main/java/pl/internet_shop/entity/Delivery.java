@@ -22,8 +22,8 @@ public class Delivery {
     @Column(name = "delivery_id", nullable = false)
     private Long delivery_id;
 
-    @Column(name = "name", length = 63, nullable = false)
-    private String name;
+    @Column(name = "name", length = 63)
+    private String name = "default_name";
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "deliverer_id", referencedColumnName = "deliverer_id")
