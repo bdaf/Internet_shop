@@ -14,8 +14,8 @@ function Contact() {
                         <img src="https://img.icons8.com/office/40/000000/iphone.png" alt="telefon" />
                         <>
                             <div>
-                                Telefon
-                            </div>
+                                Telefon 
+                            </div> 
                             <div >
                                 34 377 00 00
                             </div>
