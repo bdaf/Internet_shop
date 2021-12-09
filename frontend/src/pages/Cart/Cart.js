@@ -139,9 +139,9 @@ export default function Store() {
                             </div>
 
                             <button type="button" class="btn btn-info btn-block btn-lg">
-                              <div class="d-flex justify-content-between">
+                            <Link to="/payment"> <div class="d-flex justify-content-between">
                                 <span> Płacę <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                              </div>
+                              </div></Link>
                             </button>
 
                           </div>
@@ -150,11 +150,11 @@ export default function Store() {
                       </div>
 
                     </div>
-                    <button type="button" class="btn btn-info btn-block btn-lg">
+                    {/* <button type="button" class="btn btn-info btn-block btn-lg">
                     <Link to="/payment"> <div class="d-flex justify-content-between">
                         <span> Płacę <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                       </div></Link>
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
