@@ -24,11 +24,11 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
     @SequenceGenerator(name = "order_sequence", sequenceName = "order_sequence", allocationSize = 1)
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_id")
     private Long orderId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "name")
+    private String name = "order";
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "delivery_id", referencedColumnName = "delivery_id")
@@ -41,7 +41,7 @@ public class Order {
     @Column(name = "status")
     private String status = NOT_ORDERED;
 
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", referencedColumnName = "order_id")
     private List<Product> products;
 

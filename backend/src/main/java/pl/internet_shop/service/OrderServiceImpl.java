@@ -9,21 +9,26 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private ProductService productService;
+
     @Override
     public List<Order> fetchAllOrder() {
-
-        List<Order> all = orderRepository.findAll();
-        return all;
+        List<Order> orders = orderRepository.findAllOrdersWithProductsWithGalleriesInIt();
+        return orders;
     }
 
     @Override
     public Order saveOrder(Order aOrder) {
-        return orderRepository.save(aOrder);
+        Order resultOrder = orderRepository.save(aOrder);
+        resultOrder.setName("Zamówienie " + resultOrder.getOrderId());
+        resultOrder.getDelivery().setName("Przesyłka nr "+ resultOrder.getDelivery().getDelivery_id());
+        return orderRepository.save(resultOrder);
     }
 
     @Override
@@ -33,14 +38,14 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public Order fetchOrderById(Long aOrderId) {
-        return orderRepository.findById(aOrderId).get();
+        return orderRepository.findOrderWithProductsAndGalleriesInIt(aOrderId);
     }
 
     @Override
     public Order updateStatusInOrderById(Order aOrder, Long aOrderId) {
         Order orderToUpdate = orderRepository.findById(aOrderId).get();
 
-        if(Objects.nonNull(aOrder.getStatus()) && !aOrder.getStatus().equalsIgnoreCase("")){
+        if (Objects.nonNull(aOrder.getStatus()) && !aOrder.getStatus().equalsIgnoreCase("")) {
             orderToUpdate.setStatus(aOrder.getStatus());
         }
 
