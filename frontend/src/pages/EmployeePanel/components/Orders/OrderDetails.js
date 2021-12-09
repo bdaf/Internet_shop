@@ -78,7 +78,7 @@ const OrderDetails = (props) => {
         </Row>
         <hr className="ms-5 me-5" />
         <Row>
-            <h5>Dostawca: {props.order.delivery.name}</h5>
+            <h5>Dostawca: {props.order.delivery.deliverer.name}</h5>
         </Row>
         <hr className="ms-5 me-5" />
         <Row>

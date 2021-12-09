@@ -46,7 +46,7 @@ const ProductDetails = (props) => {
             <div className="m-4">
                 <Row>
                     <Col xs={12} md={5}>
-                        <Carousels />
+                        <Carousels photos={product.gallery.photos}/>
                     </Col>
                     <Col xs={12} md={7}>
                         <h1>{product.name}</h1>

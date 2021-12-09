@@ -38,7 +38,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
             nativeQuery = true)
     List<Product> getAllProductsWhichAreNotLinkedWithAnyOrder();
 
-    @Query(value = "SELECT p.order_id FROM Product p where p.product_id = ?1 ",
+    @Query(value = "SELECT p.order_id FROM is_product p where p.product_id = ?1 ",
     nativeQuery = true)
     Long getOrderIdByProductId(Long aProductId);
 }
