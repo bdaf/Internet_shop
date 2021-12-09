@@ -19,7 +19,12 @@ public class DelivererServiceImpl implements DelivererService {
     }
 
     @Override
-    public Deliverer saveDeliverer(Deliverer aDeliverer) {
+    public Deliverer saveDelivererIfNotExistsByPhoneNumber(Deliverer aDeliverer) {
+        // check if deliverer with the same phone number exists
+        Deliverer deliverer = delivererRepository.findByPhoneNumber(aDeliverer.getPhoneNumber());
+        //if yes, don't save new, save old (do nothing)
+        if(deliverer != null) return delivererRepository.save(deliverer);
+        //if no, save new
         return delivererRepository.save(aDeliverer);
     }
 }

@@ -7,5 +7,5 @@ import java.util.List;
 public interface DelivererService {
     List<Deliverer> getAllDeliverers();
 
-    Deliverer saveDeliverer(Deliverer aDeliverer);
+    Deliverer saveDelivererIfNotExistsByPhoneNumber(Deliverer aDeliverer);
 }

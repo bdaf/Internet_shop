@@ -10,4 +10,6 @@ public interface DelivererRepository extends JpaRepository<Deliverer,Long> {
                 .surname("SnDeliveryTest")
                 .phoneNumber("PNDeliveryTest").build();
     }
+
+    Deliverer findByPhoneNumber(String aPhoneNumber);
 }

@@ -21,6 +21,6 @@ public class DelivererController {
 
     @PostMapping("/save")
     public Deliverer saveDeliverer(@RequestBody Deliverer aDeliverer){
-        return delivererService.saveDeliverer(aDeliverer);
+        return delivererService.saveDelivererIfNotExistsByPhoneNumber(aDeliverer);
     }
 }
