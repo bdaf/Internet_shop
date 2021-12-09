@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import CartContext from "../../store/cart-context";
 import absencePhoto from '../Home/components/Product/absencePhoto.svg'
 import { Button, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 const CartItem = (props) => {
   const cartCtx = useContext(CartContext)
@@ -47,24 +48,11 @@ const CartItem = (props) => {
 
 export default function Store() {
   const cartCtx = useContext(CartContext)
+  const navigate = useNavigate();
 
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount
   }, 0)
-
-
-  let productList = []
-  if (localStorage.cartList) {
-    productList = JSON.parse(localStorage.cartList);
-  }
-  const totalPrice = productList.reduce((total, b) => total + b.price, 0);
-
-
-  const handleRemove = (index) => {
-    productList.splice(index, 1);
-    localStorage.cartList = JSON.stringify(productList);
-    window.location.href = '/cart'
-  };
 
   return (
 
@@ -81,7 +69,7 @@ export default function Store() {
                     <div class="row">
 
                       <div class="col-lg-7">
-                        <h5 class="mb-3"><a class="text-body"><i
+                        <h5 class="mb-3"><a onClick={() => navigate('/')} class="text-body"><i
                           class="fas fa-long-arrow-alt-left me-2"></i>Kontynuuj zakupy</a></h5>
                         <hr />
 
@@ -94,7 +82,6 @@ export default function Store() {
 
                         {cartCtx.items.map((item, index) => (
                           <CartItem
-                            handleRemove={handleRemove}
                             key={index}
                             product={item}
                             amount={item.amount}
@@ -136,7 +123,7 @@ export default function Store() {
                                   <div class="form-outline form-white">
                                     <input type="password" id="typeText" class="form-control form-control-lg"
                                       placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                                    <label class="form-label" for="typeText">Cvv</label>
+                                    <label class="form-label" for="typeText">CVV</label>
                                   </div>
                                 </div>
                               </div>
@@ -147,7 +134,7 @@ export default function Store() {
 
                             <div class="d-flex justify-content-between mb-4">
                               <p class="mb-2">Suma</p>
-                              <p class="mb-2">PLN {totalPrice}</p>
+                              <p class="mb-2">{cartCtx.totalAmount.toFixed(2)} PLN</p>
                             </div>
 
                             <button type="button" class="btn btn-info btn-block btn-lg">

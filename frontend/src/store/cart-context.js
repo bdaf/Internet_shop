@@ -43,8 +43,6 @@ const cartReducer = (state, action) => {
         } else {
             updatedItems = state.items.concat(productCart)
         }
-        // console.log(updatedItems)
-        // console.log(updatedTotalAmount)
 
         return {
             items: updatedItems,
