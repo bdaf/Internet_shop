@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
+import AuthContext from "../../../../store/auth-context";
 
 
 const AddProducer = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const [name, setName] = useState('')
     const [nip, setNip] = useState('')
 
@@ -19,7 +26,7 @@ const AddProducer = (props) => {
         }
         console.log(newProducer)
 
-        await axios.post('http://localhost:8888/api/producers/save', newProducer).then((response) => {
+        await axios.post('http://localhost:8888/api/producers/save', newProducer,authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(

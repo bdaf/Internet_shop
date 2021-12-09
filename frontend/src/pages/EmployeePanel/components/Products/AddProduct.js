@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router'
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
+import AuthContext from "../../../../store/auth-context";
 
 const AddProduct = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const navigate = useNavigate();
 
     const [name, setName] = useState('')
@@ -23,14 +30,14 @@ const AddProduct = (props) => {
     const [isError, setIsError] = useState(false)
 
     const fetchDate = async () => {
-        await axios.get("http://localhost:8888/api/categories").then((response) => {
+        await axios.get("http://localhost:8888/api/categories", authJWT).then((response) => {
             const optionsC = response.data.map((c) => {
                 const opt = { value: c.categoryId, label: c.name }
                 return opt
             })
             setOptionsCategory(optionsC)
         })
-        await axios.get("http://localhost:8888/api/producers").then((response) => {
+        await axios.get("http://localhost:8888/api/producers", authJWT).then((response) => {
             const optionsP = response.data.map((p) => {
                 const opt = { value: p.nip, label: p.nameOfCompany }
                 return opt
@@ -76,7 +83,7 @@ const AddProduct = (props) => {
             }
         }
 
-        await axios.post(`http://localhost:8888/api/products/save`, newProduct).then((response) => {
+        await axios.post(`http://localhost:8888/api/products/save`, newProduct, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 navigate(`/detail/${response.data.productId}`)

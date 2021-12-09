@@ -1,15 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Col, Row } from "react-bootstrap";
 import axios from "axios";
 import LoadingIcon from "../../../../components/LoadingIcon/LoadingIcon";
 import User from "./User";
+import AuthContext from "../../../../store/auth-context";
 
 const Users = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const [users, setUsers] = useState(null)
     const [loading, setLoading] = useState(false)
 
     const fetchUsers = async () => {
-        await axios.get("http://localhost:8888/api/users").then((response) => {
+        await axios.get("http://localhost:8888/api/users", authJWT).then((response) => {
             setUsers(response.data)
         })
         setLoading(true)

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { Row, Col, Form, FloatingLabel, Button, Alert } from "react-bootstrap";
+import AuthContext from '../../../../store/auth-context';
 
 const AddEmployee = (props) => {
     // Costumer
@@ -19,6 +20,13 @@ const AddEmployee = (props) => {
     const [postCode, setPostCode] = useState('');
 
     const [feedback, setFeedback] = useState(null)
+
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
 
     const hideFeedback = () => {
         setFeedback(null)
@@ -44,7 +52,7 @@ const AddEmployee = (props) => {
             postCode: postCode,
             role: "WORKER"
         }
-        await axios.post("http://localhost:8888/worker/registration", newEmployee).then((response) => {
+        await axios.post("http://localhost:8888/worker/registration", newEmployee, authJWT).then((response) => {
             props.onChange((prev) => !prev)
             if (response.status === 200)
                 setFeedback(

@@ -1,19 +1,26 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Col, Row, CloseButton } from "react-bootstrap";
 import axios from "axios";
 
 import Order from "./Order";
 import OrderDetails from "./OrderDetails";
 import LoadingIcon from "../../../../components/LoadingIcon/LoadingIcon";
+import AuthContext from "../../../../store/auth-context";
 
 const Orders = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const [orders, setOrders] = useState(null)
     const [editOrdeId, setEditOrderId] = useState(null)
     const [editOrder, setEditOrder] = useState(null)
 
     const fetchDate = async () => {
-        await axios.get("http://localhost:8888/api/orders").then((response) => {
+        await axios.get("http://localhost:8888/api/orders", authJWT).then((response) => {
             setOrders(response.data)
         })
     }

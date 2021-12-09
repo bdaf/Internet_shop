@@ -1,11 +1,19 @@
 import { Card, Button } from 'react-bootstrap';
 import axios from 'axios';
 import styles from './User.module.css'
+import { useContext } from 'react';
+import AuthContext from '../../../../store/auth-context';
 
 const User = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
 
     const blockUser = async (id) => {
-        await axios.get(`http://localhost:8888/api/users/${id}`).then((response) => {
+        await axios.get(`http://localhost:8888/api/users/${id}`, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
         })
     }

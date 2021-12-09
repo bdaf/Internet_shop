@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Row, Col, Stack, Form, FloatingLabel, Button, Alert, CloseButton } from 'react-bootstrap';
 import axios from 'axios';
 import Product from '../../../Home/components/Product/Product';
 import Carousels from '../../../../components/UI/Carousel/Carousel';
 import LoadingIcon from '../../../../components/LoadingIcon/LoadingIcon';
+import AuthContext from '../../../../store/auth-context';
 
 const DeleteProduct = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(false)
     const [editProductId, setEditProductId] = useState(null)
@@ -18,14 +25,14 @@ const DeleteProduct = (props) => {
     const [feedback, setFeedback] = useState(null)
 
     const fetchProducts = async () => {
-        await axios.get("http://localhost:8888/api/products").then((response) => {
+        await axios.get("http://localhost:8888/api/products", authJWT).then((response) => {
             setProducts(response.data)
         })
         setLoading(true)
     }
 
     const fetchProduct = async () => {
-        await axios.get(`http://localhost:8888/api/products/${editProductId}`).then((response) => {
+        await axios.get(`http://localhost:8888/api/products/${editProductId}`, authJWT).then((response) => {
             setEditProduct(response.data)
             setName(response.data.name)
             setDescription(response.data.description)
@@ -45,7 +52,7 @@ const DeleteProduct = (props) => {
     const deleteProductHandler = async (e) => {
         e.preventDefault();
 
-        await axios.delete(`http://localhost:8888/api/products/${editProductId}`).then((response) => {
+        await axios.delete(`http://localhost:8888/api/products/${editProductId}`, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(

@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Col, Row, Form, Alert } from "react-bootstrap";
 import Select from 'react-select';
 import Sale from "./Sale";
+import AuthContext from "../../../../store/auth-context";
 
 const DeleteSales = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const [category, setCategory] = useState('')
     const [discounts, setDiscounts] = useState('')
 
@@ -12,7 +19,7 @@ const DeleteSales = (props) => {
     const [feedback, setFeedback] = useState(null)
 
     const fetchDate = async () => {
-        await axios.get("http://localhost:8888/api/categories").then((response) => {
+        await axios.get("http://localhost:8888/api/categories", authJWT).then((response) => {
             const optionsC = response.data.map((c) => {
                 const opt = { value: c.categoryId, label: c.name, category: c }
                 return opt
@@ -30,7 +37,7 @@ const DeleteSales = (props) => {
     }, [category])
 
     const deleteSale = async (id) => {
-        await axios.delete(`http://localhost:8888/api/discounts/${id}`).then((response) => {
+        await axios.delete(`http://localhost:8888/api/discounts/${id}`, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200) {
                 setFeedback(

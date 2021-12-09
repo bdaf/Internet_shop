@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
+import AuthContext from "../../../../store/auth-context";
 
 const AddSales = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
+
     const [discount, setDiscount] = useState('')
     const [start, setStart] = useState('')
     const [end, setEnd] = useState(0)
@@ -13,7 +21,7 @@ const AddSales = (props) => {
     const [feedback, setFeedback] = useState(null)
 
     const fetchDate = async () => {
-        await axios.get("http://localhost:8888/api/categories").then((response) => {
+        await axios.get("http://localhost:8888/api/categories", authJWT).then((response) => {
             const optionsC = response.data.map((c) => {
                 const opt = { value: c.categoryId, label: c.name}
                 return opt
@@ -36,7 +44,7 @@ const AddSales = (props) => {
             toDate: end
         }
 
-        await axios.post(`http://localhost:8888/api/discounts/save/category/${categoryId}`, newDiscount).then((response) => {
+        await axios.post(`http://localhost:8888/api/discounts/save/category/${categoryId}`, newDiscount, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(

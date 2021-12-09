@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Col, Row, FloatingLabel, Form, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
+import AuthContext from "../../../../store/auth-context";
 
 const DeleteProducer = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
     const [name, setName] = useState('')
     const [nip, setNip] = useState('')
     const [producer, setProducer] = useState(null)
@@ -12,7 +19,7 @@ const DeleteProducer = (props) => {
     const [feedback, setFeedback] = useState(null)
 
     const fetchDate = async () => {
-        await axios.get("http://localhost:8888/api/producers").then((response) => {
+        await axios.get("http://localhost:8888/api/producers", authJWT).then((response) => {
             const optionsP = response.data.map((p) => {
                 const opt = { value: p.nip, label: p.nameOfCompany, id: p.producerId }
                 return opt
@@ -33,7 +40,7 @@ const DeleteProducer = (props) => {
     const addProducerHandler = async (e) => {
         e.preventDefault();
 
-        await axios.delete(`http://localhost:8888/api/producers/${producer.id}`).then((response) => {
+        await axios.delete(`http://localhost:8888/api/producers/${producer.id}`, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
                 setFeedback(

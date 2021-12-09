@@ -1,11 +1,20 @@
 import { Card, Button } from 'react-bootstrap';
 import axios from 'axios';
 import styles from './Employee.module.css'
+import { useContext } from 'react';
+import AuthContext from '../../../../store/auth-context';
 
 const Employee = (props) => {
+    const authCtx = useContext(AuthContext)
+
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
 
     const removeEmployee = async (id) => {
-        await axios.delete(`http://localhost:8888/api/workers/${id}`).then((response) => {
+        await axios.delete(`http://localhost:8888/api/workers/${id}`, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
         })
     }

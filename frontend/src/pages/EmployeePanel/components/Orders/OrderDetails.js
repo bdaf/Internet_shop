@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Row, Col, Table, Button, Alert } from "react-bootstrap";
 import Select from 'react-select';
+import AuthContext from "../../../../store/auth-context";
 
 const OrderDetails = (props) => {
+    const authCtx = useContext(AuthContext)
+    const authJWT = {
+        headers: {
+            'Authorization': `Bearer ${authCtx.token}`
+        }
+    }
+
     const [status, setStatus] = useState()
 
     const [feedback, setFeedback] = useState(null)
@@ -27,7 +35,7 @@ const OrderDetails = (props) => {
             status: status.value
         }
 
-        await axios.put(`http://localhost:8888/api/orders/${props.order.orderId}`, updateOrder).then((response) => {
+        await axios.put(`http://localhost:8888/api/orders/${props.order.orderId}`, updateOrder, authJWT).then((response) => {
             props.onChange((prevState) => !prevState)
             if (response.status === 200)
             setFeedback(
