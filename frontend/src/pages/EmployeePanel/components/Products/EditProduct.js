@@ -111,7 +111,7 @@ const EditProduct = (props) => {
         <Row>
             {feedback}
             <Col xs={12} md={5}>
-                <Carousels />
+                <Carousels photos={editProduct.gallery.photos} />
             </Col>
             <Col xs={12} md={7}>
                 <Form onSubmit={(e) => editProductHandler(e)}>
@@ -158,7 +158,7 @@ const EditProduct = (props) => {
                         <h1>{editProduct ? "Produkt" : "Produkty"}</h1>
                     </Col>
                     <Col xs={1} className="d-flex justify-content-md-end" >
-                        {editProduct && <CloseButton onClick={() => setEditProduct(null)} />}
+                        {editProduct && <CloseButton onClick={() => { setEditProduct(null); setEditProductId(null); }} />}
                     </Col>
                 </Row>
                 <hr />
