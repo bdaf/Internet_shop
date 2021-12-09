@@ -7,14 +7,17 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { AuthContextProvider } from './store/auth-context';
+import { CartContextProvider } from './store/cart-context';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
+      <CartContextProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
+      </CartContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
