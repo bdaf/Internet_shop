@@ -70,7 +70,7 @@ const Orders = (props) => {
                 <h4>{editOrder ? "Zamówienie" : "Zamówienia"}</h4>
             </Col>
             <Col xs={1} className="d-flex justify-content-md-end" >
-                {editOrder && <CloseButton onClick={() => setEditOrder(null)} />}
+                {editOrder && <CloseButton onClick={() => { setEditOrder(null); setEditOrderId(null) }} />}
             </Col>
         </Row>
         <hr />
