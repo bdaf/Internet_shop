@@ -92,6 +92,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Long getOrderIdOf(Long aProductId ) {
+        return productRepository.getOrderIdByProductId(aProductId);
+    }
+
+    @Override
     public List<Product> fetchAllProducts() {
         List<Product> products = productRepository.findAllProductsWithGalleryAndFetchGallery();
         products.addAll(productRepository.findAllProductsWithoutGallery());

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.internet_shop.entity.Deliverer;
 import pl.internet_shop.entity.Order;
+import pl.internet_shop.entity.Product;
 import pl.internet_shop.repository.OrderRepository;
 
 import java.util.List;
@@ -31,6 +32,11 @@ public class OrderServiceImpl implements OrderService {
     // if order with the same products which previous order had will be saved, products from previous order will be removed and moved to that new order
     @Override
     public Order saveOrder(Order aOrder) {
+        for (Product p : aOrder.getProducts()) {
+            if(productService.getOrderIdOf(aOrder.getOrderId()) != null);
+                throw new IllegalArgumentException("Product "+p.getName()+" with Id "+p.getProductId()+" is assigned to another order.");
+        }
+
         // take deliverer in that way in order to noc creating new one if with the same phone number already exists in DB
         Deliverer delivererToAddToOrder = delivererService.saveDelivererIfNotExistsByPhoneNumber(aOrder.getDelivery().getDeliverer());
 
@@ -41,6 +47,7 @@ public class OrderServiceImpl implements OrderService {
         Order orderWithId = orderRepository.save(aOrder);
         Order resultOrderWithProductsWithGalleries = orderRepository.findOrderWithProductsAndGalleriesInIt(orderWithId.getOrderId());
 
+        // set order name and delivery name
         resultOrderWithProductsWithGalleries.setName("Zamówienie " + resultOrderWithProductsWithGalleries.getOrderId());
         resultOrderWithProductsWithGalleries.getDelivery().setName("Przesyłka nr "+ resultOrderWithProductsWithGalleries.getDelivery().getDelivery_id());
 
