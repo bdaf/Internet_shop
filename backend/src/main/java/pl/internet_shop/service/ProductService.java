@@ -5,11 +5,11 @@ import pl.internet_shop.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> fetchAllProductsWithGalleries();
+    List<Product> fetchAllProductsForSaleWithGalleries();
 
     Product addProductAndSave(Product aProduct);
 
-    Product fetchProductById(Long aProductId);
+    Product fetchProductForSaleById(Long aProductId);
 
     void deleteProductById(Long aProductId);
 

@@ -56,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProductById(Long aProductId, Product aProduct) {
-        Product resultProduct = fetchProductById(aProductId);
+        Product resultProduct = fetchProductForSaleById(aProductId);
 
         if (Objects.nonNull(aProduct.getName()) && !aProduct.getName().equalsIgnoreCase(""))
             resultProduct.setName(aProduct.getName());
@@ -71,8 +71,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product fetchProductById(Long aProductId) {
-        Product product = productRepository.findByIdAndFetchGallery(aProductId);
+    public Product fetchProductForSaleById(Long aProductId) {
+        Product product = productRepository.findByIdForSaleAndFetchGallery(aProductId);
         if (product == null) {
             product = productRepository.findById(aProductId).get();
         }
@@ -80,8 +80,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> fetchAllProductsWithGalleries() {
-        return productRepository.findAllProductsWithGalleryAndFetchGallery();
+    public List<Product> fetchAllProductsForSaleWithGalleries() {
+        return fetchAllProducts();
     }
 
     @Override
@@ -96,8 +96,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> fetchAllProducts() {
-        List<Product> products = productRepository.findAllProductsWithGalleryAndFetchGallery();
-
+        List<Product> products = productRepository.findAllProductsForSaleWithGalleryAndFetchGallery();
         for (int i = 0; i < products.size(); i++) {
             products.set(i, getDiscountedProduct(products.get(i)));
         }

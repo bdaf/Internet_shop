@@ -25,7 +25,7 @@ public class GalleryServiceImpl implements GalleryService{
 
     @Override
     public Gallery fetchGalleryByProductId(Long aProductId) {
-        Product product = productService.fetchProductById(aProductId);
+        Product product = productService.fetchProductForSaleById(aProductId);
         if(product != null){
             return product.getGallery();
         }
@@ -35,7 +35,7 @@ public class GalleryServiceImpl implements GalleryService{
     //new gallery overwrites old when product already has gallery
     @Override
     public Gallery saveGalleryByproductId(Gallery aGallery, Long aProductId) {
-        Product product = productService.fetchProductById(aProductId);
+        Product product = productService.fetchProductForSaleById(aProductId);
         product.setGallery(aGallery);
         Gallery result = galleryRepository.save(aGallery);
         productService.saveProduct(product);
@@ -45,7 +45,7 @@ public class GalleryServiceImpl implements GalleryService{
     //gives null pointer exception when there is no to delete
     @Override
     public void deleteGalleryByProductId(Long aProductId) {
-        Product product = productService.fetchProductById(aProductId);
+        Product product = productService.fetchProductForSaleById(aProductId);
         Long aGalleryId = product.getGallery().getGalleryId();
         product.setGallery(null);
         productService.saveProduct(product);
@@ -65,7 +65,7 @@ public class GalleryServiceImpl implements GalleryService{
     //throws null pointer exception for products without galleries
     @Override
     public Gallery updateGalleryByProductId(Long aProductId, Gallery aGallery) {
-        Product product = productService.fetchProductById(aProductId);
+        Product product = productService.fetchProductForSaleById(aProductId);
         Long galleryId = product.getGallery().getGalleryId();
         return updateGalleryById(galleryId, aGallery);
     }

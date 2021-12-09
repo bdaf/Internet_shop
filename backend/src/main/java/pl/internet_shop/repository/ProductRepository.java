@@ -22,11 +22,11 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     Product findProductByNameAndProducerAndPriceAndForSale(String aName, Producer aProducer, Double aPrice, Boolean aForSale);
 
-    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery WHERE p.productId = (:id)")
-    Product findByIdAndFetchGallery(@Param("id") Long aProductId);
+    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery WHERE p.productId = (:id) AND p.forSale = true")
+    Product findByIdForSaleAndFetchGallery(@Param("id") Long aProductId);
 
-    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery")
-    List<Product> findAllProductsWithGalleryAndFetchGallery();
+    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery WHERE p.forSale = true")
+    List<Product> findAllProductsForSaleWithGalleryAndFetchGallery();
 
     @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery LEFT JOIN Order o WHERE o is null")
     List<Product> findAllProductsWithGalleryAndFetchGalleryWhereNotLinkedWithOrder();

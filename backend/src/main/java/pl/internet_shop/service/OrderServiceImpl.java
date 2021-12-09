@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
         // check if products in order are ok
         for (Product p : aOrder.getProducts()) {
             if(!p.isForSale()) throw new IllegalStateException("Product "+p.getName()+" with Id "+p.getProductId()+" is not for sale - maybe already assigned to another order.");
-            Product productFromDatabase = productService.fetchProductById(p.getProductId());
+            Product productFromDatabase = productService.fetchProductForSaleById(p.getProductId());
             if(productFromDatabase == null)
                 throw new IllegalStateException("Product is null in database");
             if(productFromDatabase.getAmount() < p.getAmount() || p.getAmount() < 1)
@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
         // decrease amount of product and save new to database
         for (Product p : aOrder.getProducts()) {
             // decreasing amount of product
-            Product productFromDatabase = productService.fetchProductById(p.getProductId());
+            Product productFromDatabase = productService.fetchProductForSaleById(p.getProductId());
             productFromDatabase.setAmount(productFromDatabase.getAmount() - p.getAmount());
             productService.saveProduct(productFromDatabase);
             // creating new product

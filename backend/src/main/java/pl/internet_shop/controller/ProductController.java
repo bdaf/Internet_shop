@@ -21,12 +21,12 @@ public class ProductController {
 
     @GetMapping("/api/products/gallery")
     public List<Product> fetchAllProductsWithGalleries(){
-        return productService.fetchAllProductsWithGalleries();
+        return productService.fetchAllProductsForSaleWithGalleries();
     }
 
     @GetMapping("/api/products/{id}")
     public Product fetchProduct(@PathVariable("id") Long aProductId){
-        return productService.fetchProductById(aProductId);
+        return productService.fetchProductForSaleById(aProductId);
     }
 
     @PostMapping("/api/products/save")
