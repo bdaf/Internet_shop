@@ -6,6 +6,8 @@ import absencePhoto from '../Home/components/Product/absencePhoto.svg'
 import { Button, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import AuthContext from "../../store/auth-context";
 
 const CartItem = (props) => {
   const cartCtx = useContext(CartContext)
@@ -27,12 +29,12 @@ const CartItem = (props) => {
               <h6 className="text-center">Ilość</h6>
               <p class="d-flex justify-content-center small mb-0">
                 <Button onClick={() => cartCtx.removeItem(props.product.productId)} className="me-1" variant="light">-</Button>
-                <span style={{fontSize: "20px"}}> {props.product.amount} </span>
+                <span style={{ fontSize: "20px" }}> {props.product.amount} </span>
                 <Button onClick={() => cartCtx.addItem(props.product)} className="ms-1" variant="light">+</Button>
               </p>
             </Col>
             <Col xs={3} class="d-flex flex-row align-items-center">
-              <div  style={{ width: '120px' }}>
+              <div style={{ width: '120px' }}>
                 <h6 class="mb-0 ">{props.product.price.toFixed(2)} PLN</h6>
               </div>
             </Col>
@@ -49,7 +51,36 @@ const CartItem = (props) => {
 
 export default function Store() {
   const cartCtx = useContext(CartContext)
+  const authCtx = useContext(AuthContext)
   const navigate = useNavigate();
+
+  const authJWT = {
+    headers: {
+        'Authorization': `Bearer ${authCtx.token}`
+    }
+}
+
+  const paymentHandler = async () => {
+    const order = {
+      delivery: {
+        deliverer: {
+          name: "Marek",
+          surname: "Frankowski",
+          phoneNumber: "728893912"
+        }
+      },
+      products: cartCtx.items,
+      user: authCtx.user
+    }
+
+    console.log(order)
+
+    await axios.post("http://localhost:8888/api/orders/save", order, authJWT).then((response) => {
+      navigate('/payment')
+    })
+
+
+  }
 
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount
@@ -139,9 +170,9 @@ export default function Store() {
                             </div>
 
                             <button type="button" class="btn btn-info btn-block btn-lg">
-                            <Link to="/payment"> <div class="d-flex justify-content-between">
+                              <div onClick={() => paymentHandler()} class="d-flex justify-content-between">
                                 <span> Płacę <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                              </div></Link>
+                              </div>
                             </button>
 
                           </div>
@@ -150,11 +181,6 @@ export default function Store() {
                       </div>
 
                     </div>
-                    {/* <button type="button" class="btn btn-info btn-block btn-lg">
-                    <Link to="/payment"> <div class="d-flex justify-content-between">
-                        <span> Płacę <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div></Link>
-                    </button> */}
                   </div>
                 </div>
               </div>

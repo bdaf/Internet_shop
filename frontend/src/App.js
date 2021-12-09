@@ -27,7 +27,7 @@ function App() {
       <Route path="/login" element={authCtx.isLoggedIn ? <Navigate to="/"/> : <Login />}/>
       <Route path="/register" element={authCtx.isLoggedIn ? <Navigate to="/"/> : <Register />} />
       <Route path="/detail/:id" element={<ProductDetails />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={authCtx.isLoggedIn ? <Cart /> : <Navigate to="/login"/>} />
       <Route path="/payment" element={<Payment />} />
     </Routes>
   );
