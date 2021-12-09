@@ -30,4 +30,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query("SELECT p FROM Product p where p.gallery is null")
     List<Product> findAllProductsWithoutGallery();
+
+    @Query(value = "SELECT p.order_id FROM Product p where p.product_id = ?1 ",
+    nativeQuery = true)
+    Long getOrderIdByProductId(Long aProductId);
 }

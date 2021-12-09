@@ -20,4 +20,6 @@ public interface ProductService {
     List<Product> fetchAllProductsWithoutGalleries();
 
     Product saveProduct(Product aProduct);
+
+    Long getOrderIdOf(Long aProductId);
 }

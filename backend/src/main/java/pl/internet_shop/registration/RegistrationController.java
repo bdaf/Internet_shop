@@ -36,9 +36,9 @@ public class RegistrationController {
     @GetMapping("/verify")
     public String verifyUser(@Param("code") String code) {
         if (registrationService.verify(code)) {
-            return "verify_success";
+            return "Weryfikacja zakończona powodzeniem.";
         } else {
-            return "verify_fail";
+            return "Coś poszło nie tak, weryfikacja zakończona niepowodzeniem.";
         }
     }
 }
