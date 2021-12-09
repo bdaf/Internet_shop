@@ -32,6 +32,9 @@ public class Product {
     @Column(name = "amount", nullable = false)
     private int amount = 1;
 
+    @Column(name = "for_sale", nullable = false)
+    private boolean forSale = true;
+
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "producer_id", referencedColumnName = "producer_id")
     private Producer producer;
