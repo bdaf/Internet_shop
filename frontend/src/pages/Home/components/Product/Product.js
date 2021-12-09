@@ -1,24 +1,18 @@
+import { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
+import CartContext from '../../../../store/cart-context';
 import absencePhoto from './absencePhoto.svg'
 
 import styles from './Product.module.css'
 
-
-
-
 const Product = (props) => {
-  const addToCart = (item) => {
-      let productList=[]
-      if(localStorage.cartList){
-      productList = JSON.parse(localStorage.cartList);
-      }
-      Array.from(productList)
-      console.log(productList);
-      productList.push(item);
-      localStorage.cartList = JSON.stringify(productList);
-      window.location.href='/'
-  };
+    const cartCtx = useContext(CartContext)
+
+    const addToCartHandler = (item) => {
+        cartCtx.addItem(item)
+    }
+
     const navigate = useNavigate();
 
     const showDetailsHandler = () => {
@@ -39,7 +33,7 @@ const Product = (props) => {
                     <div className="d-flex justify-content-center mt-2">Zobacz więcej</div>
                 </Card.Text>
                 <div className="d-flex justify-content-end" >
-                    {props.panel ? <Button variant="outline-danger" onClick={showDetailsHandler} >{props.action}</Button> : (<Button variant="outline-danger" onClick={() => addToCart(props)}>Dodaj do koszyka</Button>)}
+                    {props.panel ? <Button variant="outline-danger" onClick={showDetailsHandler} >{props.action}</Button> : (<Button variant="outline-danger" onClick={() => addToCartHandler(props.item)}>Dodaj do koszyka</Button>)}
                 </div>
             </Card.Body>
         </Card>

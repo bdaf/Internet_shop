@@ -9,14 +9,15 @@ import AuthContext from '../../store/auth-context';
 
 import styles from './Navbar.module.css'
 import UserProfile from '../UserProfile/UserProfile';
+import CartContext from '../../store/cart-context';
 
 const Navbars = (props) => {
     const authCtx = useContext(AuthContext)
+    const cartCtx = useContext(CartContext)
 
-    let productList = []
-    if (localStorage.cartList) {
-        productList = JSON.parse(localStorage.cartList);
-    }
+    const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
+        return curNumber + item.amount
+    }, 0)
 
     return (
         <Navbar sticky="top" bg="light" expand="lg">
@@ -61,7 +62,7 @@ const Navbars = (props) => {
 
                     <div className="ms-3">
                         <Link to="/cart"><img src={cart} alt="cart" /></Link>
-                        ({productList.length})
+                        ({numberOfCartItems})
                     </div>
 
                     {!authCtx.isLoggedIn && <>
