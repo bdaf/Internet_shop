@@ -16,7 +16,7 @@ public class OrderController {
 
     @GetMapping("/api/orders")
     public List<Order> fetchAllOrders(){
-        return orderService.fetchAllOrder();
+        return orderService.getAllOrder();
     }
 
     @GetMapping("/api/orders/{id}")
@@ -26,7 +26,7 @@ public class OrderController {
 
     @PostMapping("/api/orders/save")
     public Order saveOrder(@RequestBody Order aOrder){
-        return orderService.saveOrder(aOrder);
+        return orderService.addOrder(aOrder);
     }
 
     @DeleteMapping("/api/orders/{id}")

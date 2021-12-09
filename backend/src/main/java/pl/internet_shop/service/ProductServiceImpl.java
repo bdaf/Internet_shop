@@ -82,11 +82,6 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> fetchAllProductsWithoutGalleries() {
-        return productRepository.findAllProductsWithoutGallery();
-    }
-
-    @Override
     public Product saveProduct(Product aProduct) {
         return productRepository.save(aProduct);
     }
@@ -99,10 +94,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> fetchAllProducts() {
         List<Product> products = productRepository.findAllProductsWithGalleryAndFetchGallery();
-        products.addAll(productRepository.findAllProductsWithoutGallery());
-        for (int i = 0; i < products.size(); i++) {
-            products.set(i, getDiscountedProduct(products.get(i)));
-        }
+        //products.addAll(productRepository.findAllProductsWithGalleryAndFetchGalleryWhereNotLinkedWithOrder());
+
+        //products.addAll(productRepository.findAllProductsWithoutGallery());
+//        for (int i = 0; i < products.size(); i++) {
+//            products.set(i, getDiscountedProduct(products.get(i)));
+//        }
         return products;
     }
 

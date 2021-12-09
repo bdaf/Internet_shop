@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     private DelivererService delivererService;
 
     @Override
-    public List<Order> fetchAllOrder() {
+    public List<Order> getAllOrder() {
         List<Order> orders = orderRepository.findAllOrdersWithProductsWithGalleriesInIt();
         return orders;
     }
@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
 
     // if order with the same products which previous order had will be saved, products from previous order will be removed and moved to that new order
     @Override
-    public Order saveOrder(Order aOrder) {
+    public Order addOrder(Order aOrder) {
         for (Product p : aOrder.getProducts()) {
             if(productService.getOrderIdOf(aOrder.getOrderId()) != null);
                 throw new IllegalArgumentException("Product "+p.getName()+" with Id "+p.getProductId()+" is assigned to another order.");
@@ -66,7 +66,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order updateStatusInOrderById(Order aOrder, Long aOrderId) {
-        Order orderToUpdate = orderRepository.findById(aOrderId).get();
+        Order orderToUpdate = orderRepository.findOrderWithProductsAndGalleriesInIt(aOrderId);
 
         if (Objects.nonNull(aOrder.getStatus()) && !aOrder.getStatus().equalsIgnoreCase("")) {
             orderToUpdate.setStatus(aOrder.getStatus());

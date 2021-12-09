@@ -24,11 +24,6 @@ public class ProductController {
         return productService.fetchAllProductsWithGalleries();
     }
 
-    @GetMapping("/api/products/gallery/null")
-    public List<Product> fetchAllProductsWithoutGalleries(){
-        return productService.fetchAllProductsWithoutGalleries();
-    }
-
     @GetMapping("/api/products/{id}")
     public Product fetchProduct(@PathVariable("id") Long aProductId){
         return productService.fetchProductById(aProductId);

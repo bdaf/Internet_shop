@@ -25,11 +25,18 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query("SELECT p FROM Product p JOIN FETCH p.gallery WHERE p.productId = (:id)")
     Product findByIdAndFetchGallery(@Param("id") Long aProductId);
 
-    @Query("SELECT p FROM Product p JOIN FETCH p.gallery")
+    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery")
     List<Product> findAllProductsWithGalleryAndFetchGallery();
 
-    @Query("SELECT p FROM Product p where p.gallery is null")
-    List<Product> findAllProductsWithoutGallery();
+    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery LEFT JOIN Order o WHERE o is null")
+    List<Product> findAllProductsWithGalleryAndFetchGalleryWhereNotLinkedWithOrder();
+
+//    @Query("SELECT p FROM Product p JOIN FETCH Order o WHERE o.products.size = 0")
+//    List<Product> findAllProductsWithoutGallery();
+
+    @Query(value = "SELECT * FROM is_product p left join fetch is_gallery g on p.gallery_id = g.gallery_id where p.order_id is null ",
+            nativeQuery = true)
+    List<Product> getAllProductsWhichAreNotLinkedWithAnyOrder();
 
     @Query(value = "SELECT p.order_id FROM Product p where p.product_id = ?1 ",
     nativeQuery = true)

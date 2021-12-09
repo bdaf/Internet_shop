@@ -5,9 +5,9 @@ import pl.internet_shop.entity.Order;
 import java.util.List;
 
 public interface OrderService {
-    List<Order> fetchAllOrder();
+    List<Order> getAllOrder();
 
-    Order saveOrder(Order aOrder);
+    Order addOrder(Order aOrder);
 
     void deleteOrderById(Long aOrderId);
 
