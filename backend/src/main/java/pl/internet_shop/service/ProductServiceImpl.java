@@ -2,10 +2,7 @@ package pl.internet_shop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.internet_shop.entity.Category;
-import pl.internet_shop.entity.Discount;
-import pl.internet_shop.entity.Producer;
-import pl.internet_shop.entity.Product;
+import pl.internet_shop.entity.*;
 import pl.internet_shop.repository.ProductRepository;
 
 import java.sql.Date;
@@ -37,11 +34,17 @@ public class ProductServiceImpl implements ProductService {
         Producer producer = producerService.saveProducerOfProduct(aProduct);
         aProduct.setProducer(producer);
 
+        //if the Product is not for sale but to add to some order, just create it
+        if (!aProduct.isForSale()) {
+            aProduct.getGallery().setGalleryId(null);
+            aProduct.getGallery().getPhotos().forEach( p -> p.setPhotoId(null));
+            return productRepository.save(aProduct);
+        }
+
         //if the same Product is in DB, increase amount, otherwise save new product in DB
-        Product product = productRepository.findProductByNameAndProducerAndPrice(aProduct.getName(), aProduct.getProducer(), aProduct.getPrice());
-        if (Objects.isNull(product)) {
-            product = aProduct;
-        } else product.setAmount(product.getAmount() + aProduct.getAmount());
+        Product product = productRepository.findProductByNameAndProducerAndPriceAndForSale(aProduct.getName(), aProduct.getProducer(), aProduct.getPrice(), true);
+        if (product == null) product = aProduct;
+        else product.setAmount(product.getAmount() + aProduct.getAmount());
 
         return productRepository.save(product);
     }
@@ -87,7 +90,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Long getOrderIdOf(Long aProductId ) {
+    public Long getOrderIdOf(Long aProductId) {
         return productRepository.getOrderIdByProductId(aProductId);
     }
 
@@ -109,12 +112,13 @@ public class ProductServiceImpl implements ProductService {
         Discount theBiggestDiscount = null;
         Date now = new Date(System.currentTimeMillis()); // if date includes now
         for (int i = 0; i < discounts.size(); i++) {
-            if (theBiggestDiscount == null || ( theBiggestDiscount.getPercent() < discounts.get(i).getPercent()
-                    && theBiggestDiscount.getFromDate().getTime() < now.getTime() && now.getTime() < theBiggestDiscount.getToDate().getTime() ));
+            if (theBiggestDiscount == null || (theBiggestDiscount.getPercent() < discounts.get(i).getPercent()
+                    && theBiggestDiscount.getFromDate().getTime() < now.getTime() && now.getTime() < theBiggestDiscount.getToDate().getTime()))
+                ;
             theBiggestDiscount = discounts.get(i);
         }
-        if (theBiggestDiscount != null){
-            product.setPrice(product.getPrice() * (1-theBiggestDiscount.getPercent()) );
+        if (theBiggestDiscount != null) {
+            product.setPrice(product.getPrice() * (1 - theBiggestDiscount.getPercent()));
         }
         return product;
     }

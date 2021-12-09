@@ -20,9 +20,9 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
                 .build();
     }
 
-    Product findProductByNameAndProducerAndPrice(String aName, Producer aProducer, Double aPrice);
+    Product findProductByNameAndProducerAndPriceAndForSale(String aName, Producer aProducer, Double aPrice, Boolean aForSale);
 
-    @Query("SELECT p FROM Product p JOIN FETCH p.gallery WHERE p.productId = (:id)")
+    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery WHERE p.productId = (:id)")
     Product findByIdAndFetchGallery(@Param("id") Long aProductId);
 
     @Query("SELECT p FROM Product p LEFT JOIN FETCH p.gallery")

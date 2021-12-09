@@ -29,15 +29,33 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-    // if order with the same products which previous order had will be saved, products from previous order will be removed and moved to that new order
     @Override
     public Order addOrder(Order aOrder) {
-//        for (Product p : aOrder.getProducts()) {
-//            if(productService.getOrderIdOf(aOrder.getOrderId()) != null);
-//                throw new IllegalArgumentException("Product "+p.getName()+" with Id "+p.getProductId()+" is assigned to another order.");
-//        }
 
-        // take deliverer in that way in order to noc creating new one if with the same phone number already exists in DB
+        // check if products in order are ok
+        for (Product p : aOrder.getProducts()) {
+            if(!p.isForSale()) throw new IllegalStateException("Product "+p.getName()+" with Id "+p.getProductId()+" is not for sale - maybe already assigned to another order.");
+            Product productFromDatabase = productService.fetchProductById(p.getProductId());
+            if(productFromDatabase == null)
+                throw new IllegalStateException("Product is null in database");
+            if(productFromDatabase.getAmount() < p.getAmount() || p.getAmount() < 1)
+                throw new IllegalStateException("Product "+p.getName()+" with Id "+p.getProductId()+" too large amount of product, you want "+p.getAmount()+" and we have only "+productFromDatabase.getAmount());
+        }
+
+        // decrease amount of product and save new to database
+        for (Product p : aOrder.getProducts()) {
+            // decreasing amount of product
+            Product productFromDatabase = productService.fetchProductById(p.getProductId());
+            productFromDatabase.setAmount(productFromDatabase.getAmount() - p.getAmount());
+            productService.saveProduct(productFromDatabase);
+            // creating new product
+            p.setProductId(null);
+            p.setForSale(false);
+            productFromDatabase = productService.addProductAndSave(p);
+            p.setProductId(productFromDatabase.getProductId());
+        }
+
+        // take deliverer in that way in order to create new one if with the same phone number already exists in DB
         Deliverer delivererToAddToOrder = delivererService.saveDelivererIfNotExistsByPhoneNumber(aOrder.getDelivery().getDeliverer());
 
         // adding maybe existing deliverer to order
@@ -46,6 +64,8 @@ public class OrderServiceImpl implements OrderService {
         // it's in that way because of lazy initialization of gallery in product
         Order orderWithId = orderRepository.save(aOrder);
         Order resultOrderWithProductsWithGalleries = orderRepository.findOrderWithProductsAndGalleriesInIt(orderWithId.getOrderId());
+
+        //
 
         // set order name and delivery name
         resultOrderWithProductsWithGalleries.setName("Zamówienie " + resultOrderWithProductsWithGalleries.getOrderId());
