@@ -5,5 +5,6 @@ import pl.internet_shop.entity.Delivery;
 import java.util.List;
 
 public interface DeliveryService {
-    List<Delivery> fetchAllDeliveries();
+    List<Delivery> getAllDeliveries();
+
 }

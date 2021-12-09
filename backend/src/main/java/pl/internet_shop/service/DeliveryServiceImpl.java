@@ -14,7 +14,8 @@ public class DeliveryServiceImpl implements DeliveryService{
     private DeliveryRepository deliveryRepository;
 
     @Override
-    public List<Delivery> fetchAllDeliveries() {
+    public List<Delivery> getAllDeliveries() {
         return deliveryRepository.findAll();
     }
+
 }

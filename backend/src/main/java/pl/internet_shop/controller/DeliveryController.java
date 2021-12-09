@@ -16,7 +16,8 @@ public class DeliveryController {
     private DeliveryService deliveryService;
 
     @GetMapping
-    public List<Delivery> fetchAllDeliveries(){
-        return deliveryService.fetchAllDeliveries();
+    public List<Delivery> getAllDeliveries(){
+        return deliveryService.getAllDeliveries();
     }
+
 }
