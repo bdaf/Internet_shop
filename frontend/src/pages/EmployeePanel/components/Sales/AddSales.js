@@ -74,25 +74,25 @@ const AddSales = (props) => {
             <Form onSubmit={(e) => addDiscountHandler(e)}>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
-                        <Select onChange={(e) => setCategoryId(e.value)} options={optionsCategory} placeholder="Kategoria" />
+                        <Select onChange={(e) => setCategoryId(e.value)} options={optionsCategory} placeholder="Kategoria" required/>
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
                 <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
                         <FloatingLabel controlId="floatingAmount" label="Przecena (%)">
-                            <Form.Control onChange={(e) => setDiscount(e.target.value)} type="number" max="100" placeholder="Przecena (%)" />
+                            <Form.Control onChange={(e) => setDiscount(e.target.value)} type="number" max="100" placeholder="Przecena (%)" required/>
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridPrice">
                         <FloatingLabel controlId="floatingPassword" label="Data rozpoczęcia">
-                            <Form.Control onChange={(e) => setStart(e.target.value)} type="date" placeholder="Data rozpoczęcia" />
+                            <Form.Control onChange={(e) => setStart(e.target.value)} type="date" placeholder="Data rozpoczęcia" required/>
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
                         <FloatingLabel controlId="floatingAmount" label="Data zakończenia">
-                            <Form.Control onChange={(e) => setEnd(e.target.value)} type="date" placeholder="Data zakończenia" />
+                            <Form.Control onChange={(e) => setEnd(e.target.value)} type="date" placeholder="Data zakończenia" required/>
                         </FloatingLabel>
                     </Form.Group>
                 </Row>

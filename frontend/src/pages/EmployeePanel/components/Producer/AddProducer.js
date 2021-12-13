@@ -57,12 +57,12 @@ const AddProducer = (props) => {
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa producenta">
-                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa producenta" />
+                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa producenta" required/>
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridNip">
                         <FloatingLabel controlId="floatingNip" label="NIP">
-                            <Form.Control onChange={(e) => setNip(e.target.value)} type="text" placeholder="NIP" />
+                            <Form.Control onChange={(e) => setNip(e.target.value)} type="text" placeholder="NIP" required/>
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
