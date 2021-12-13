@@ -8,7 +8,7 @@ const Offer = () => {
                 <Carousel.Item interval={3000}>
                     <img
                         className="d-block w-100"
-                        src="https://cdn.x-kom.pl/i/img/banners/normal,,x-mas-top_1638345490.jpg?filters=trim"
+                        src="https://cdn.x-kom.pl/i/img/banners/normal,,top-forza-horizon_1639124353.jpg?filters=trim"
                         alt="First slide"
                     />
                 </Carousel.Item>
