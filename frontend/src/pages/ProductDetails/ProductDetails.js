@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { Col, Row, Stack, Button } from "react-bootstrap";
 import axios from 'axios';
 
 import Navbar from "../../components/Navbar/Navbar";
 import Carousels from "../../components/UI/Carousel/Carousel";
+import CartContext from '../../store/cart-context';
 
 
 
 const ProductDetails = (props) => {
+    const cartCtx = useContext(CartContext)
 
-    const addToCart = (item) => {
-        console.log(item)
-        let productList=[]
-        if(localStorage.cartList){
-        productList = JSON.parse(localStorage.cartList);
-        }
-        productList.push(item);
-        localStorage.cartList = JSON.stringify(productList);
-        window.location.href='/cart'
-    };
     const params = useParams();
 
     const [product, setProduct] = useState(null)
@@ -34,7 +26,7 @@ const ProductDetails = (props) => {
 
     useEffect(() => {
         fetchProducts()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (!loading)
@@ -46,7 +38,7 @@ const ProductDetails = (props) => {
             <div className="m-4">
                 <Row>
                     <Col xs={12} md={5}>
-                        <Carousels photos={product.gallery.photos}/>
+                        <Carousels photos={product.gallery.photos} />
                     </Col>
                     <Col xs={12} md={7}>
                         <h1>{product.name}</h1>
@@ -60,7 +52,7 @@ const ProductDetails = (props) => {
                             <Col xs={12} md={6}>
                                 <Stack gap={3}>
                                     <div className="ms-auto">{product.price.toFixed(2)} PLN</div>
-                                    <Button variant="outline-danger" onClick={() => addToCart(product)}>Dodaj do koszyka</Button>
+                                    <Button variant="outline-danger" onClick={() => cartCtx.addItem(product)}>Dodaj do koszyka</Button>
                                 </Stack>
                             </Col>
                         </Row>
