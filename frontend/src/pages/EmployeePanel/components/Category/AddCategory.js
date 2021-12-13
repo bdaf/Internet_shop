@@ -56,7 +56,7 @@ const AddCategory = (props) => {
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa kategorii">
-                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa kategorii" />
+                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa kategorii" required/>
                         </FloatingLabel>
                     </Form.Group>
                 </Row>

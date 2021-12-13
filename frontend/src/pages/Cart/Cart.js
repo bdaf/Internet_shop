@@ -133,13 +133,13 @@ export default function Store() {
                             <form class="mt-4">
                               <div class="form-outline form-white mb-4">
                                 <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                                  placeholder="Nazwisko właściciela" />
+                                  placeholder="Nazwisko właściciela" required />
                                 <label class="form-label" for="typeName">Nazwisko właściciela</label>
                               </div>
 
                               <div class="form-outline form-white mb-4">
                                 <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                                  placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                                  placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" required />
                                 <label class="form-label" for="typeText">Numer karty</label>
                               </div>
 
@@ -147,14 +147,14 @@ export default function Store() {
                                 <div class="col-md-6">
                                   <div class="form-outline form-white">
                                     <input type="text" id="typeExp" class="form-control form-control-lg"
-                                      placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
+                                      placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" required/>
                                     <label class="form-label" for="typeExp">Wygasa</label>
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-outline form-white">
                                     <input type="password" id="typeText" class="form-control form-control-lg"
-                                      placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                                      placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" required/>
                                     <label class="form-label" for="typeText">CVV</label>
                                   </div>
                                 </div>

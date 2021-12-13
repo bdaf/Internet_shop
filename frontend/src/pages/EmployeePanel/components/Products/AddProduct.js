@@ -107,7 +107,7 @@ const AddProduct = (props) => {
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa produktu">
-                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa produktu" />
+                            <Form.Control onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa produktu" required/>
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
@@ -122,33 +122,33 @@ const AddProduct = (props) => {
                 <Row className="mb-3">
                 <Form.Group as={Col} xs={12} md={6} controlId="formGridPrice">
                         <FloatingLabel controlId="floatingPassword" label="URL zdjęcia">
-                            <Form.Control onChange={(e) => setPhoto1(e.target.value)} type="text" placeholder="URL zdjęcia" />
+                            <Form.Control onChange={(e) => setPhoto1(e.target.value)} type="text" placeholder="URL zdjęcia" required/>
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
                         <FloatingLabel controlId="floatingAmount" label="URL zdjęcia">
-                            <Form.Control onChange={(e) => setPhoto2(e.target.value)} type="text" placeholder="URL zdjęcia" />
+                            <Form.Control onChange={(e) => setPhoto2(e.target.value)} type="text" placeholder="URL zdjęcia" required/>
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridPrice">
                         <FloatingLabel controlId="floatingPassword" label="Cena">
-                            <Form.Control onChange={(e) => setPrice(e.target.value)} type="number" placeholder="Cena" />
+                            <Form.Control onChange={(e) => setPrice(e.target.value)} type="number" placeholder="Cena" required/>
                         </FloatingLabel>
                     </Form.Group>
                     <Form.Group as={Col} xs={12} md={6} controlId="formGridAmount">
                         <FloatingLabel controlId="floatingAmount" label="Ilość">
-                            <Form.Control onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Ilość" />
+                            <Form.Control onChange={(e) => setAmount(e.target.value)} type="number" placeholder="Ilość" required />
                         </FloatingLabel>
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
                     <Col xs={6} md={6}>
-                        <Select onChange={(e) => setCategory(e.label)} options={optionsCategory} placeholder="Kategoria" />
+                        <Select onChange={(e) => setCategory(e.label)} options={optionsCategory} placeholder="Kategoria" required/>
                     </Col>
                     <Col xs={6} md={6}>
-                        <Select onChange={(e) => setProducer(e)} options={optionsProducer} placeholder="Producent" />
+                        <Select onChange={(e) => setProducer(e)} options={optionsProducer} placeholder="Producent" required/>
                     </Col>
                 </Row>
                 <div className="d-flex justify-content-end">

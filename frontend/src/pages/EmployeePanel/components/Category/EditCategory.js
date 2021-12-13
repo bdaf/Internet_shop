@@ -90,7 +90,7 @@ const EditCategory = (props) => {
                         {feedback}
                     <Form.Group as={Col} xs={12} md={12} controlId="formGridName">
                         <FloatingLabel controlId="floatingPassword" label="Nazwa kategorii">
-                            <Form.Control onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Nazwa kategorii" />
+                            <Form.Control onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder="Nazwa kategorii" required />
                         </FloatingLabel>
                     </Form.Group>
                 </Row>

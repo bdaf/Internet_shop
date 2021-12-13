@@ -58,7 +58,7 @@ const Login = () => {
                     Nie prawidłowe hasło lub E-mail!
                 </Alert>}
             <div className={styles.floatingLabel}>
-                <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" />
+                <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" required />
                 <label htmlFor="email">E-mail: </label>
                 <div className={styles.icon}>
                     <svg enableBackground="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +71,7 @@ const Login = () => {
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Hasło" type="password" id="password" value={password} onChange={passwordHandler} autoComplete="off" />
+                <input placeholder="Hasło" type="password" id="password" value={password} onChange={passwordHandler} autoComplete="off" required />
                 <label htmlFor="password">Hasło: </label>
                 <div className={styles.icon}>
                     <svg enableBackground="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@ const Login = () => {
         <>
             <p>Aby zresetować hasło, wpisz poniżej swój adres e-mail. Do którego zostanie wysłana wiadomość z instrukcją, jak ponownie uzyskać dostęp.</p>
             <div className={styles.floatingLabel}>
-                <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" />
+                <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" required/>
                 <label htmlFor="email">E-mail: </label>
                 <div className={styles.icon}>
                     <svg enableBackground="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

@@ -99,29 +99,29 @@ const AddEmployee = (props) => {
                 <Row className="mb-2">
                     <Col xs={12} md={6}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Imię">
-                            <Form.Control type="text" placeholder="Imię" onChange={(e) => setName(e.target.value)} value={name} />
+                            <Form.Control type="text" placeholder="Imię" onChange={(e) => setName(e.target.value)} value={name} required/>
                         </FloatingLabel>
                     </Col>
                     <Col xs={12} md={6}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Nazwisko">
-                            <Form.Control type="text" placeholder="Nazwisko" onChange={(e) => setSurname(e.target.value)} value={surname}/>
+                            <Form.Control type="text" placeholder="Nazwisko" onChange={(e) => setSurname(e.target.value)} value={surname} required/>
                         </FloatingLabel>
                     </Col>
                 </Row>
                 <Row className="mb-2">
                     <Col xs={12} md={4}>
                         <FloatingLabel controlId="floatingPassword" label="Numer telefonu">
-                            <Form.Control type="text" placeholder="Numer telefonu" onChange={(e) => setPhone(e.target.value)} value={phone}/>
+                            <Form.Control type="text" placeholder="Numer telefonu" onChange={(e) => setPhone(e.target.value)} value={phone} required/>
                         </FloatingLabel>
                     </Col>
                     <Col xs={12} md={4}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="E-mail">
-                            <Form.Control type="text" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} value={email}/>
+                            <Form.Control type="text" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} value={email} required/>
                         </FloatingLabel>
                     </Col>
                     <Col xs={12} md={4}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Hasło">
-                            <Form.Control type="text" placeholder="Hasło" onChange={(e) => setPassword(e.target.value)} value={password}/>
+                            <Form.Control type="text" placeholder="Hasło" onChange={(e) => setPassword(e.target.value)} value={password} required/>
                         </FloatingLabel>
                     </Col>
                 </Row>
@@ -129,7 +129,7 @@ const AddEmployee = (props) => {
 
                     <Col xs={12} md={6}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Potwiedź hasło">
-                            <Form.Control type="text" placeholder="Potwiedź hasło" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}/>
+                            <Form.Control type="text" placeholder="Potwiedź hasło" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} required/>
                         </FloatingLabel>
                     </Col>
                 </Row>
@@ -138,29 +138,29 @@ const AddEmployee = (props) => {
                 <Row className="mb-2">
                     <Col xs={12} md={6}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Kraj">
-                            <Form.Control type="text" placeholder="Kraj" onChange={(e) => setCountry(e.target.value)} value={country}/>
+                            <Form.Control type="text" placeholder="Kraj" onChange={(e) => setCountry(e.target.value)} value={country} required/>
                         </FloatingLabel>
                     </Col>
                     <Col xs={12} md={6}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Miasto">
-                            <Form.Control type="text" placeholder="Miasto" onChange={(e) => setCity(e.target.value)} value={city}/>
+                            <Form.Control type="text" placeholder="Miasto" onChange={(e) => setCity(e.target.value)} value={city} required/>
                         </FloatingLabel>
                     </Col>
                 </Row>
                 <Row className="mb-2">
                     <Col xs={12} md={4}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Ulica">
-                            <Form.Control type="text" placeholder="Ulica" onChange={(e) => setStreet(e.target.value)} value={street}/>
+                            <Form.Control type="text" placeholder="Ulica" onChange={(e) => setStreet(e.target.value)} value={street} required/>
                         </FloatingLabel>
                     </Col>
                     <Col xs={12} md={4}>
                         <FloatingLabel className="mb-1" controlId="floatingPassword" label="Numer mieszkania">
-                            <Form.Control type="text" placeholder="Numer mieszkania" onChange={(e) => setHouseNumber(e.target.value)} value={houseNumber}/>
+                            <Form.Control type="text" placeholder="Numer mieszkania" onChange={(e) => setHouseNumber(e.target.value)} value={houseNumber} required/>
                         </FloatingLabel>
                     </Col>
                     <Col xs={12} md={4}>
                         <FloatingLabel controlId="floatingPassword" label="Kod pocztowy">
-                            <Form.Control type="text" placeholder="Kod pocztowy" onChange={(e) => setPostCode(e.target.value)} value={postCode}/>
+                            <Form.Control type="text" placeholder="Kod pocztowy" onChange={(e) => setPostCode(e.target.value)} value={postCode} required/>
                         </FloatingLabel>
                     </Col>
                 </Row>
