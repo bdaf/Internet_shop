@@ -75,54 +75,53 @@ const Register = () => {
     const submitHandler = async (event) => {
         event.preventDefault();
 
-        console.log('Email: ' + email);
-        console.log('Password: ' + password);
-        console.log('Confirm Password: ' + confirmPassword);
-        const newUser = {
-            userName: email,
+        if (email.trim() && password.trim() === confirmPassword.trim()) {
+            const newUser = {
+                userName: email,
                 name: name,
-            surname: surname,
-            email: email,
-            password: password,
-            phoneNumber: phone,
-            houseNumber: houseNumber,
-            street: street,
-            country: country,
-            townName: city,
-            postCode: postCode,
-            role: "USER"
-        }
-        await axios.post("http://localhost:8888/registration", newUser).then((response) => {
-            console.log(response)
+                surname: surname,
+                email: email,
+                password: password,
+                phoneNumber: phone,
+                houseNumber: houseNumber,
+                street: street,
+                country: country,
+                townName: city,
+                postCode: postCode,
+                role: "USER"
+            }
+            await axios.post("http://localhost:8888/registration", newUser).then((response) => {
+                console.log(response)
             })
-        setName('');
-        setSurname('');
-        setPhone('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+            setName('');
+            setSurname('');
+            setPhone('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
 
-        navigate('/login');
+            navigate('/login');
+        }
     };
 
     const registerContext = !isStep2 ? (
         <>
             <div className={styles.floatingLabel}>
-                <input placeholder="Imię" type="login" id="login" value={name} onChange={nameHandler} autoComplete="off" />
+                <input placeholder="Imię" type="login" id="login" value={name} onChange={nameHandler} autoComplete="off" required />
                 <label htmlFor="login">Imię </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Nazwisko" type="login" id="login" value={surname} onChange={surnameHandler} autoComplete="off" />
+                <input placeholder="Nazwisko" type="login" id="login" value={surname} onChange={surnameHandler} autoComplete="off" required />
                 <label htmlFor="login">Nazwisko </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Numer telefonu" type="login" id="login" value={phone} onChange={phoneHandler} autoComplete="off" />
+                <input placeholder="Numer telefonu" type="login" id="login" value={phone} onChange={phoneHandler} autoComplete="off" required />
                 <label htmlFor="login">Numer telefonu </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -130,7 +129,7 @@ const Register = () => {
             </div>
 
             <div className={styles.floatingLabel}>
-                <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" />
+                <input placeholder="E-mail" type="email" id="email" value={email} onChange={emailHandler} autoComplete="off" required />
                 <label htmlFor="email">E-mail: </label>
                 <div className={styles.icon}>
                     <svg enableBackground="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +141,7 @@ const Register = () => {
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Hasło" type="password" id="password" value={password} onChange={passwordHandler} autoComplete="off" />
+                <input placeholder="Hasło" type="password" id="password" value={password} onChange={passwordHandler} autoComplete="off" required />
                 <label htmlFor="password">Hasło: </label>
                 <div className={styles.icon}>
                     <svg enableBackground="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +153,7 @@ const Register = () => {
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Potwierdź hasło" type="password" id="confirmPassword" value={confirmPassword} onChange={confirmPasswordHandler} autoComplete="off" />
+                <input placeholder="Potwierdź hasło" type="password" id="confirmPassword" value={confirmPassword} onChange={confirmPasswordHandler} autoComplete="off" required />
                 <label htmlFor="confirmPassword">Potwierdź hasło: </label>
                 <div className={styles.icon}>
                     <svg enableBackground="new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -170,35 +169,35 @@ const Register = () => {
     ) : (
         <>
             <div className={styles.floatingLabel}>
-                <input placeholder="Kraj" type="country" id="country" value={country} onChange={countryHandler} autoComplete="off" />
+                <input placeholder="Kraj" type="country" id="country" value={country} onChange={countryHandler} autoComplete="off" required />
                 <label htmlFor="country">Kraj </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Miasto" type="city" id="city" value={city} onChange={cityHandler} autoComplete="off" />
+                <input placeholder="Miasto" type="city" id="city" value={city} onChange={cityHandler} autoComplete="off" required />
                 <label htmlFor="city">Miasto </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Ulica" type="street" id="street" value={street} onChange={streetHandler} autoComplete="off" />
+                <input placeholder="Ulica" type="street" id="street" value={street} onChange={streetHandler} autoComplete="off" required />
                 <label htmlFor="street">Ulica </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Numer mieszkania" type="houseNumber" id="houseNumber" value={houseNumber} onChange={houseNumberHandler} autoComplete="off" />
+                <input placeholder="Numer mieszkania" type="houseNumber" id="houseNumber" value={houseNumber} onChange={houseNumberHandler} autoComplete="off" required />
                 <label htmlFor="houseNumber">Numer mieszkania </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 </div>
             </div>
             <div className={styles.floatingLabel}>
-                <input placeholder="Kod pocztowy" type="postCode" id="postCode" value={postCode} onChange={postCodeHandler} autoComplete="off" />
+                <input placeholder="Kod pocztowy" type="postCode" id="postCode" value={postCode} onChange={postCodeHandler} autoComplete="off" required />
                 <label htmlFor="postCode">Kod pocztowy </label>
                 <div className={styles.icon}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
