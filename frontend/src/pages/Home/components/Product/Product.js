@@ -23,7 +23,7 @@ const Product = (props) => {
     }
 
     return (
-        <Card className={`${styles.product} mt-3 mb-3`} style={{ width: '18rem' }}>
+        <Card className={`${styles.product} mt-3 mb-3`} style={{ width: '18rem', height: '38rem'}}>
             <Card.Img onClick={showDetailsHandler} style={{ height: '18rem' }} variant="top" src={props.gallery.length > 0 ? props.gallery[0].url : absencePhoto} />
             <Card.Body>
                 <Card.Title onClick={showDetailsHandler}>{props.name}</Card.Title>

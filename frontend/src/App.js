@@ -12,6 +12,7 @@ import Faq from './pages/FAQ/Faq';
 import EmployeePanel from './pages/EmployeePanel/EmployeePanel';
 import Cart from './pages/Cart/Cart';
 import AuthContext from './store/auth-context';
+import Orders from './pages/User/Orders/Orders';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/detail/:id" element={<ProductDetails />} />
       <Route path="/cart" element={authCtx.isLoggedIn ? <Cart /> : <Navigate to="/login"/>} />
       <Route path="/payment" element={<Payment />} />
+      <Route path="/user/orders" element={authCtx.isLoggedIn ? <Orders /> : <Navigate to="/login"/>} />
     </Routes>
   );
 }
