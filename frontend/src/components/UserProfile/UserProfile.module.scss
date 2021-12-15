@@ -61,11 +61,11 @@
     &:last-child {
       border-bottom: 0px;
     }
-    > a {
-      font-size: 13px;
+    > .link {
+      font-size: 14px;
       padding: 15px 25px 16px 10px;
       text-decoration: none;
-      color: #1787e0;
+      color: #3d4042;
       transition: all .2s ease-out;
     }
   }
@@ -92,7 +92,7 @@
       width: 5px;
       border-radius:30px;
     }
-    a:hover {
+    .link:hover {
       margin-left: 5px;
     }
   }
