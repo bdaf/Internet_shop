@@ -7,3 +7,9 @@
     display: flex;
     min-height: 100vh;
   }
+  .orderContainer{
+    text-align: center;
+    padding: 20px;
+    display: 'flex';
+    margin: auto;
+  }
