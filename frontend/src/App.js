@@ -13,11 +13,12 @@ import EmployeePanel from './pages/EmployeePanel/EmployeePanel';
 import Cart from './pages/Cart/Cart';
 import AuthContext from './store/auth-context';
 import Orders from './pages/User/Orders/Orders';
+import Profile from './pages/User/Profile/Profile';
 
 
 function App() {
   const authCtx = useContext(AuthContext)
-   
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -30,7 +31,8 @@ function App() {
       <Route path="/detail/:id" element={<ProductDetails />} />
       <Route path="/cart" element={authCtx.isLoggedIn ? <Cart /> : <Navigate to="/login"/>} />
       <Route path="/payment" element={<Payment />} />
-      <Route path="/user/orders" element={authCtx.isLoggedIn ? <Orders /> : <Navigate to="/login"/>} />
+      <Route path="/user/orders" element={authCtx.isLoggedIn ? <Orders /> : <Navigate to="/login" />} />
+      <Route path="/user/profile" element={authCtx.isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
     </Routes>
   );
 }
