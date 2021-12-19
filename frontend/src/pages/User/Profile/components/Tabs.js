@@ -34,7 +34,67 @@ const Tabs = () => {
                 <div className={styles.content}>
                     <section>
                         <h2>Profil</h2>
-                        profil coś
+                        <Row className="mb-2">
+                            <h5>Twoje dane</h5>
+                            <Col xs={12} md={6}>
+                                <FloatingLabel className="mb-1" controlId="floatingPassword" label="Imię">
+                                    <Form.Control type="text" placeholder="Imię" required />
+                                </FloatingLabel>
+                            </Col>
+                            <Col xs={12} md={6}>
+                                <FloatingLabel className="mb-1" controlId="floatingPassword" label="Nazwisko">
+                                    <Form.Control type="text" placeholder="Nazwisko" required />
+                                </FloatingLabel>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={6}>
+                                <FloatingLabel className="mb-1" controlId="floatingPassword" label="Telefon">
+                                    <Form.Control type="text" placeholder="Telefon" required />
+                                </FloatingLabel>
+                            </Col>
+                        </Row>
+                        <div className="d-flex justify-content-end">
+                            <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                                Zapisz
+                            </Button>
+                        </div>
+                        <hr />
+                        <h5>Zdjęcie</h5>
+                        <Form.Group controlId="formFile" className="mb-3">
+                            <Form.Control type="file" />
+                        </Form.Group>
+                        <div className="d-flex justify-content-end">
+                            <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                                Zapisz
+                            </Button>
+                        </div>
+                        <hr />
+                        <Row className="mb-2">
+                            <h5>Zmień hasło</h5>
+                            <Col xs={12} md={6}>
+                                <FloatingLabel className="mb-1" controlId="floatingPassword" label="Nowe hasło">
+                                    <Form.Control type="password" placeholder="Nowe hasło" required />
+                                </FloatingLabel>
+                            </Col>
+                            <Col xs={12} md={6}>
+                                <FloatingLabel className="mb-1" controlId="floatingPassword" label="Potwierdź hasło">
+                                    <Form.Control type="password" placeholder="Potwierdź hasło" required />
+                                </FloatingLabel>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={6}>
+                                <FloatingLabel className="mb-1" controlId="floatingPassword" label="Stare hasło">
+                                    <Form.Control type="password" placeholder="Stare hasło" required />
+                                </FloatingLabel>
+                            </Col>
+                        </Row>
+                        <div className="d-flex justify-content-end">
+                            <Button className="ps-4 pe-4" variant="outline-primary" type="submit">
+                                Zapisz
+                            </Button>
+                        </div>
                     </section>
                     <section>
                         <h2>Lista zakupów</h2>
