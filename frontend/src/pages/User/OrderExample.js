@@ -1,7 +1,11 @@
 import Order from "../EmployeePanel/components/Orders/Order";
 
 const OrderExample = (props) => {
-    var emptyFunction = new function(id) {
+    // const emptyFunction2 = id => {
+    //     console.log(`Order ${id} has been clicked`);
+    // }
+    
+    var emptyFunction = function(id) {
         console.log(`Order ${id} has been clicked`);
     }
 

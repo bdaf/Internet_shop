@@ -4,7 +4,7 @@ import { Row, Col, Stack, Form, FloatingLabel, Button, Alert, CloseButton } from
 
 const AlertAboutFunctions = () => {
         const [show, setShow] = useState(true);
-      
+
         return (
           <>
             <Alert show={show} variant="success">
@@ -20,7 +20,7 @@ const AlertAboutFunctions = () => {
               </div>
           </Alert>
 
-          {!show && <Button onClick={() => setShow(true)}>Tymczasowy brak funkcjonalności - przepraszamy za niedogodnienia</Button>}
+          {!show && <Button className="mb-2" onClick={() => setShow(true)}>Tymczasowy brak funkcjonalności - przepraszamy za niedogodnienia</Button>}
         </>
         );
 }

@@ -18,7 +18,7 @@ const Orders = (props) => {
                 <hr/>
                 <Row>
                     {columnsList.map(function(obj){
-                        return <Col className="text-center"><OrderExample id={obj} /></Col>;
+                        return <Col key={obj} className="text-center"><OrderExample id={obj} /></Col>;
                     })}
                 </Row>
             </div>
