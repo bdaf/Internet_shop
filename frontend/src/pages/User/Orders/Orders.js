@@ -14,11 +14,10 @@ const Orders = (props) => {
             <Navbars />
             <div className={`${styles.orderContainer} text-center`}>
                 <Row><AlertAboutFunctions /></Row>
-                <h2>Twoje zamówienia</h2>
-                <hr/>
+                <hr /><h2>Twoje zamówienia</h2><hr />
                 <Row>
                     {columnsList.map(function(obj){
-                        return <Col key={obj} className="text-center"><OrderExample id={obj} /></Col>;
+                        return <Col key={obj} className="text-center colOrder"><OrderExample id={obj} /></Col>;
                     })}
                 </Row>
             </div>

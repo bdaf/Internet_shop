@@ -7,13 +7,11 @@
     display: flex;
     min-height: 100vh;
   }
-  .orderContainer{
-    width:80%;
+
+.settingsContainer{
+    width: 80%;
     text-align: center;
     padding: 20px;
     display: 'flex';
     margin: auto;
-  }
-  .colOrder{
-  
-  }
+}

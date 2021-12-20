@@ -1,0 +1,17 @@
+.sbutton{
+    margin: 5px 10px 5px 10px;
+}
+
+.slabel{
+    font-size: large;
+    margin: 10px;
+    margin-top: 50px;
+
+}
+.scol{
+    border-style: ridge;
+    margin: 10px;
+    padding: 10px;
+    flex: 0;
+
+}
