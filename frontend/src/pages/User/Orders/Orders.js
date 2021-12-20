@@ -1,6 +1,6 @@
 import Navbars from "../../../components/Navbar/Navbar";
 import Footer from "../../../components/Footer/Footer";
-import { Row, Col, Stack, Form, FloatingLabel, Button, Alert, CloseButton } from 'react-bootstrap';
+import { Row, Col, Container, Stack, Form, FloatingLabel, Button, Alert, CloseButton } from 'react-bootstrap';
 
 import styles from './Orders..module.css';
 import AlertAboutFunctions from "../AlertAboutFunctions";
@@ -15,11 +15,13 @@ const Orders = (props) => {
             <div className={`${styles.orderContainer} text-center`}>
                 <Row><AlertAboutFunctions /></Row>
                 <hr /><h2>Twoje zamówienia</h2><hr />
-                <Row>
+                <Container fluid style={{"width": "80%"}}>
+                <Row className="text-center" >
                     {columnsList.map(function(obj){
                         return <Col key={obj} className="text-center colOrder"><OrderExample id={obj} /></Col>;
                     })}
                 </Row>
+                </Container>
             </div>
             <Footer />
         </>
