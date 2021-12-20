@@ -8,6 +8,7 @@
     min-height: 100vh;
   }
   .orderContainer{
+    width:80%;
     text-align: center;
     padding: 20px;
     display: 'flex';

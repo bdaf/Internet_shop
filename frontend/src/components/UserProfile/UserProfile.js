@@ -22,7 +22,7 @@ const UserProfile = () => {
                     <li><Link className={styles.link} to="/user/profile"> Mój profil</Link></li>
                     {/* <li><a>Powiadomienia</a><span>12</span></li> */}
                     <li><Link className={styles.link} to="/user/orders"> Zamówienia</Link></li>
-                    <li><Link className={styles.link} to="/"> Ustawienia</Link></li>
+                    <li><Link className={styles.link} to="/user/settings"> Ustawienia</Link></li>
                     <li><Link onClick={() => logoutHandler()} className={styles.link} to=""> Wyloguj</Link></li>
                 </ul>
             </div>

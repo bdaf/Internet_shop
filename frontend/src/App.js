@@ -14,6 +14,7 @@ import Cart from './pages/Cart/Cart';
 import AuthContext from './store/auth-context';
 import Orders from './pages/User/Orders/Orders';
 import Profile from './pages/User/Profile/Profile';
+import Settings from './pages/User/Settings/Settings';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Route path="/payment" element={<Payment />} />
       <Route path="/user/orders" element={authCtx.isLoggedIn ? <Orders /> : <Navigate to="/login" />} />
       <Route path="/user/profile" element={authCtx.isLoggedIn ? <Profile /> : <Navigate to="/login" />} />
+      <Route path="/user/settings" element={authCtx.isLoggedIn ? <Settings /> : <Navigate to="/login" />} />
     </Routes>
   );
 }
