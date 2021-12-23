@@ -36,8 +36,6 @@ public class ProductServiceImpl implements ProductService {
 
         //if the Product is not for sale but to add to some order, just create it
         if (!aProduct.isForSale()) {
-            aProduct.getGallery().setGalleryId(null);
-            aProduct.getGallery().getPhotos().forEach( p -> p.setPhotoId(null));
             return productRepository.save(aProduct);
         }
 

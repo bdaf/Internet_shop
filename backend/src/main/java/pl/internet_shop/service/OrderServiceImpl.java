@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order addOrder(Order aOrder) {
 
-        // check if products in order are ok
+        // check if products in order are not in other orders (if are for sale), if they are in database and if amount of it is big enough
         for (Product p : aOrder.getProducts()) {
             if(!p.isForSale()) throw new IllegalStateException("Product "+p.getName()+" with Id "+p.getProductId()+" is not for sale - maybe already assigned to another order.");
             Product productFromDatabase = productService.fetchProductForSaleById(p.getProductId());

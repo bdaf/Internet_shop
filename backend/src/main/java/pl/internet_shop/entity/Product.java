@@ -43,7 +43,7 @@ public class Product {
     @JoinColumn(name = "category_id", referencedColumnName = "category_id", nullable = false)
     private Category category;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "gallery_id", referencedColumnName = "gallery_id")
     private Gallery gallery;
 }
